@@ -15,19 +15,27 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="使用HTTP协议访问Web当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？
+根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取文件资源（resource）等信息，从而显示出Web页面。
+像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为客户端（client）。
+Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议)的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="sherrywong1220.github.io/2016/12/10/hello-world/index.html">
+<meta property="og:title" content="《图解HTTP》学习笔记（一）——了解Web及网络基础">
+<meta property="og:url" content="sherrywong1220.github.io/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/index.html">
 <meta property="og:site_name" content="Sherry Code">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-12-10T16:05:45.334Z">
+<meta property="og:description" content="使用HTTP协议访问Web当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？
+根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取文件资源（resource）等信息，从而显示出Web页面。
+像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为客户端（client）。
+Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议)的">
+<meta property="og:image" content="sherrywong1220.github.io/./1481722812772.png">
+<meta property="og:updated_time" content="2016-12-14T14:37:06.934Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="《图解HTTP》学习笔记（一）——了解Web及网络基础">
+<meta name="twitter:description" content="使用HTTP协议访问Web当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？
+根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取文件资源（resource）等信息，从而显示出Web页面。
+像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为客户端（client）。
+Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议)的">
+<meta name="twitter:image" content="sherrywong1220.github.io/./1481722812772.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +67,7 @@ Quick">
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello World | Sherry Code</title>
+<title>《图解HTTP》学习笔记（一）——了解Web及网络基础 | Sherry Code</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +271,11 @@ Quick">
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《图解HTTP》学习笔记（一）——了解Web及网络基础" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/10/hello-world/" class="article-date">
-      <time datetime="2016-12-10T15:44:30.312Z" itemprop="datePublished">2016-12-10</time>
+      <a href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/" class="article-date">
+      <time datetime="2016-12-14T10:14:29.000Z" itemprop="datePublished">2016-12-14</time>
 </a>
 
 
@@ -282,7 +290,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      《图解HTTP》学习笔记（一）——了解Web及网络基础
     </h1>
   
 
@@ -292,6 +300,10 @@ Quick">
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -299,15 +311,25 @@ Quick">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h2><p>当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？</p>
+<p>根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取<strong>文件资源</strong>（resource）等信息，从而显示出Web页面。</p>
+<p>像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为<strong>客户端</strong>（client）。<br><img src="./1481722812772.png" alt="Alt text"></p>
+<p>Web使用一种名为<strong>HTTP</strong>(HyperText Transfer Protocol，超文本传输协议)的协议作为规范，完成从客户端到服务器端等一系列运作流程。协议指规则的约定。Web是建立在HTTP协议上通信的。</p>
+<p>作为Web文档传输协议的HTTP，它的版本更新非常非常慢，现在刚到HTTP/2.0。</p>
+<p>当年HTTP协议的出现主要是为了解决文本传输的难题。由于协议本身非常简单，于是在此基础上设想了很多应用方法并投入了实际使用。现在HTTP协议已经超出了Web这个框架的局限，被运用到了各种场景里。</p>
+<h2 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h2><p>通常使用的网络（包括互联网）是在TCP/IP协议族的基础上运作的，HTTP属于它内部的一个子集。</p>
+<h3 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h3><p>计算机与网络设备要相互通信，双方就必须基于相同的方法。比如，如何探测到通信目标、由哪一边先发起通信、使用哪种语言进行通信、怎样结束通信等规则都要事先确定。不同的硬件、操作系统之间的通信，所有的这一切都需要一种规则。而我们就把这种规则成为<strong>协议</strong>（protocol）。</p>
+<p>TCP/IP是互联网相关的各类协议族的总称。它的子集有：TCP、IP、DNS、HTTP、FTP、ICMP、UDP、PPPoE等。</p>
+<h3 id="TCP-IP分层管理"><a href="#TCP-IP分层管理" class="headerlink" title="TCP/IP分层管理"></a>TCP/IP分层管理</h3><p>TCP/IP协议族按层次分为以下四层：应用层、传输层、网络层、数据链路层。</p>
+<p>分层的好处：</p>
+<ul>
+<li>某个地方需要改动时，只需要把变动的层替换掉，不用把整体替换掉。</li>
+<li>设计变得简单，处于各层的应用只用考虑分派给自己的任务。</li>
+</ul>
+<p>各层的作用：<br><strong>应用层：</strong><br>应 用 层 决 定 了 向 用 户 提 供 应 用 服 务 时 通 信 的 活 动 。<br>TCP/IP协 议 族 内 预 存 了 各 类 通 用 的 应 用 服 务 比 如 ， FTP （ File<br>Transfer Protocol ， 文 件 传 输 协 议 ） 和 DNS （ Domain Name System ，<br>域 名 系 统 ） 服 务 就 是 其 中 两 类 。<br>HTTP 协 议 也 处 于 该 层 。</p>
+<p><strong>传输层：</strong><br>传 输 层 对 上 层 应 用 层 ， 提 供 处 于 网 络 连 接 中 的 两 台 计 算 机 之 间 的<br>数 据 传 输<br>在 传 输 层 有 两 个 性 质 不 同 的 协 议 ： TCP （ Transmission Control<br>Protocol, 传 输 控 制 协 议 ） 和 UDP （ User Data Protocol ， 用 户 数 据<br>报 协 议 ） 。 </p>
+<p><strong>网络层（又名网络互连层）：</strong><br>网 络 层 用 来 处 理 在 网 络 上 流 动 的 数 据 包 。数 据 包 是 网 络 传 输 的 最 小<br>数 据 单 位 。 该 层 规 定 了 通 过 怎 样 的 路 径 （ 所 谓 的 传 输 路 线 ） 到 达 对<br>方 计 算 机 ， 并 把 数 据 包 传 送 给 对 方 。 </p>
+<p><strong>链路层（又 名 数 据 链 路 层 ， 网 络 接 口 层 ）：</strong><br>用 来 处 理 连 接 网 络 的 硬 件 部 分 。 包 括 控 制 操 作 系 统 、 硬 件 的 设 备 驱<br>动 、 NIC （ Network Interface Card ， 网 络 适 配 器 ， 即 网 卡 ） ， 及 光 纤等物理可见部分。硬件上的范畴均在链路层的作用范围之内。</p>
 
       
     </div>
@@ -316,13 +338,13 @@ Quick">
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/12/10/hello-world/">Hello World</a></p>
+        <p><span>Title:</span><a href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/">《图解HTTP》学习笔记（一）——了解Web及网络基础</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Sherry Wong</a></p>
-        <p><span>Created:</span>2016-12-10, 23:44:30</p>
-        <p><span>Updated:</span>2016-12-11, 00:05:45</p>
+        <p><span>Created:</span>2016-12-14, 18:14:29</p>
+        <p><span>Updated:</span>2016-12-14, 22:37:06</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/12/10/hello-world/" title="Hello World">sherrywong1220.github.io/2016/12/10/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="From sherrywong1220.github.io/2016/12/10/hello-world/　　By Sherry Wong" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/" title="《图解HTTP》学习笔记（一）——了解Web及网络基础">sherrywong1220.github.io/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/</a>
+            <span class="copy-path" data-clipboard-text="From sherrywong1220.github.io/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/　　By Sherry Wong" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -334,12 +356,12 @@ Quick">
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/">
-                    《图解HTTP》学习笔记（一）——了解Web及网络基础
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/10/hello-world/">
+                    Hello World
                 </a>
             </div>
-        
         
     </nav>
 
@@ -349,7 +371,7 @@ Quick">
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用HTTP协议访问Web"><span class="toc-number">1.</span> <span class="toc-text">使用HTTP协议访问Web</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络基础TCP-IP"><span class="toc-number">2.</span> <span class="toc-text">网络基础TCP/IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP协议族"><span class="toc-number">2.1.</span> <span class="toc-text">TCP/IP协议族</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP分层管理"><span class="toc-number">2.2.</span> <span class="toc-text">TCP/IP分层管理</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -385,7 +407,7 @@ Quick">
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello World　| Sherry Code　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"《图解HTTP》学习笔记（一）——了解Web及网络基础　| Sherry Code　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -405,15 +427,15 @@ Quick">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/" title="Pre: 《图解HTTP》学习笔记（一）——了解Web及网络基础">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/2016/12/10/hello-world/" title="Next: Hello World">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
