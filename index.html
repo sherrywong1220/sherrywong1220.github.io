@@ -285,7 +285,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/">《图解HTTP》学习笔记（二）——简单的HTTP协议</a>
+      <a class="article-title" href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/">《图解HTTP》学习笔记（二）—— 简单的HTTP协议</a>
     </h1>
   
 
@@ -326,7 +326,117 @@
 </li>
 </ul>
 <h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><ul>
-<li>​</li>
+<li><p>GET：获取资源</p>
+<ul>
+<li><p>GET方法用来请求已被URI识别的资源。指定的资源经过服务器端解析后返回响应内容。也就是说，如果请求的资源是文本，那就保持原样返回；如果是像CGI（Common Gateway Interface，通用网关接口）那样的程序，则返回经过执行后的输出结果。</p>
+<p><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwfm7ytvj20kl099dhf.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>POST：传输实体主体</p>
+<ul>
+<li><p>POST方法用来传输实体的主体</p>
+</li>
+<li><p>GET方法也可以用来传输实体的主体，不过一般不用GET传输，而是用POST传输。</p>
+</li>
+<li><p>POST与GET功能很相似，但是POST的主要目的并不是获取响应的主题内容。</p>
+<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbmwjtjknmj20ke059dgf.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>PUT：传输文件</p>
+<ul>
+<li><p>要求在请求报文的主体中包含文件内容，然后保存到请求的URI指定的位置。</p>
+</li>
+<li><p>由于HTTP/1.1的PUT方法本身不带验证机制，任何人都能上传文件，存在安全性问题，因此一般的Web网站不使用该方法。</p>
+</li>
+<li><p>当配合Web应用程序的验证机制，或架构设计采用REST（REpresentational State Transfer，表征状态转移）标准的同类Web网站，就可能会开放使用PUT方法。</p>
+<p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmwphtwlhj20kl05uaau.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>HEAD：获得报文首部</p>
+<ul>
+<li><p>HEAD方法和GET一样，只是不返回报文主体部分。</p>
+</li>
+<li><p>HEAD方法用于确认URI资源的有效性和资源更新的时间等。</p>
+<p><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwrszpv2j20kc04ejrt.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>DELETE：删除文件</p>
+<ul>
+<li><p>它是和PUT方法相反的方法。</p>
+</li>
+<li><p>当配合Web应用程序的验证机制，或架构设计采用REST（REpresentational State Transfer，表征状态转移）标准的同类Web网站，就可能会开放使用DELETE方法。</p>
+<p><img src="http://ww3.sinaimg.cn/large/bc1d18eagw1fbmwuclf80j20kp04idgg.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>OPTIONS：询问支持的方法</p>
+<ul>
+<li><p>OPTIONS用来查询所请求的URI所支持的方法。</p>
+<p><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwwcrpd9j20kr05waat.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>TRACE：追踪路径</p>
+<ul>
+<li>发送请求时，在Max-Forwards首部字段中填入数值，每经过一个服务器端就将该数值减1，当数值刚好减为0时，就停止传输，最后接收到请求的服务器端则返回状态码200 OK的响应。</li>
+<li>客户端通过TRACE方法可以查询发送出去的请求是怎样被修改/篡改的。</li>
+<li>请求想要连接的源目标服务器可能会通过代理中转，TRACE方法就是用来确认连接过程中发生的一系列操作。</li>
+<li>容易引发XST（Cross-Site Tracing，跨站追踪）攻击，通常不用。</li>
+</ul>
+</li>
+<li><p>CONNECT：要求用隧道协议连接代理</p>
+<ul>
+<li><p>CONNECT方法要求在与代理服务器通信时建立隧道，实现用隧道协议进行TCP通信。主要使用SSL（Secure Sockets Layer，安全套接层）和TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输。</p>
+</li>
+<li><p>CONNECT方法的格式如下：</p>
+<p><code>CONNECT 代理服务器名:端口号 HTTP版本</code></p>
+<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbn1apjm22j20ld0cvdhd.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h2><ul>
+<li>HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连接。</li>
+<li>使用浏览器浏览一个包含多张图片的HTML页面时，在发送请求访问HTML页面的同时，也会请求该HTML页面里包含的图片资源。因此，每次的请求都会造成无谓的TCP连接建立和断开，增加通信量的开销。</li>
+</ul>
+<h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><ul>
+<li>为解决上述TCP连接的问题，HTTP/1.1和HTTP/1.0想出了持久连接（HTTP Persistent Connections，也称为HTTP keep-alive或HTTP connection reuse）的方法。</li>
+<li>持久连接的特点：只要任意一端没有提出断开连接，则保持TCP连接状态。</li>
+<li>持续连接旨在建立1次TCP连接后能进行多次请求和响应的交互。</li>
+<li>持久连接的好处在于减少了TCP连接的重复建立和断开造成的额外开销，减轻了服务器的负载。另外，减少开销的那部分时间，使HTTP请求和响应能够更早地结束，这样Web页面的显示速度也相应提高了。</li>
+<li>在HTTP/1.1中，所有的连接都默认是持久连接，但在HTTP/1.0中并未标准化，一部分服务器用非标准手段实现了持久连接。</li>
+<li>除了服务器端，客户端也需要支持持久连接。</li>
+</ul>
+<h3 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h3><ul>
+<li><p>持久连接使得多数请求以管线化（）方式发送成为可能。</p>
+</li>
+<li><p>从前发送请求后需等待并收到响应，才能发送下一个请求。</p>
+</li>
+<li><p>管线化技术出现后，不用等待响应就可以发送下一个请求。这样能做到同时并行发送多个请求。</p>
+<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbnsb87v9kj20jq09ldgz.jpg" alt=""></p>
+</li>
+</ul>
+<h2 id="使用Cookie的状态管理"><a href="#使用Cookie的状态管理" class="headerlink" title="使用Cookie的状态管理"></a>使用Cookie的状态管理</h2><ul>
+<li><p>前面已经说过了HTTP协议是无状态协议，它不对之前发生过的请求和响应的状态进行管理，无法根据之前的状态进行本次的请求处理。</p>
+</li>
+<li><p>无状态协议也有优点：由于不必保存状态，自然可以减少服务器的CPU及内存损耗。从另一方面讲，正式因为HTTP协议如此简单，才能被应用到各种场景里。</p>
+</li>
+<li><p>保留无状态协议这个特征的同时又要解决类似的矛盾问题，于是引入了Cookie技术。</p>
+</li>
+<li><p>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态。</p>
+</li>
+<li><p>Cookie会根据从服务器端发送的响应报文内的一个叫做Set-Cookie的首部字段信息，通知客户端保存Cookie。当下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入Cookie值后发送出去。</p>
+</li>
+<li><p>服务器端发现客户端发送过来的Cookie后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。</p>
+<p><img src="http://ww3.sinaimg.cn/large/bc1d18eagw1fbnsulhdgcj20jl05874q.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbnsuuq99bj20jm0c640a.jpg" alt=""></p>
+<p>​</p>
+<p>​</p>
+</li>
 </ul>
 <h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
       
