@@ -299,16 +299,9 @@
 <li>HTTP协议和TCP/IP协议族内的其他众多协议相同，用于客户端和服务器端之间的通信。</li>
 <li>请求访问资源的一端成为客户端，提供资源响应的一端成为服务器端。</li>
 <li>有时候按实际情况，两台计算机作为客户端和服务器端的角色可能会互换。但就仅一条通信线路来说，客户端和服务器端的角色是固定的。HTTP协议能够明确区分哪端是客户端，哪端是服务器端。</li>
-</ul>
-<ul>
-<li><p>HTTP协议规定，请求从客户端发出，服务器响应请求并返回。</p>
-</li>
-<li><p>请求报文：</p>
-<p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrom632aj20pr0fwwg4.jpg" alt=""></p>
-</li>
-<li><p>响应报文：</p>
-<p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrpnqzo4j20mo0edq4g.jpg" alt=""></p>
-</li>
+<li>HTTP协议规定，请求从客户端发出，服务器响应请求并返回。</li>
+<li>请求报文：<br><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrom632aj20pr0fwwg4.jpg" alt=""></li>
+<li>响应报文：<br><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrpnqzo4j20mo0edq4g.jpg" alt=""></li>
 </ul>
 <h2 id="HTTP是不保存状态的协议"><a href="#HTTP是不保存状态的协议" class="headerlink" title="HTTP是不保存状态的协议"></a>HTTP是不保存状态的协议</h2><ul>
 <li>HTTP是一种不保存状态的协议，即无状态（stateless）协议。</li>
@@ -317,31 +310,20 @@
 <li>有了Cookie再用HTTP协议通信，就能管理状态了。</li>
 </ul>
 <h2 id="请求URI定位资源服务"><a href="#请求URI定位资源服务" class="headerlink" title="请求URI定位资源服务"></a>请求URI定位资源服务</h2><ul>
-<li><p>HTTP协议使用URI定位互联网上的资源。</p>
-</li>
-<li><p>如果不是访问特定的资源而是对服务器本身发起请求，可以用一个 * 来代替请求URI。</p>
-</li>
-<li><p>下面这个例子是查询HTTP服务器端支持的HTTP方法的种类：</p>
-<p><code>OPTIONS * HTTP/1.1</code></p>
-</li>
+<li>HTTP协议使用URI定位互联网上的资源。</li>
+<li>如果不是访问特定的资源而是对服务器本身发起请求，可以用一个 * 来代替请求URI。</li>
+<li>下面这个例子是查询HTTP服务器端支持的HTTP方法的种类：<br><code>OPTIONS * HTTP/1.1</code></li>
 </ul>
 <h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><ul>
-<li><p>GET：获取资源</p>
-<ul>
-<li><p>GET方法用来请求已被URI识别的资源。指定的资源经过服务器端解析后返回响应内容。也就是说，如果请求的资源是文本，那就保持原样返回；如果是像CGI（Common Gateway Interface，通用网关接口）那样的程序，则返回经过执行后的输出结果。</p>
-<p><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwfm7ytvj20kl099dhf.jpg" alt=""></p>
-</li>
+<li>GET：获取资源<ul>
+<li>GET方法用来请求已被URI识别的资源。指定的资源经过服务器端解析后返回响应内容。也就是说，如果请求的资源是文本，那就保持原样返回；如果是像CGI（Common Gateway Interface，通用网关接口）那样的程序，则返回经过执行后的输出结果。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwfm7ytvj20kl099dhf.jpg" alt=""></li>
 </ul>
 </li>
 <li><p>POST：传输实体主体</p>
 <ul>
-<li><p>POST方法用来传输实体的主体</p>
-</li>
-<li><p>GET方法也可以用来传输实体的主体，不过一般不用GET传输，而是用POST传输。</p>
-</li>
-<li><p>POST与GET功能很相似，但是POST的主要目的并不是获取响应的主题内容。</p>
-<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbmwjtjknmj20ke059dgf.jpg" alt=""></p>
-</li>
+<li>POST方法用来传输实体的主体</li>
+<li>GET方法也可以用来传输实体的主体，不过一般不用GET传输，而是用POST传输。</li>
+<li>POST与GET功能很相似，但是POST的主要目的并不是获取响应的主题内容。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbmwjtjknmj20ke059dgf.jpg" alt=""></li>
 </ul>
 </li>
 <li><p>PUT：传输文件</p>
@@ -434,11 +416,9 @@
 <li><p>服务器端发现客户端发送过来的Cookie后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。</p>
 <p><img src="http://ww3.sinaimg.cn/large/bc1d18eagw1fbnsulhdgcj20jl05874q.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbnsuuq99bj20jm0c640a.jpg" alt=""></p>
-<p>​</p>
-<p>​</p>
 </li>
 </ul>
-<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
+
       
     </div>
     
