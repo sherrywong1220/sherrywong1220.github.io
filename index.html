@@ -326,7 +326,100 @@
 </ul>
 </li>
 </ul>
-
+<h3 id="分割发送的分块传输编码"><a href="#分割发送的分块传输编码" class="headerlink" title="分割发送的分块传输编码"></a>分割发送的分块传输编码</h3><ul>
+<li>在HTTP通信过程中，请求的编码实体资源尚未全部传输完成之前，浏览器无法显示请求页面。</li>
+<li>在传输大容量数据时，通过把数据分割成多块，能够让浏览器逐步显示页面。</li>
+<li>这种把实体主体分块的功能称为分块传输编码（Chunked Transfer Coding）。</li>
+<li>实体主体分成多个块，每一个块都会用十六进制来标记块的大小，而实体主体的最后一块会使用“0(CR+LF)”来标记。</li>
+<li>使用分块传输编码的实体主体会由接受的客户端负责解码，恢复到编码前的实体主体。</li>
+<li>在HTTP/1.1中存在一种称为传输编码（Transfer Coding）的机制，它可以在通信时按照某种编码方式传输，但只定义作用于分块传输编码中。</li>
+</ul>
+<h2 id="发送多种数据的多部分对象集合"><a href="#发送多种数据的多部分对象集合" class="headerlink" title="发送多种数据的多部分对象集合"></a>发送多种数据的多部分对象集合</h2><ul>
+<li><p>发送邮件时，可以添加多份类型不同的附件。这是因为采用了MIME（Multipurpose Internet Mail Extensions，多用途因特网邮件扩展）机制，它允许邮件处理文本、图片、视频等多个不同类型的数据。</p>
+</li>
+<li><p>例如，图片等二进制数据以ASCII码字符串编码的方式指明，就是利用MIME来描述标记数据类型。</p>
+</li>
+<li><p>在MIME中会使用一种成为多部分对象集合（Multipart）的方法，来容纳不同类型的数据。</p>
+</li>
+<li><p>相应地，HTTP协议中也采纳了多部分对象集合，发送的一份报文主体内可含有多类型实体。通常是在图片或文本文件等上传时使用。</p>
+</li>
+<li><p>多部分对象集合包含的对象如下：</p>
+<ul>
+<li><p>multipart/form-data</p>
+<p>在Web表单文件上传时使用。</p>
+<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcshm5rej20o80dr411.jpg" alt=""></p>
+</li>
+<li><p>multipart/byteranges</p>
+<p>状态码206（Partial Content，部分内容）响应报文包含了多个范围的内容时使用。</p>
+<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcstotmaj20nv024jrj.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqct44tmsj20o60g6jub.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li>在HTTP报文中使用多部分对象集合时，需要在首部字段里加上Content-type。这个首部字段稍后讲解。</li>
+<li>使用boundary字符串来划分多部分对象集合指明的各类实体。</li>
+<li>在boundary字符串指定的各个实体的起始行之前插入“–”标记，在多部分对象集合对应的字符串的最后插入“–”标记作为结束。</li>
+<li>多部分对象集合的每个部分类型中，都可以含有首部字段。也可以在某部分中嵌套使用多部分对象集合。</li>
+</ul>
+<h2 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h2><ul>
+<li><p>可恢复机制：能从之前下载中断处恢复下载。</p>
+</li>
+<li><p>要实现恢复机制需要指定下载的实体范围。</p>
+</li>
+<li><p>指定范围发送的请求叫做<code>范围请求（Range Request）</code>。</p>
+</li>
+<li><p>执行范围请求时，会用到首部字段Range来置顶资源的byte范围。</p>
+</li>
+<li><p>5001~10000字节</p>
+<ul>
+<li>Range：bytes=5001-10000</li>
+</ul>
+</li>
+<li><p>5001字节之后全部的</p>
+<ul>
+<li>Range： bytes=5001-</li>
+</ul>
+</li>
+<li><p>从一开始到3000字节和5000~7000字节的多重范围</p>
+<ul>
+<li>Range：bytes=-3000，5000-7000</li>
+</ul>
+</li>
+<li><p>针对范围请求，响应会返回状态码为 206 Partial Content 的响应报文。对于多重范围的范围请求，响应会在首部字段Content-Type标明multipart/byteranges 后返回响应报文。</p>
+</li>
+<li><p>如果服务器端无法响应范围请求，则会返回状态码 200 OK 和完整的实体内容。</p>
+<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbsizpbb0zj20ri0li77y.jpg" alt=""></p>
+</li>
+</ul>
+<h2 id="内容协商返回最合适的内容"><a href="#内容协商返回最合适的内容" class="headerlink" title="内容协商返回最合适的内容"></a>内容协商返回最合适的内容</h2><ul>
+<li><p>浏览器默认语言为英文或中文时，访问相同URI的Web页面时，则会显示对应的英语版或中文版的Web页面。这样的机制称为<code>内容协商（Content Negotiation）</code>。</p>
+</li>
+<li><p>内容协商会以响应资源的语言、字符集、编码方式等作为判断的基准，然后给客户端最合适的资源。</p>
+</li>
+<li><p>包含在请求报文中的某些首部字段（如下）就是判断的基准。详细说明参考下一章。</p>
+<ul>
+<li><p>Accept</p>
+</li>
+<li><p>Accept-Charset</p>
+</li>
+<li><p>Accept-Encoding</p>
+</li>
+<li><p>Accept-Language</p>
+</li>
+<li><p>Content-Language</p>
+</li>
+</ul>
+</li>
+<li><p>内容协商技术的3种类型</p>
+<ul>
+<li>服务器驱动协商（Server-driven Negotiation）<br>以请求的首部字段为参考，在服务器端自动处理。</li>
+<li>客户端驱动协商（Agent-driven Negotiation）<br>用户在客户端进行手动选择或者利用JavaScript脚本进行选择。</li>
+<li>透明协商（Transparent Negotiation）<br>服务器驱动和客户端驱动的结合体。</li>
+</ul>
+</li>
+</ul>
+<pre><code>​
+</code></pre>
       
     </div>
     
