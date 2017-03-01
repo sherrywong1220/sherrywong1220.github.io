@@ -21,7 +21,7 @@
 <meta property="og:url" content="sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/index.html">
 <meta property="og:site_name" content="Sherry Code">
 <meta property="og:description" content="主要介绍了各种HTTP状态码以及它们各自的意义">
-<meta property="og:updated_time" content="2017-03-01T12:11:02.673Z">
+<meta property="og:updated_time" content="2017-03-01T12:16:19.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解HTTP》学习笔记（四）——返回结果的HTTP状态码">
 <meta name="twitter:description" content="主要介绍了各种HTTP状态码以及它们各自的意义">
@@ -303,7 +303,9 @@
         <h2 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h2><ul>
 <li>状态码的职责是当客户端向服务器发送请求时，描述返回的请求结果。</li>
 <li>借助状态码，用户可以知道服务器端是正常处理了请求，还是出现了错误。</li>
-<li>状态码类别<br>|      | 类别                     | 原因短语          |<br>| —- | ———————- | ————- |<br>| 1XX  | Informational（信息状态码）   | 接受的请求正在处理     |<br>| 2XX  | Success（成功状态码）         | 请求正常处理完毕      |<br>| 3XX  | Redirection（重定向状态码）    | 需要进行附加操作以完成请求 |<br>| 4XX  | Client Error（客户端错误状态码） | 服务器无法处理请求     |<br>| 5XX  | Server Error（服务器错误状态码） | 服务器处理请求出错     |</li>
+<li><p>状态码类别</p>
+<p>|      | 类别                     | 原因短语          |<br>| —- | ———————- | ————- |<br>| 1XX  | Informational（信息状态码）   | 接受的请求正在处理     |<br>| 2XX  | Success（成功状态码）         | 请求正常处理完毕      |<br>| 3XX  | Redirection（重定向状态码）    | 需要进行附加操作以完成请求 |<br>| 4XX  | Client Error（客户端错误状态码） | 服务器无法处理请求     |<br>| 5XX  | Server Error（服务器错误状态码） | 服务器处理请求出错     |</p>
+</li>
 </ul>
 <h2 id="14个具有代表性的状态码"><a href="#14个具有代表性的状态码" class="headerlink" title="14个具有代表性的状态码"></a>14个具有代表性的状态码</h2><h3 id="2XX成功"><a href="#2XX成功" class="headerlink" title="2XX成功"></a>2XX成功</h3><ul>
 <li>200 OK<ul>
@@ -317,9 +319,11 @@
 </li>
 <li>206 Partial Content<ul>
 <li>表示客户端进行了范围请求，而服务器成功执行了这部分的GET请求。</li>
-<li>响应报文中包含由Content-Range指定范围的实体内容。<h3 id="3XX重定向"><a href="#3XX重定向" class="headerlink" title="3XX重定向"></a>3XX重定向</h3></li>
+<li>响应报文中包含由Content-Range指定范围的实体内容。</li>
 </ul>
 </li>
+</ul>
+<h3 id="3XX重定向"><a href="#3XX重定向" class="headerlink" title="3XX重定向"></a>3XX重定向</h3><ul>
 <li>301 Moved Permanently<ul>
 <li>永久性重定向。表示请求的资源已经被分配了新的URI，以后应该使用资源现在所指的URI。</li>
 <li>如果已经把资源对应的URI保存为书签了，这时应该按Location首部字段提示的URI重新保存。</li>
@@ -345,9 +349,11 @@
 </li>
 <li>307 Temporary Redirect<ul>
 <li>临时重定向。与302有着相同的含义。尽管302标准禁止POST变化成GET，但实际使用时大家并不遵守。</li>
-<li>307会遵照浏览器标准，不会从POST变成GET。但是，对于处理响应时的行为，每种浏览器有可能出现不同的情况。<h3 id="4XX客户端错误"><a href="#4XX客户端错误" class="headerlink" title="4XX客户端错误"></a>4XX客户端错误</h3></li>
+<li>307会遵照浏览器标准，不会从POST变成GET。但是，对于处理响应时的行为，每种浏览器有可能出现不同的情况。</li>
 </ul>
 </li>
+</ul>
+<h3 id="4XX客户端错误"><a href="#4XX客户端错误" class="headerlink" title="4XX客户端错误"></a>4XX客户端错误</h3><ul>
 <li>400 Bad Request<ul>
 <li>表示请求报文中存在语法错误，需修改请求的内容后再次发送。</li>
 </ul>
@@ -361,9 +367,11 @@
 </ul>
 </li>
 <li>404 Not Found<ul>
-<li>表明服务器上无法找到请求的资源。也可以在服务器端拒绝请求且不想说明理由时使用。<h3 id="5XX服务器错误"><a href="#5XX服务器错误" class="headerlink" title="5XX服务器错误"></a>5XX服务器错误</h3></li>
+<li>表明服务器上无法找到请求的资源。也可以在服务器端拒绝请求且不想说明理由时使用。</li>
 </ul>
 </li>
+</ul>
+<h3 id="5XX服务器错误"><a href="#5XX服务器错误" class="headerlink" title="5XX服务器错误"></a>5XX服务器错误</h3><ul>
 <li>500 Internal Server Error<ul>
 <li>表明服务器端在执行请求时发生了错误。也有可能是Web应用存在的bug或某些临时的故障。</li>
 </ul>
@@ -381,7 +389,7 @@
         <p><span>本文标题:</span><a href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/">《图解HTTP》学习笔记（四）——返回结果的HTTP状态码</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sherry Wong</a></p>
         <p><span>发布时间:</span>2017-03-01, 18:56:30</p>
-        <p><span>最后更新:</span>2017-03-01, 20:11:02</p>
+        <p><span>最后更新:</span>2017-03-01, 20:16:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/" title="《图解HTTP》学习笔记（四）——返回结果的HTTP状态码">sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/</a>
             <span class="copy-path" data-clipboard-text="原文: sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/　　作者: Sherry Wong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
