@@ -15,15 +15,18 @@
 
 
 
-<meta name="description" content="这里是Sherry的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sherry Code">
-<meta property="og:url" content="sherrywong1220.github.io/archives/2017/03/index.html">
+<meta name="description" content="一台Web服务器可以搭建多个独立域名的Web网站，也可以作为通信路径的中转服务器提升传输效率。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器">
+<meta property="og:url" content="sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/index.html">
 <meta property="og:site_name" content="Sherry Code">
-<meta property="og:description" content="这里是Sherry的博客">
+<meta property="og:description" content="一台Web服务器可以搭建多个独立域名的Web网站，也可以作为通信路径的中转服务器提升传输效率。">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/bc1d18eagy1fd7sgtfb93j20l108942m">
+<meta property="og:updated_time" content="2017-03-01T16:26:37.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sherry Code">
-<meta name="twitter:description" content="这里是Sherry的博客">
+<meta name="twitter:title" content="《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器">
+<meta name="twitter:description" content="一台Web服务器可以搭建多个独立域名的Web网站，也可以作为通信路径的中转服务器提升传输效率。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/bc1d18eagy1fd7sgtfb93j20l108942m">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2017/3 | Sherry Code</title>
+<title>《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器 | Sherry Code</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +68,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -259,89 +262,187 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/" class="archive-article-date">
-      <time datetime="2017-03-01T15:40:29.000Z" itemprop="datePublished">03-01</time>
+    <div class="article-meta">
+      <a href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/" class="article-date">
+      <time datetime="2017-03-01T15:40:29.000Z" itemprop="datePublished">2017-03-01</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/">《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="用单台虚拟主机实现多个域名"><a href="#用单台虚拟主机实现多个域名" class="headerlink" title="用单台虚拟主机实现多个域名"></a>用单台虚拟主机实现多个域名</h1><ul>
+<li>HTTP/1.1规范允许一台HTTP服务器搭建多个Web站点，这是因为利用了虚拟主机（Virtual Host,又称虚拟服务器）的功能。</li>
+<li>即使物理层面只有一台服务器，但只要使用虚拟主机的功能，则可以假设已具有多台服务器。</li>
+<li>如果一台服务器托管了不同的域名，收到对它们的访问请求后，DNS服务解析域名会得到相同的IP地址。</li>
+<li>在相同的IP地址下，由于虚拟主机可以寄存多个不同主机名和域名的Web网站，因此在发送HTTP请求时，必须在Host首部内完整指定主机名或域名的URI。</li>
+</ul>
+<h1 id="通信数据转发程序：代理、网关、隧道"><a href="#通信数据转发程序：代理、网关、隧道" class="headerlink" title="通信数据转发程序：代理、网关、隧道"></a>通信数据转发程序：代理、网关、隧道</h1><ul>
+<li>通信数据转发程序和服务器可以将请求转发给通信线路上的下一站服务器，并且能接受从那台服务器发送的响应，再发送给客户端。<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2></li>
+<li>代理扮演了位于服务器和客户端“中间人”的角色，接收由客户端发送的请求并转发给服务器，同时也接收服务器返回的响应并转发给客户端。</li>
+<li>代理不改变请求的URI，会直接发送给前方持有资源的目标服务器（源服务器）。</li>
+<li>在HTTP通信过程中，可级联多台代理服务器。转发时，需要附加Via首部字段以标记经过的主机信息。</li>
+<li><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1fd7sgtfb93j20l108942m" alt="代理服务器转发请求或响应"></li>
+<li>优点：利用缓存技术减少网络带宽的流量，组织内部针对特定网站的访问控制，以获取访问日志为主要目的，等等。</li>
+<li>使用代理的两类方法：一种是是否使用缓存，另一种是是否会修改报文。</li>
+<li><em>缓存代理</em><ul>
+<li>代理转发响应时，缓存代理（Caching Proxy）会预先将资源的副本（缓存）保存在代理服务器上。</li>
+<li>当代理再次接收到对相同资源的请求时，就可以不从源服务器那里获取资源，而是将之前缓存的资源作为响应返回。</li>
+</ul>
+</li>
+<li><em>透明代理</em><ul>
+<li>转发请求或响应时，不对报文做任何加工的代理类型被成为透明代理（Transparent Proxy），反之，成为非透明代理。</li>
+</ul>
+</li>
+</ul>
+<h2 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h2>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/" class="archive-article-date">
-      <time datetime="2017-03-01T10:56:30.000Z" itemprop="datePublished">03-01</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/">《图解HTTP》学习笔记（四）——返回结果的HTTP状态码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li></ul>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/">《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Sherry Wong</a></p>
+        <p><span>发布时间:</span>2017-03-01, 23:40:29</p>
+        <p><span>最后更新:</span>2017-03-02, 00:26:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/" title="《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器">sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/</a>
+            <span class="copy-path" data-clipboard-text="原文: sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/　　作者: Sherry Wong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/">
+                    《图解HTTP》学习笔记（四）——返回结果的HTTP状态码
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用单台虚拟主机实现多个域名"><span class="toc-number">1.</span> <span class="toc-text">用单台虚拟主机实现多个域名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通信数据转发程序：代理、网关、隧道"><span class="toc-number">2.</span> <span class="toc-text">通信数据转发程序：代理、网关、隧道</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代理"><span class="toc-number">2.1.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网关"><span class="toc-number">2.2.</span> <span class="toc-text">网关</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器　| Sherry Code　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/" title="下一篇: 《图解HTTP》学习笔记（四）——返回结果的HTTP状态码">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/">《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/">《图解HTTP》学习笔记（四）——返回结果的HTTP状态码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/">《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/">《图解HTTP》学习笔记（二）—— 简单的HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/">《图解HTTP》学习笔记（一）——了解Web及网络基础</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
