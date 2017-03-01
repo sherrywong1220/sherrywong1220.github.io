@@ -15,20 +15,12 @@
 
 
 
-<meta name="description" content="HTTP协议用于客户端和服务器端之间的通信
-HTTP协议和TCP/IP协议族内的其他众多协议相同，用于客户端和服务器端之间的通信。
-请求访问资源的一端成为客户端，提供资源响应的一端成为服务器端。
-有时候按实际情况，两台计算机作为客户端和服务器端的角色可能会互换。但就仅一条通信线路来说，客户端和服务器端的角色是固定的。HTTP协议能够明确区分哪端是客户端，哪端是服务器端。
-HTTP协议规定，请求从客">
+<meta name="description" content="主要介绍HTTP协议如何用于客户端与服务端之间的通信。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《图解HTTP》学习笔记（二）—— 简单的HTTP协议">
 <meta property="og:url" content="sherrywong1220.github.io/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/index.html">
 <meta property="og:site_name" content="Sherry Code">
-<meta property="og:description" content="HTTP协议用于客户端和服务器端之间的通信
-HTTP协议和TCP/IP协议族内的其他众多协议相同，用于客户端和服务器端之间的通信。
-请求访问资源的一端成为客户端，提供资源响应的一端成为服务器端。
-有时候按实际情况，两台计算机作为客户端和服务器端的角色可能会互换。但就仅一条通信线路来说，客户端和服务器端的角色是固定的。HTTP协议能够明确区分哪端是客户端，哪端是服务器端。
-HTTP协议规定，请求从客">
+<meta property="og:description" content="主要介绍HTTP协议如何用于客户端与服务端之间的通信。">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrom632aj20pr0fwwg4.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrpnqzo4j20mo0edq4g.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwfm7ytvj20kl099dhf.jpg">
@@ -41,14 +33,10 @@ HTTP协议规定，请求从客">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/bc1d18eagw1fbnsb87v9kj20jq09ldgz.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/bc1d18eagw1fbnsulhdgcj20jl05874q.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbnsuuq99bj20jm0c640a.jpg">
-<meta property="og:updated_time" content="2017-01-12T06:01:06.239Z">
+<meta property="og:updated_time" content="2017-03-01T06:58:39.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解HTTP》学习笔记（二）—— 简单的HTTP协议">
-<meta name="twitter:description" content="HTTP协议用于客户端和服务器端之间的通信
-HTTP协议和TCP/IP协议族内的其他众多协议相同，用于客户端和服务器端之间的通信。
-请求访问资源的一端成为客户端，提供资源响应的一端成为服务器端。
-有时候按实际情况，两台计算机作为客户端和服务器端的角色可能会互换。但就仅一条通信线路来说，客户端和服务器端的角色是固定的。HTTP协议能够明确区分哪端是客户端，哪端是服务器端。
-HTTP协议规定，请求从客">
+<meta name="twitter:description" content="主要介绍HTTP协议如何用于客户端与服务端之间的通信。">
 <meta name="twitter:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrom632aj20pr0fwwg4.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -325,7 +313,8 @@ HTTP协议规定，请求从客">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="HTTP协议用于客户端和服务器端之间的通信"><a href="#HTTP协议用于客户端和服务器端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务器端之间的通信"></a>HTTP协议用于客户端和服务器端之间的通信</h2><ul>
+        <p>主要介绍HTTP协议如何用于客户端与服务端之间的通信。<br><a id="more"></a></p>
+<h2 id="HTTP协议用于客户端和服务器端之间的通信"><a href="#HTTP协议用于客户端和服务器端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务器端之间的通信"></a>HTTP协议用于客户端和服务器端之间的通信</h2><ul>
 <li>HTTP协议和TCP/IP协议族内的其他众多协议相同，用于客户端和服务器端之间的通信。</li>
 <li>请求访问资源的一端成为客户端，提供资源响应的一端成为服务器端。</li>
 <li>有时候按实际情况，两台计算机作为客户端和服务器端的角色可能会互换。但就仅一条通信线路来说，客户端和服务器端的角色是固定的。HTTP协议能够明确区分哪端是客户端，哪端是服务器端。</li>
@@ -349,47 +338,40 @@ HTTP协议规定，请求从客">
 <li>GET方法用来请求已被URI识别的资源。指定的资源经过服务器端解析后返回响应内容。也就是说，如果请求的资源是文本，那就保持原样返回；如果是像CGI（Common Gateway Interface，通用网关接口）那样的程序，则返回经过执行后的输出结果。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwfm7ytvj20kl099dhf.jpg" alt=""></li>
 </ul>
 </li>
-<li><p>POST：传输实体主体</p>
-<ul>
+<li>POST：传输实体主体<ul>
 <li>POST方法用来传输实体的主体</li>
 <li>GET方法也可以用来传输实体的主体，不过一般不用GET传输，而是用POST传输。</li>
 <li>POST与GET功能很相似，但是POST的主要目的并不是获取响应的主题内容。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbmwjtjknmj20ke059dgf.jpg" alt=""></li>
 </ul>
 </li>
-<li><p>PUT：传输文件</p>
-<ul>
+<li>PUT：传输文件<ul>
 <li>要求在请求报文的主体中包含文件内容，然后保存到请求的URI指定的位置。</li>
 <li>由于HTTP/1.1的PUT方法本身不带验证机制，任何人都能上传文件，存在安全性问题，因此一般的Web网站不使用该方法。</li>
 <li>当配合Web应用程序的验证机制，或架构设计采用REST（REpresentational State Transfer，表征状态转移）标准的同类Web网站，就可能会开放使用PUT方法。<br><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmwphtwlhj20kl05uaau.jpg" alt=""></li>
 </ul>
 </li>
-<li><p>HEAD：获得报文首部</p>
-<ul>
+<li>HEAD：获得报文首部<ul>
 <li>HEAD方法和GET一样，只是不返回报文主体部分。</li>
 <li>HEAD方法用于确认URI资源的有效性和资源更新的时间等。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwrszpv2j20kc04ejrt.jpg" alt=""></li>
 </ul>
 </li>
-<li><p>DELETE：删除文件</p>
-<ul>
+<li>DELETE：删除文件<ul>
 <li>它是和PUT方法相反的方法。</li>
 <li>当配合Web应用程序的验证机制，或架构设计采用REST（REpresentational State Transfer，表征状态转移）标准的同类Web网站，就可能会开放使用DELETE方法。<br><img src="http://ww3.sinaimg.cn/large/bc1d18eagw1fbmwuclf80j20kp04idgg.jpg" alt=""></li>
 </ul>
 </li>
-<li><p>OPTIONS：询问支持的方法</p>
-<ul>
+<li>OPTIONS：询问支持的方法<ul>
 <li>OPTIONS用来查询所请求的URI所支持的方法。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwwcrpd9j20kr05waat.jpg" alt=""></li>
 </ul>
 </li>
-<li><p>TRACE：追踪路径</p>
-<ul>
+<li>TRACE：追踪路径<ul>
 <li>发送请求时，在Max-Forwards首部字段中填入数值，每经过一个服务器端就将该数值减1，当数值刚好减为0时，就停止传输，最后接收到请求的服务器端则返回状态码200 OK的响应。</li>
 <li>客户端通过TRACE方法可以查询发送出去的请求是怎样被修改/篡改的。</li>
 <li>请求想要连接的源目标服务器可能会通过代理中转，TRACE方法就是用来确认连接过程中发生的一系列操作。</li>
 <li>容易引发XST（Cross-Site Tracing，跨站追踪）攻击，通常不用。</li>
 </ul>
 </li>
-<li><p>CONNECT：要求用隧道协议连接代理</p>
-<ul>
+<li>CONNECT：要求用隧道协议连接代理<ul>
 <li>CONNECT方法要求在与代理服务器通信时建立隧道，实现用隧道协议进行TCP通信。主要使用SSL（Secure Sockets Layer，安全套接层）和TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输。</li>
 <li>CONNECT方法的格式如下：<br><code>CONNECT 代理服务器名:端口号 HTTP版本</code><br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbn1apjm22j20ld0cvdhd.jpg" alt=""></li>
 </ul>
@@ -431,7 +413,7 @@ HTTP协议规定，请求从客">
         <p><span>本文标题:</span><a href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/">《图解HTTP》学习笔记（二）—— 简单的HTTP协议</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sherry Wong</a></p>
         <p><span>发布时间:</span>2017-01-11, 17:00:49</p>
-        <p><span>最后更新:</span>2017-01-12, 14:01:06</p>
+        <p><span>最后更新:</span>2017-03-01, 14:58:39</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/" title="《图解HTTP》学习笔记（二）—— 简单的HTTP协议">sherrywong1220.github.io/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/</a>
             <span class="copy-path" data-clipboard-text="原文: sherrywong1220.github.io/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/　　作者: Sherry Wong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

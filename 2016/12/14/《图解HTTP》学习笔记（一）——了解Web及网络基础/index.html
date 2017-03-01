@@ -15,20 +15,12 @@
 
 
 
-<meta name="description" content="使用HTTP协议访问Web当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？
-根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取文件资源（resource）等信息，从而显示出Web页面。
-像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为客户端（client）。
- 
-Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议">
+<meta name="description" content="主要谈谈与HTTP关系紧密的TCP、IP、DNS等协议，以及它们之间的关系。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《图解HTTP》学习笔记（一）——了解Web及网络基础">
 <meta property="og:url" content="sherrywong1220.github.io/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/index.html">
 <meta property="og:site_name" content="Sherry Code">
-<meta property="og:description" content="使用HTTP协议访问Web当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？
-根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取文件资源（resource）等信息，从而显示出Web页面。
-像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为客户端（client）。
- 
-Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议">
+<meta property="og:description" content="主要谈谈与HTTP关系紧密的TCP、IP、DNS等协议，以及它们之间的关系。">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmo8p6irgj20lx07ft9q.jpg">
 <meta property="og:image" content="https://img3.doubanio.com/view/photo/photo/7mCM2Jt-Li6x2eqJdN8Uag/124898500/x2405497192.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmqg9co1ej20n00l7q5n.jpg">
@@ -37,14 +29,10 @@ Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmoe145k2j20kq0uwn2d.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmoep44txj20ms07r75s.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmoflbhjqj20ib03xdgf.jpg">
-<meta property="og:updated_time" content="2017-01-11T07:53:51.588Z">
+<meta property="og:updated_time" content="2017-03-01T06:47:02.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解HTTP》学习笔记（一）——了解Web及网络基础">
-<meta name="twitter:description" content="使用HTTP协议访问Web当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？
-根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取文件资源（resource）等信息，从而显示出Web页面。
-像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为客户端（client）。
- 
-Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议">
+<meta name="twitter:description" content="主要谈谈与HTTP关系紧密的TCP、IP、DNS等协议，以及它们之间的关系。">
 <meta name="twitter:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmo8p6irgj20lx07ft9q.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -321,7 +309,8 @@ Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h2><p>当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？</p>
+        <p>主要谈谈与HTTP关系紧密的TCP、IP、DNS等协议，以及它们之间的关系。<br><a id="more"></a></p>
+<h2 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h2><p>当我们在浏览器地址栏输入URL时，Web页面是如何呈现的呢？</p>
 <p>根据Web浏览器地址栏中指定的URL，浏览器从Web服务器端获取<strong>文件资源</strong>（resource）等信息，从而显示出Web页面。</p>
 <p>像这种通过发送请求获取服务器资源的Web浏览器等，都可以成为<strong>客户端</strong>（client）。</p>
 <p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmo8p6irgj20lx07ft9q.jpg" alt="客户端和服务器"> </p>
@@ -393,7 +382,7 @@ Web使用一种名为HTTP(HyperText Transfer Protocol，超文本传输协议">
         <p><span>本文标题:</span><a href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/">《图解HTTP》学习笔记（一）——了解Web及网络基础</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sherry Wong</a></p>
         <p><span>发布时间:</span>2016-12-14, 18:14:29</p>
-        <p><span>最后更新:</span>2017-01-11, 15:53:51</p>
+        <p><span>最后更新:</span>2017-03-01, 14:47:02</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/" title="《图解HTTP》学习笔记（一）——了解Web及网络基础">sherrywong1220.github.io/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/</a>
             <span class="copy-path" data-clipboard-text="原文: sherrywong1220.github.io/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/　　作者: Sherry Wong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

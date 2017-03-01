@@ -15,46 +15,22 @@
 
 
 
-<meta name="description" content="HTTP报文及其结构
-用于HTTP协议交互的信息被称为HTTP报文。
-请求端：请求报文。
-响应端：响应报文。
-HTTP报文：分为报文首部和报文主体，中间由空行分割。
-一定要有报文首部，不一定要有报文主体。
-请求报文首部：请求行，请求首部字段，通用首部字段，实体首部字段，其他。
-响应报文首部：状态行，响应首部字段，通用首部字段，实体首部字段，其他。
-请求行：用于请求的方法，请求URI，HTTP版本。">
+<meta name="description" content="主要介绍HTTP报文的结果及其内容的意义。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息">
 <meta property="og:url" content="sherrywong1220.github.io/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/index.html">
 <meta property="og:site_name" content="Sherry Code">
-<meta property="og:description" content="HTTP报文及其结构
-用于HTTP协议交互的信息被称为HTTP报文。
-请求端：请求报文。
-响应端：响应报文。
-HTTP报文：分为报文首部和报文主体，中间由空行分割。
-一定要有报文首部，不一定要有报文主体。
-请求报文首部：请求行，请求首部字段，通用首部字段，实体首部字段，其他。
-响应报文首部：状态行，响应首部字段，通用首部字段，实体首部字段，其他。
-请求行：用于请求的方法，请求URI，HTTP版本。">
+<meta property="og:description" content="主要介绍HTTP报文的结果及其内容的意义。">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbp3cwmebuj20mn0bv40k.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/bc1d18eagw1fbp3200lyfj20mt0m40xu.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcshm5rej20o80dr411.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcstotmaj20nv024jrj.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqct44tmsj20o60g6jub.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/bc1d18eagw1fbsizpbb0zj20ri0li77y.jpg">
-<meta property="og:updated_time" content="2017-01-16T08:25:08.312Z">
+<meta property="og:updated_time" content="2017-03-01T07:06:13.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息">
-<meta name="twitter:description" content="HTTP报文及其结构
-用于HTTP协议交互的信息被称为HTTP报文。
-请求端：请求报文。
-响应端：响应报文。
-HTTP报文：分为报文首部和报文主体，中间由空行分割。
-一定要有报文首部，不一定要有报文主体。
-请求报文首部：请求行，请求首部字段，通用首部字段，实体首部字段，其他。
-响应报文首部：状态行，响应首部字段，通用首部字段，实体首部字段，其他。
-请求行：用于请求的方法，请求URI，HTTP版本。">
+<meta name="twitter:description" content="主要介绍HTTP报文的结果及其内容的意义。">
 <meta name="twitter:image" content="http://ww2.sinaimg.cn/large/bc1d18eagw1fbp3cwmebuj20mn0bv40k.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -331,7 +307,8 @@ HTTP报文：分为报文首部和报文主体，中间由空行分割。
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="HTTP报文及其结构"><a href="#HTTP报文及其结构" class="headerlink" title="HTTP报文及其结构"></a>HTTP报文及其结构</h2><ul>
+        <p>主要介绍HTTP报文的结果及其内容的意义。<br><a id="more"></a></p>
+<h2 id="HTTP报文及其结构"><a href="#HTTP报文及其结构" class="headerlink" title="HTTP报文及其结构"></a>HTTP报文及其结构</h2><ul>
 <li>用于HTTP协议交互的信息被称为HTTP报文。</li>
 <li>请求端：请求报文。</li>
 <li>响应端：响应报文。</li>
@@ -371,25 +348,13 @@ HTTP报文：分为报文首部和报文主体，中间由空行分割。
 <li>在HTTP/1.1中存在一种称为传输编码（Transfer Coding）的机制，它可以在通信时按照某种编码方式传输，但只定义作用于分块传输编码中。</li>
 </ul>
 <h2 id="发送多种数据的多部分对象集合"><a href="#发送多种数据的多部分对象集合" class="headerlink" title="发送多种数据的多部分对象集合"></a>发送多种数据的多部分对象集合</h2><ul>
-<li><p>发送邮件时，可以添加多份类型不同的附件。这是因为采用了MIME（Multipurpose Internet Mail Extensions，多用途因特网邮件扩展）机制，它允许邮件处理文本、图片、视频等多个不同类型的数据。</p>
-</li>
-<li><p>例如，图片等二进制数据以ASCII码字符串编码的方式指明，就是利用MIME来描述标记数据类型。</p>
-</li>
-<li><p>在MIME中会使用一种成为多部分对象集合（Multipart）的方法，来容纳不同类型的数据。</p>
-</li>
-<li><p>相应地，HTTP协议中也采纳了多部分对象集合，发送的一份报文主体内可含有多类型实体。通常是在图片或文本文件等上传时使用。</p>
-</li>
-<li><p>多部分对象集合包含的对象如下：</p>
-<ul>
-<li><p>multipart/form-data</p>
-<p>在Web表单文件上传时使用。</p>
-<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcshm5rej20o80dr411.jpg" alt=""></p>
-</li>
-<li><p>multipart/byteranges</p>
-<p>状态码206（Partial Content，部分内容）响应报文包含了多个范围的内容时使用。</p>
-<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcstotmaj20nv024jrj.jpg" alt=""></p>
-<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqct44tmsj20o60g6jub.jpg" alt=""></p>
-</li>
+<li>发送邮件时，可以添加多份类型不同的附件。这是因为采用了MIME（Multipurpose Internet Mail Extensions，多用途因特网邮件扩展）机制，它允许邮件处理文本、图片、视频等多个不同类型的数据。</li>
+<li>例如，图片等二进制数据以ASCII码字符串编码的方式指明，就是利用MIME来描述标记数据类型。</li>
+<li>在MIME中会使用一种成为多部分对象集合（Multipart）的方法，来容纳不同类型的数据。</li>
+<li>相应地，HTTP协议中也采纳了多部分对象集合，发送的一份报文主体内可含有多类型实体。通常是在图片或文本文件等上传时使用。</li>
+<li>多部分对象集合包含的对象如下：<ul>
+<li>multipart/form-data<br>在Web表单文件上传时使用。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcshm5rej20o80dr411.jpg" alt=""></li>
+<li>multipart/byteranges<br>状态码206（Partial Content，部分内容）响应报文包含了多个范围的内容时使用。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcstotmaj20nv024jrj.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqct44tmsj20o60g6jub.jpg" alt=""></li>
 </ul>
 </li>
 <li>在HTTP报文中使用多部分对象集合时，需要在首部字段里加上Content-type。这个首部字段稍后讲解。</li>
@@ -398,56 +363,38 @@ HTTP报文：分为报文首部和报文主体，中间由空行分割。
 <li>多部分对象集合的每个部分类型中，都可以含有首部字段。也可以在某部分中嵌套使用多部分对象集合。</li>
 </ul>
 <h2 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h2><ul>
-<li><p>可恢复机制：能从之前下载中断处恢复下载。</p>
-</li>
-<li><p>要实现恢复机制需要指定下载的实体范围。</p>
-</li>
-<li><p>指定范围发送的请求叫做<code>范围请求（Range Request）</code>。</p>
-</li>
-<li><p>执行范围请求时，会用到首部字段Range来置顶资源的byte范围。</p>
-</li>
-<li><p>5001~10000字节</p>
-<ul>
+<li>可恢复机制：能从之前下载中断处恢复下载。</li>
+<li>要实现恢复机制需要指定下载的实体范围。</li>
+<li>指定范围发送的请求叫做<code>范围请求（Range Request）</code>。</li>
+<li>执行范围请求时，会用到首部字段Range来置顶资源的byte范围。</li>
+<li>5001~10000字节<ul>
 <li>Range：bytes=5001-10000</li>
 </ul>
 </li>
-<li><p>5001字节之后全部的</p>
-<ul>
+<li>5001字节之后全部的<ul>
 <li>Range： bytes=5001-</li>
 </ul>
 </li>
-<li><p>从一开始到3000字节和5000~7000字节的多重范围</p>
-<ul>
+<li>从一开始到3000字节和5000~7000字节的多重范围<ul>
 <li>Range：bytes=-3000，5000-7000</li>
 </ul>
 </li>
-<li><p>针对范围请求，响应会返回状态码为 206 Partial Content 的响应报文。对于多重范围的范围请求，响应会在首部字段Content-Type标明multipart/byteranges 后返回响应报文。</p>
-</li>
-<li><p>如果服务器端无法响应范围请求，则会返回状态码 200 OK 和完整的实体内容。</p>
-<p><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbsizpbb0zj20ri0li77y.jpg" alt=""></p>
-</li>
+<li>针对范围请求，响应会返回状态码为 206 Partial Content 的响应报文。对于多重范围的范围请求，响应会在首部字段Content-Type标明multipart/byteranges 后返回响应报文。</li>
+<li>如果服务器端无法响应范围请求，则会返回状态码 200 OK 和完整的实体内容。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbsizpbb0zj20ri0li77y.jpg" alt=""></li>
 </ul>
 <h2 id="内容协商返回最合适的内容"><a href="#内容协商返回最合适的内容" class="headerlink" title="内容协商返回最合适的内容"></a>内容协商返回最合适的内容</h2><ul>
-<li><p>浏览器默认语言为英文或中文时，访问相同URI的Web页面时，则会显示对应的英语版或中文版的Web页面。这样的机制称为<code>内容协商（Content Negotiation）</code>。</p>
-</li>
-<li><p>内容协商会以响应资源的语言、字符集、编码方式等作为判断的基准，然后给客户端最合适的资源。</p>
-</li>
+<li>浏览器默认语言为英文或中文时，访问相同URI的Web页面时，则会显示对应的英语版或中文版的Web页面。这样的机制称为<code>内容协商（Content Negotiation）</code>。</li>
+<li>内容协商会以响应资源的语言、字符集、编码方式等作为判断的基准，然后给客户端最合适的资源。</li>
 <li><p>包含在请求报文中的某些首部字段（如下）就是判断的基准。详细说明参考下一章。</p>
 <ul>
-<li><p>Accept</p>
-</li>
-<li><p>Accept-Charset</p>
-</li>
-<li><p>Accept-Encoding</p>
-</li>
-<li><p>Accept-Language</p>
-</li>
-<li><p>Content-Language</p>
-</li>
+<li>Accept</li>
+<li>Accept-Charset</li>
+<li>Accept-Encoding</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
 </ul>
 </li>
-<li><p>内容协商技术的3种类型</p>
-<ul>
+<li>内容协商技术的3种类型<ul>
 <li>服务器驱动协商（Server-driven Negotiation）<br>以请求的首部字段为参考，在服务器端自动处理。</li>
 <li>客户端驱动协商（Agent-driven Negotiation）<br>用户在客户端进行手动选择或者利用JavaScript脚本进行选择。</li>
 <li>透明协商（Transparent Negotiation）<br>服务器驱动和客户端驱动的结合体。</li>
@@ -466,7 +413,7 @@ HTTP报文：分为报文首部和报文主体，中间由空行分割。
         <p><span>本文标题:</span><a href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/">《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sherry Wong</a></p>
         <p><span>发布时间:</span>2017-01-13, 15:49:51</p>
-        <p><span>最后更新:</span>2017-01-16, 16:25:08</p>
+        <p><span>最后更新:</span>2017-03-01, 15:06:13</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/" title="《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息">sherrywong1220.github.io/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/</a>
             <span class="copy-path" data-clipboard-text="原文: sherrywong1220.github.io/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/　　作者: Sherry Wong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
