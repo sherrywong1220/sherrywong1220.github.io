@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Sherry Code">
 <meta property="og:description" content="一台Web服务器可以搭建多个独立域名的Web网站，也可以作为通信路径的中转服务器提升传输效率。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/bc1d18eagy1fd7sgtfb93j20l108942m">
-<meta property="og:updated_time" content="2017-03-01T16:31:58.225Z">
+<meta property="og:updated_time" content="2017-03-02T06:52:43.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器">
 <meta name="twitter:description" content="一台Web服务器可以搭建多个独立域名的Web网站，也可以作为通信路径的中转服务器提升传输效率。">
@@ -328,7 +328,31 @@
 </ul>
 </li>
 </ul>
-<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><h3 id="缓存的有效期限"><a href="#缓存的有效期限" class="headerlink" title="缓存的有效期限"></a>缓存的有效期限</h3><h3 id="客户端的缓存"><a href="#客户端的缓存" class="headerlink" title="客户端的缓存"></a>客户端的缓存</h3>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><ul>
+<li>网关是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样处理请求。有时客户端可能都不会察觉，自己的通信目标是一个网关。</li>
+<li>网关能使通信线路上的服务器提供非HTTP协议服务。</li>
+<li>利用网关能提高通信的安全性，因为可以在客户端与网关之间的通信线路上加密以确保连接的安全。</li>
+</ul>
+<h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><ul>
+<li>隧道是在相隔甚远的客户端和服务器两者之间进行中转。</li>
+<li>隧道本身不解析HTTP请求，请求保持原样中转给之后的服务器。隧道会在通信双方断开连接时结束。</li>
+<li>通过隧道的传输，可以和远距离的服务器安全通信。隧道本身是透明的，客户端不用在意隧道的存在。</li>
+</ul>
+<h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><ul>
+<li>缓存是指代理服务器或客户端本地磁盘内保存的资源副本。</li>
+<li>利用缓存可以减少对源服务器的访问，因此就节省了通信流量和通信时间。</li>
+<li>缓存服务器是代理服务器的一种，并归类在缓存代理类型中。</li>
+</ul>
+<h3 id="缓存的有效期限"><a href="#缓存的有效期限" class="headerlink" title="缓存的有效期限"></a>缓存的有效期限</h3><ul>
+<li>当遇上源服务器上的资源更新时，如果还是使用不变的缓存，那就会演变成返回更新前的“旧”资源。</li>
+<li>即使存在缓存，也会因为客户端的要求、缓存的有效期等因素，向源服务器确认资源的有效性。若判断缓存失败，缓存服务器将会再次从源服务器上获取“新”资源。</li>
+</ul>
+<h3 id="客户端的缓存"><a href="#客户端的缓存" class="headerlink" title="客户端的缓存"></a>客户端的缓存</h3><ul>
+<li>缓存不仅可以存在于缓存服务器内，还可以存在客户端浏览器中。</li>
+<li>浏览器缓存如果有效，就不必再向服务器请求相同的资源了，可以直接从本地磁盘内读取。</li>
+<li>若判断缓存失败，浏览器将会再次从源服务器上获取“新”资源。这一点和缓存服务器相同。</li>
+</ul>
+
       
     </div>
     
@@ -339,7 +363,7 @@
         <p><span>Title:</span><a href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/">《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Sherry Wong</a></p>
         <p><span>Created:</span>2017-03-01, 23:40:29</p>
-        <p><span>Updated:</span>2017-03-02, 00:31:58</p>
+        <p><span>Updated:</span>2017-03-02, 14:52:43</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/" title="《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器">sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/</a>
             <span class="copy-path" data-clipboard-text="From sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/　　By Sherry Wong" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
