@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="主要介绍了各种HTTP状态码以及它们各自的意义">
+<meta name="description" content="当很多人选择用Java刷OJ或者参加算法比赛时，Java那慢悠悠处理输入的速度确实令人头疼。这篇文章主要讲了如何优化Java的输入，如何愉快利用Java刷题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《图解HTTP》学习笔记（四）——返回结果的HTTP状态码">
-<meta property="og:url" content="sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/index.html">
+<meta property="og:title" content="Java如何快速处理输入">
+<meta property="og:url" content="sherrywong1220.github.io/2017/03/30/Java如何快速处理输入/index.html">
 <meta property="og:site_name" content="Sherry Code">
-<meta property="og:description" content="主要介绍了各种HTTP状态码以及它们各自的意义">
-<meta property="og:updated_time" content="2017-03-01T12:20:00.308Z">
+<meta property="og:description" content="当很多人选择用Java刷OJ或者参加算法比赛时，Java那慢悠悠处理输入的速度确实令人头疼。这篇文章主要讲了如何优化Java的输入，如何愉快利用Java刷题。">
+<meta property="og:updated_time" content="2017-03-30T15:49:42.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《图解HTTP》学习笔记（四）——返回结果的HTTP状态码">
-<meta name="twitter:description" content="主要介绍了各种HTTP状态码以及它们各自的意义">
+<meta name="twitter:title" content="Java如何快速处理输入">
+<meta name="twitter:description" content="当很多人选择用Java刷OJ或者参加算法比赛时，Java那慢悠悠处理输入的速度确实令人头疼。这篇文章主要讲了如何优化Java的输入，如何愉快利用Java刷题。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>《图解HTTP》学习笔记（四）——返回结果的HTTP状态码 | Sherry Code</title>
+<title>Java如何快速处理输入 | Sherry Code</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -260,11 +260,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-《图解HTTP》学习笔记（四）——返回结果的HTTP状态码" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java如何快速处理输入" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/" class="article-date">
-      <time datetime="2017-03-01T10:56:30.000Z" itemprop="datePublished">2017-03-01</time>
+      <a href="/2017/03/30/Java如何快速处理输入/" class="article-date">
+      <time datetime="2017-03-30T15:43:58.000Z" itemprop="datePublished">2017-03-30</time>
 </a>
 
 
@@ -279,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《图解HTTP》学习笔记（四）——返回结果的HTTP状态码
+      Java如何快速处理输入
     </h1>
   
 
@@ -290,7 +290,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -300,82 +300,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h2><ul>
-<li>状态码的职责是当客户端向服务器发送请求时，描述返回的请求结果。</li>
-<li>借助状态码，用户可以知道服务器端是正常处理了请求，还是出现了错误。</li>
-<li>状态码类别<br>| 状态码 | 类别                     | 原因短语          |<br>| —- | ———————- | ————- |<br>| 1XX  | Informational（信息状态码）   | 接受的请求正在处理     |<br>| 2XX  | Success（成功状态码）         | 请求正常处理完毕      |<br>| 3XX  | Redirection（重定向状态码）    | 需要进行附加操作以完成请求 |<br>| 4XX  | Client Error（客户端错误状态码） | 服务器无法处理请求     |<br>| 5XX  | Server Error（服务器错误状态码） | 服务器处理请求出错     |</li>
-</ul>
-<h2 id="14个具有代表性的状态码"><a href="#14个具有代表性的状态码" class="headerlink" title="14个具有代表性的状态码"></a>14个具有代表性的状态码</h2><h3 id="2XX成功"><a href="#2XX成功" class="headerlink" title="2XX成功"></a>2XX成功</h3><ul>
-<li>200 OK<ul>
-<li>表示从客户端发来的请求在服务器端被正常处理了。</li>
-</ul>
-</li>
-<li>204 No Content<ul>
-<li>表示服务器已成功处理请求，但返回的响应报文中不含实体的主体部分。也不允许返回任何实体的主体。</li>
-<li>一般在需要从客户端往服务器发送信息，而对客户端不需要发送新信息内容的情况下使用。</li>
-</ul>
-</li>
-<li>206 Partial Content<ul>
-<li>表示客户端进行了范围请求，而服务器成功执行了这部分的GET请求。</li>
-<li>响应报文中包含由Content-Range指定范围的实体内容。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3XX重定向"><a href="#3XX重定向" class="headerlink" title="3XX重定向"></a>3XX重定向</h3><ul>
-<li>301 Moved Permanently<ul>
-<li>永久性重定向。表示请求的资源已经被分配了新的URI，以后应该使用资源现在所指的URI。</li>
-<li>如果已经把资源对应的URI保存为书签了，这时应该按Location首部字段提示的URI重新保存。</li>
-<li>类似于<code>http://example.com/sample</code>这种请求URI，当指定资源路径的最后忘记添加斜杠“/”，就会产生301状态码。</li>
-</ul>
-</li>
-<li>302 Found<ul>
-<li>临时性重定向。表示请求的资源被分配了新的URI，希望用户（本次）能使用新的URI访问。</li>
-</ul>
-</li>
-<li>303 See Other<ul>
-<li>303状态码与302有着相同的功能，但303状态码明确表示客户端应当采用GET方法获取资源，这点与302状态码有区别。</li>
-<li>当301、302、303响应状态码返回时，几乎所有的浏览器都会把POST改成GET，并删除请求报文内的主体，之后请求会自动再次发送。</li>
-<li>301、302标准是禁止将POST方法改变成GET方法的，但实际使用时大家都会这么做。</li>
-</ul>
-</li>
-<li>304 Not Modified<ul>
-<li>表示客户端发送附带条件的请求时，服务器端找到资源，但未满足条件的情况。</li>
-<li>304状态码返回时，不包含任何响应的主体部分。</li>
-<li>附带条件的请求是指采用GET方法的请求报文中包含If-Match，If-Modified-Since，If-None-Match，If-Range，If-Unmodified-Since中任一首部。</li>
-<li>304虽然被划分在3XX类别中，但是和重定向没有关系。</li>
-</ul>
-</li>
-<li>307 Temporary Redirect<ul>
-<li>临时重定向。与302有着相同的含义。尽管302标准禁止POST变化成GET，但实际使用时大家并不遵守。</li>
-<li>307会遵照浏览器标准，不会从POST变成GET。但是，对于处理响应时的行为，每种浏览器有可能出现不同的情况。</li>
-</ul>
-</li>
-</ul>
-<h3 id="4XX客户端错误"><a href="#4XX客户端错误" class="headerlink" title="4XX客户端错误"></a>4XX客户端错误</h3><ul>
-<li>400 Bad Request<ul>
-<li>表示请求报文中存在语法错误，需修改请求的内容后再次发送。</li>
-</ul>
-</li>
-<li>401 Unauthorized<ul>
-<li>表示发送的请求需要有通过HTTP认证（BASIC认证、DIGEST认证）的认证信息。另外如果之前已进行过1次请求，则表示用户认证失败。</li>
-</ul>
-</li>
-<li>403 Forbidden<ul>
-<li>表示服务器拒绝客户端访问所请求的资源。</li>
-</ul>
-</li>
-<li>404 Not Found<ul>
-<li>表明服务器上无法找到请求的资源。也可以在服务器端拒绝请求且不想说明理由时使用。</li>
-</ul>
-</li>
-</ul>
-<h3 id="5XX服务器错误"><a href="#5XX服务器错误" class="headerlink" title="5XX服务器错误"></a>5XX服务器错误</h3><ul>
-<li>500 Internal Server Error<ul>
-<li>表明服务器端在执行请求时发生了错误。也有可能是Web应用存在的bug或某些临时的故障。</li>
-</ul>
-</li>
-<li>503 Service Unavailable<br>表明服务器暂时处于超负载或正在停机维护，现在无法处理请求。</li>
-</ul>
+        <p>ACM ICPC 都允许参赛者使用 Java，但 Java 对于参赛者来说真的是一个明智的选择吗？比起 C 或 C++ ，Java 处理输入的速度简直慢得令人难以忍受。那么我们应该如何优化自己的代码使得 Java 处理输入得速度得到大幅度得提升呢？</p>
+<p>Java 和 C 处理输入的速度比较可以参看这篇文章：<a href="Faster Input for Java">https://www.cpe.ku.ac.th/~jim/java-io.html</a>。</p>
+<p>笔者也参考这篇文章造了一个 Java 快速处理输入的轮子，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Reader</span></span>&#123;</div><div class="line">    <span class="keyword">static</span> BufferedReader reader;</div><div class="line">    <span class="keyword">static</span> StringTokenizer tokenizer;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(InputStream input)</span></span>&#123;</div><div class="line">        reader=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(input));</div><div class="line">        tokenizer=<span class="keyword">new</span> StringTokenizer(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">        String line;</div><div class="line">        <span class="keyword">if</span>((line=reader.readLine())!=<span class="keyword">null</span>)&#123;</div><div class="line">            tokenizer=<span class="keyword">new</span> StringTokenizer(line);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;   </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">nextLine</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        <span class="keyword">return</span> reader.readLine();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">next</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">        <span class="keyword">if</span>(!tokenizer.hasMoreTokens())&#123;</div><div class="line">            tokenizer=<span class="keyword">new</span> StringTokenizer(reader.readLine());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> tokenizer.nextToken();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextInt</span><span class="params">()</span> <span class="keyword">throws</span> NumberFormatException, IOException</span>&#123;</div><div class="line">        <span class="keyword">return</span> Integer.parseInt(next());</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">double</span> <span class="title">nextDouble</span><span class="params">()</span> <span class="keyword">throws</span> NumberFormatException, IOException</span>&#123;</div><div class="line">        <span class="keyword">return</span> Double.parseDouble(next());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以后大家就可以愉快的用 Java 在 OJ 上刷题啦！！！</p>
 
       
     </div>
@@ -384,13 +313,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/">《图解HTTP》学习笔记（四）——返回结果的HTTP状态码</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/30/Java如何快速处理输入/">Java如何快速处理输入</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sherry Wong</a></p>
-        <p><span>发布时间:</span>2017-03-01, 18:56:30</p>
-        <p><span>最后更新:</span>2017-03-01, 20:20:00</p>
+        <p><span>发布时间:</span>2017-03-30, 23:43:58</p>
+        <p><span>最后更新:</span>2017-03-30, 23:49:42</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/" title="《图解HTTP》学习笔记（四）——返回结果的HTTP状态码">sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/</a>
-            <span class="copy-path" data-clipboard-text="原文: sherrywong1220.github.io/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/　　作者: Sherry Wong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/30/Java如何快速处理输入/" title="Java如何快速处理输入">sherrywong1220.github.io/2017/03/30/Java如何快速处理输入/</a>
+            <span class="copy-path" data-clipboard-text="原文: sherrywong1220.github.io/2017/03/30/Java如何快速处理输入/　　作者: Sherry Wong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -402,16 +331,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/">
-                    《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/">
-                    《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息
+                <a href="/2017/03/02/《图解HTTP》学习笔记（六）——HTTP首部/">
+                    《图解HTTP》学习笔记（六）——HTTP首部
                 </a>
             </div>
         
@@ -423,7 +346,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#状态码告知从服务器端返回的请求结果"><span class="toc-number">1.</span> <span class="toc-text">状态码告知从服务器端返回的请求结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14个具有代表性的状态码"><span class="toc-number">2.</span> <span class="toc-text">14个具有代表性的状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2XX成功"><span class="toc-number">2.1.</span> <span class="toc-text">2XX成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3XX重定向"><span class="toc-number">2.2.</span> <span class="toc-text">3XX重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4XX客户端错误"><span class="toc-number">2.3.</span> <span class="toc-text">4XX客户端错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5XX服务器错误"><span class="toc-number">2.4.</span> <span class="toc-text">5XX服务器错误</span></a></li></ol></li></ol>
+            
         
     </div>
     <style>
@@ -459,7 +382,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"《图解HTTP》学习笔记（四）——返回结果的HTTP状态码　| Sherry Code　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java如何快速处理输入　| Sherry Code　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -479,15 +402,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/" title="上一篇: 《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/" title="下一篇: 《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息">
+            <a href="/2017/03/02/《图解HTTP》学习笔记（六）——HTTP首部/" title="下一篇: 《图解HTTP》学习笔记（六）——HTTP首部">
                 <i class="fa fa-angle-right"></i>
             </a>
         
