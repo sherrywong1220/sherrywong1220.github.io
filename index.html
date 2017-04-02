@@ -187,9 +187,7 @@
 <li>01背包</li>
 </ul>
 <h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><ul>
-<li><p>斐波那契数列定义</p>
-<p>F(n)=n (n&lt;=1)</p>
-<p>F(n)=F(n-1)+F(n-2) (n&gt;1)</p>
+<li><p>斐波那契数列定义<br>F(n)=n (n&lt;=1)<br>F(n)=F(n-1)+F(n-2) (n&gt;1)</p>
 </li>
 <li><p>普通递归求解</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fibRecur</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(n&lt;=<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> n;</div><div class="line">  <span class="keyword">return</span> fibRecur(n-<span class="number">1</span>)+fibRecur(n-<span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -355,33 +353,11 @@
 <li>实体首部字段<br>  针对请求报文和响应报文的实体部分使用的首部。补充了资源内容更新时间等与实体有关的信息。</li>
 </ul>
 <h3 id="HTTP-1-1首部字段表"><a href="#HTTP-1-1首部字段表" class="headerlink" title="HTTP/1.1首部字段表"></a>HTTP/1.1首部字段表</h3><ul>
-<li>大家可以到这个页面浏览：<a href="http://m.blog.csdn.net/article/details?id=50318881" target="_blank" rel="external">HTTP/1.1首部字段一览</a> (其中有一个小错误，通用首部字段第一个应该是<code>Cache-Control</code>而不是<code>Cache</code>)</li>
+<li>大家可以到这个页面浏览：<a href="http://m.blog.csdn.net/article/details?id=50318881">HTTP/1.1首部字段一览</a> (其中有一个小错误，通用首部字段第一个应该是<code>Cache-Control</code>而不是<code>Cache</code>)</li>
 </ul>
-<h3 id="非HTTP-1-1首部字段"><a href="#非HTTP-1-1首部字段" class="headerlink" title="非HTTP/1.1首部字段"></a>非HTTP/1.1首部字段</h3><ul>
-<li>Cookie、Set-Cookie和Content-Disposition等在其他RFC中定义的首部字段。</li>
-<li>这些非正式首部字段统一归纳在RFC4299 HTTP Header Field Registrations中。</li>
-</ul>
-<h3 id="End-to-end首部和Hop-by-hop首部"><a href="#End-to-end首部和Hop-by-hop首部" class="headerlink" title="End-to-end首部和Hop-by-hop首部"></a>End-to-end首部和Hop-by-hop首部</h3><ul>
-<li>端到端首部(End-to-end Header)<br>  分在此类别中的首部会转发给请求/响应对应的最终接受目标，且必须保存在由缓存生成的响应中，另外规定它必须被转发。</li>
-<li>逐跳首部(Hop-by-hop Header)<br>  分在此类别的首部只对单次转发有效，会因为通过缓存或代理而不再转发。HTTP/1.1之后的版本，如果要使用逐跳首部，需提供Connection首部字段。</li>
-<li>除以下8个首部字段外，其他所有字段都属于端到端首部：<ul>
-<li>Connection</li>
-<li>Keep-Alive</li>
-<li>Proxy-Authenticate</li>
-<li>Proxy-Authorization</li>
-<li>Trailer</li>
-<li>TE</li>
-<li>Transfer-Encoding</li>
-<li>Upgrade</li>
-</ul>
-</li>
-</ul>
-<h3 id="各首部字段的含义和作用"><a href="#各首部字段的含义和作用" class="headerlink" title="各首部字段的含义和作用"></a>各首部字段的含义和作用</h3><ul>
-<li>因为这部分内容实在太多太杂，现在讲了大家也肯定记不住，所以还是到用到的时候再去看吧。</li>
-<li>感兴趣的人也可以自己翻翻书，这里给出《图解HTTP》PDF版本的链接，大家尽可能购买正版或在图书馆借阅。</li>
-<li>链接: <a href="http://pan.baidu.com/s/1boDM3Dl" target="_blank" rel="external">http://pan.baidu.com/s/1boDM3Dl</a> 密码: ik8d</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/03/02/《图解HTTP》学习笔记（六）——HTTP首部/#more">more >></a>
+        
       
 
       
@@ -472,31 +448,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><ul>
-<li>网关是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样处理请求。有时客户端可能都不会察觉，自己的通信目标是一个网关。</li>
-<li>网关能使通信线路上的服务器提供非HTTP协议服务。</li>
-<li>利用网关能提高通信的安全性，因为可以在客户端与网关之间的通信线路上加密以确保连接的安全。</li>
-</ul>
-<h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><ul>
-<li>隧道是在相隔甚远的客户端和服务器两者之间进行中转。</li>
-<li>隧道本身不解析HTTP请求，请求保持原样中转给之后的服务器。隧道会在通信双方断开连接时结束。</li>
-<li>通过隧道的传输，可以和远距离的服务器安全通信。隧道本身是透明的，客户端不用在意隧道的存在。</li>
-</ul>
-<h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><ul>
-<li>缓存是指代理服务器或客户端本地磁盘内保存的资源副本。</li>
-<li>利用缓存可以减少对源服务器的访问，因此就节省了通信流量和通信时间。</li>
-<li>缓存服务器是代理服务器的一种，并归类在缓存代理类型中。</li>
-</ul>
-<h3 id="缓存的有效期限"><a href="#缓存的有效期限" class="headerlink" title="缓存的有效期限"></a>缓存的有效期限</h3><ul>
-<li>当遇上源服务器上的资源更新时，如果还是使用不变的缓存，那就会演变成返回更新前的“旧”资源。</li>
-<li>即使存在缓存，也会因为客户端的要求、缓存的有效期等因素，向源服务器确认资源的有效性。若判断缓存失败，缓存服务器将会再次从源服务器上获取“新”资源。</li>
-</ul>
-<h3 id="客户端的缓存"><a href="#客户端的缓存" class="headerlink" title="客户端的缓存"></a>客户端的缓存</h3><ul>
-<li>缓存不仅可以存在于缓存服务器内，还可以存在客户端浏览器中。</li>
-<li>浏览器缓存如果有效，就不必再向服务器请求相同的资源了，可以直接从本地磁盘内读取。</li>
-<li>若判断缓存失败，浏览器将会再次从源服务器上获取“新”资源。这一点和缓存服务器相同。</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/#more">more >></a>
+        
       
 
       
@@ -582,62 +536,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="3XX重定向"><a href="#3XX重定向" class="headerlink" title="3XX重定向"></a>3XX重定向</h3><ul>
-<li>301 Moved Permanently<ul>
-<li>永久性重定向。表示请求的资源已经被分配了新的URI，以后应该使用资源现在所指的URI。</li>
-<li>如果已经把资源对应的URI保存为书签了，这时应该按Location首部字段提示的URI重新保存。</li>
-<li>类似于<code>http://example.com/sample</code>这种请求URI，当指定资源路径的最后忘记添加斜杠“/”，就会产生301状态码。</li>
-</ul>
-</li>
-<li>302 Found<ul>
-<li>临时性重定向。表示请求的资源被分配了新的URI，希望用户（本次）能使用新的URI访问。</li>
-</ul>
-</li>
-<li>303 See Other<ul>
-<li>303状态码与302有着相同的功能，但303状态码明确表示客户端应当采用GET方法获取资源，这点与302状态码有区别。</li>
-<li>当301、302、303响应状态码返回时，几乎所有的浏览器都会把POST改成GET，并删除请求报文内的主体，之后请求会自动再次发送。</li>
-<li>301、302标准是禁止将POST方法改变成GET方法的，但实际使用时大家都会这么做。</li>
-</ul>
-</li>
-<li>304 Not Modified<ul>
-<li>表示客户端发送附带条件的请求时，服务器端找到资源，但未满足条件的情况。</li>
-<li>304状态码返回时，不包含任何响应的主体部分。</li>
-<li>附带条件的请求是指采用GET方法的请求报文中包含If-Match，If-Modified-Since，If-None-Match，If-Range，If-Unmodified-Since中任一首部。</li>
-<li>304虽然被划分在3XX类别中，但是和重定向没有关系。</li>
-</ul>
-</li>
-<li>307 Temporary Redirect<ul>
-<li>临时重定向。与302有着相同的含义。尽管302标准禁止POST变化成GET，但实际使用时大家并不遵守。</li>
-<li>307会遵照浏览器标准，不会从POST变成GET。但是，对于处理响应时的行为，每种浏览器有可能出现不同的情况。</li>
-</ul>
-</li>
-</ul>
-<h3 id="4XX客户端错误"><a href="#4XX客户端错误" class="headerlink" title="4XX客户端错误"></a>4XX客户端错误</h3><ul>
-<li>400 Bad Request<ul>
-<li>表示请求报文中存在语法错误，需修改请求的内容后再次发送。</li>
-</ul>
-</li>
-<li>401 Unauthorized<ul>
-<li>表示发送的请求需要有通过HTTP认证（BASIC认证、DIGEST认证）的认证信息。另外如果之前已进行过1次请求，则表示用户认证失败。</li>
-</ul>
-</li>
-<li>403 Forbidden<ul>
-<li>表示服务器拒绝客户端访问所请求的资源。</li>
-</ul>
-</li>
-<li>404 Not Found<ul>
-<li>表明服务器上无法找到请求的资源。也可以在服务器端拒绝请求且不想说明理由时使用。</li>
-</ul>
-</li>
-</ul>
-<h3 id="5XX服务器错误"><a href="#5XX服务器错误" class="headerlink" title="5XX服务器错误"></a>5XX服务器错误</h3><ul>
-<li>500 Internal Server Error<ul>
-<li>表明服务器端在执行请求时发生了错误。也有可能是Web应用存在的bug或某些临时的故障。</li>
-</ul>
-</li>
-<li>503 Service Unavailable<br>表明服务器暂时处于超负载或正在停机维护，现在无法处理请求。</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/#more">more >></a>
+        
       
 
       
@@ -717,84 +618,9 @@
 <li>HTTP在传输数据时，可以按照数据原貌直接传输，也可以在传输的过程中通过编码提升传输速率。</li>
 <li>通过在传输时编码，能有效地处理大量访问请求。但是，编码的操作需要计算机来完成，因此会消耗更多CPU资源。</li>
 </ul>
-<h3 id="报文主体和实体主体的差异"><a href="#报文主体和实体主体的差异" class="headerlink" title="报文主体和实体主体的差异"></a>报文主体和实体主体的差异</h3><ul>
-<li>报文（message）：<br>是HTTP通信中的基本单位，由8位字节流组成，通过HTTP通信传输。</li>
-<li>实体（entity）：<br>作为请求和相应的有效载荷数据（补充项）被传输，其内容由实体首部和实体主体组成。</li>
-<li>HTTP报文的主体用于传输请求或响应的实体主体。</li>
-<li>通常，报文主体等于实体主体，只有当传输中进行编码操作时，实体主体的内容发生变化，才导致它和报文主体产生差异。<h3 id="压缩传输的内容编码"><a href="#压缩传输的内容编码" class="headerlink" title="压缩传输的内容编码"></a>压缩传输的内容编码</h3></li>
-<li>在邮件中添加附件时，为了使邮件变小，我们一般会把附件进行压缩后在添加。</li>
-<li>HTTP协议中有一种被称为内容编码的功能，也能进行类似的操作。</li>
-<li>内容编码指明应用在实体内容上的编码格式，并保持实体信息原样压缩。内容编码后的实体由客户端接受并负责解码。</li>
-<li>常用的内容编码有以下几种：<ul>
-<li>gzip (GNU zip)</li>
-<li>compress (UNIX系统的标准压缩)</li>
-<li>deflate (zlib)</li>
-<li>identity (不进行编码)</li>
-</ul>
-</li>
-</ul>
-<h3 id="分割发送的分块传输编码"><a href="#分割发送的分块传输编码" class="headerlink" title="分割发送的分块传输编码"></a>分割发送的分块传输编码</h3><ul>
-<li>在HTTP通信过程中，请求的编码实体资源尚未全部传输完成之前，浏览器无法显示请求页面。</li>
-<li>在传输大容量数据时，通过把数据分割成多块，能够让浏览器逐步显示页面。</li>
-<li>这种把实体主体分块的功能称为分块传输编码（Chunked Transfer Coding）。</li>
-<li>实体主体分成多个块，每一个块都会用十六进制来标记块的大小，而实体主体的最后一块会使用“0(CR+LF)”来标记。</li>
-<li>使用分块传输编码的实体主体会由接受的客户端负责解码，恢复到编码前的实体主体。</li>
-<li>在HTTP/1.1中存在一种称为传输编码（Transfer Coding）的机制，它可以在通信时按照某种编码方式传输，但只定义作用于分块传输编码中。</li>
-</ul>
-<h2 id="发送多种数据的多部分对象集合"><a href="#发送多种数据的多部分对象集合" class="headerlink" title="发送多种数据的多部分对象集合"></a>发送多种数据的多部分对象集合</h2><ul>
-<li>发送邮件时，可以添加多份类型不同的附件。这是因为采用了MIME（Multipurpose Internet Mail Extensions，多用途因特网邮件扩展）机制，它允许邮件处理文本、图片、视频等多个不同类型的数据。</li>
-<li>例如，图片等二进制数据以ASCII码字符串编码的方式指明，就是利用MIME来描述标记数据类型。</li>
-<li>在MIME中会使用一种成为多部分对象集合（Multipart）的方法，来容纳不同类型的数据。</li>
-<li>相应地，HTTP协议中也采纳了多部分对象集合，发送的一份报文主体内可含有多类型实体。通常是在图片或文本文件等上传时使用。</li>
-<li>多部分对象集合包含的对象如下：<ul>
-<li>multipart/form-data<br>在Web表单文件上传时使用。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcshm5rej20o80dr411.jpg" alt=""></li>
-<li>multipart/byteranges<br>状态码206（Partial Content，部分内容）响应报文包含了多个范围的内容时使用。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqcstotmaj20nv024jrj.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbqct44tmsj20o60g6jub.jpg" alt=""></li>
-</ul>
-</li>
-<li>在HTTP报文中使用多部分对象集合时，需要在首部字段里加上Content-type。这个首部字段稍后讲解。</li>
-<li>使用boundary字符串来划分多部分对象集合指明的各类实体。</li>
-<li>在boundary字符串指定的各个实体的起始行之前插入“–”标记，在多部分对象集合对应的字符串的最后插入“–”标记作为结束。</li>
-<li>多部分对象集合的每个部分类型中，都可以含有首部字段。也可以在某部分中嵌套使用多部分对象集合。</li>
-</ul>
-<h2 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h2><ul>
-<li>可恢复机制：能从之前下载中断处恢复下载。</li>
-<li>要实现恢复机制需要指定下载的实体范围。</li>
-<li>指定范围发送的请求叫做<code>范围请求（Range Request）</code>。</li>
-<li>执行范围请求时，会用到首部字段Range来置顶资源的byte范围。</li>
-<li>5001~10000字节<ul>
-<li>Range：bytes=5001-10000</li>
-</ul>
-</li>
-<li>5001字节之后全部的<ul>
-<li>Range： bytes=5001-</li>
-</ul>
-</li>
-<li>从一开始到3000字节和5000~7000字节的多重范围<ul>
-<li>Range：bytes=-3000，5000-7000</li>
-</ul>
-</li>
-<li>针对范围请求，响应会返回状态码为 206 Partial Content 的响应报文。对于多重范围的范围请求，响应会在首部字段Content-Type标明multipart/byteranges 后返回响应报文。</li>
-<li>如果服务器端无法响应范围请求，则会返回状态码 200 OK 和完整的实体内容。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbsizpbb0zj20ri0li77y.jpg" alt=""></li>
-</ul>
-<h2 id="内容协商返回最合适的内容"><a href="#内容协商返回最合适的内容" class="headerlink" title="内容协商返回最合适的内容"></a>内容协商返回最合适的内容</h2><ul>
-<li>浏览器默认语言为英文或中文时，访问相同URI的Web页面时，则会显示对应的英语版或中文版的Web页面。这样的机制称为<code>内容协商（Content Negotiation）</code>。</li>
-<li>内容协商会以响应资源的语言、字符集、编码方式等作为判断的基准，然后给客户端最合适的资源。</li>
-<li>包含在请求报文中的某些首部字段（如下）就是判断的基准。详细说明参考下一章。<ul>
-<li>Accept</li>
-<li>Accept-Charset</li>
-<li>Accept-Encoding</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-</ul>
-</li>
-<li>内容协商技术的3种类型<ul>
-<li>服务器驱动协商（Server-driven Negotiation）<br>以请求的首部字段为参考，在服务器端自动处理。</li>
-<li>客户端驱动协商（Agent-driven Negotiation）<br>用户在客户端进行手动选择或者利用JavaScript脚本进行选择。</li>
-<li>透明协商（Transparent Negotiation）<br>服务器驱动和客户端驱动的结合体。</li>
-</ul>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/#more">more >></a>
+        
       
 
       
@@ -867,87 +693,9 @@
 <li>请求报文：<br><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrom632aj20pr0fwwg4.jpg" alt=""></li>
 <li>响应报文：<br><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmrpnqzo4j20mo0edq4g.jpg" alt=""></li>
 </ul>
-<h2 id="HTTP是不保存状态的协议"><a href="#HTTP是不保存状态的协议" class="headerlink" title="HTTP是不保存状态的协议"></a>HTTP是不保存状态的协议</h2><ul>
-<li>HTTP是一种不保存状态的协议，即无状态（stateless）协议。</li>
-<li>HTTP协议自身不对请求和响应之间的通信状态进行保存。也就是说HTTP协议不对发送过的请求和响应做持久化处理。这是为了更快地处理大量事务，确保协议的可伸缩性，特意把HTTP协议设计得如此简单。</li>
-<li>有的时候也需要保持状态功能。例如，用户登录到一个购物网站，即使他跳转到该网站的其他页面后，也需要保持登录状态。于是就引入了Cookie技术。</li>
-<li>有了Cookie再用HTTP协议通信，就能管理状态了。</li>
-</ul>
-<h2 id="请求URI定位资源服务"><a href="#请求URI定位资源服务" class="headerlink" title="请求URI定位资源服务"></a>请求URI定位资源服务</h2><ul>
-<li>HTTP协议使用URI定位互联网上的资源。</li>
-<li>如果不是访问特定的资源而是对服务器本身发起请求，可以用一个 * 来代替请求URI。</li>
-<li>下面这个例子是查询HTTP服务器端支持的HTTP方法的种类：<br><code>OPTIONS * HTTP/1.1</code></li>
-</ul>
-<h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><ul>
-<li>GET：获取资源<ul>
-<li>GET方法用来请求已被URI识别的资源。指定的资源经过服务器端解析后返回响应内容。也就是说，如果请求的资源是文本，那就保持原样返回；如果是像CGI（Common Gateway Interface，通用网关接口）那样的程序，则返回经过执行后的输出结果。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwfm7ytvj20kl099dhf.jpg" alt=""></li>
-</ul>
-</li>
-<li>POST：传输实体主体<ul>
-<li>POST方法用来传输实体的主体</li>
-<li>GET方法也可以用来传输实体的主体，不过一般不用GET传输，而是用POST传输。</li>
-<li>POST与GET功能很相似，但是POST的主要目的并不是获取响应的主题内容。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbmwjtjknmj20ke059dgf.jpg" alt=""></li>
-</ul>
-</li>
-<li>PUT：传输文件<ul>
-<li>要求在请求报文的主体中包含文件内容，然后保存到请求的URI指定的位置。</li>
-<li>由于HTTP/1.1的PUT方法本身不带验证机制，任何人都能上传文件，存在安全性问题，因此一般的Web网站不使用该方法。</li>
-<li>当配合Web应用程序的验证机制，或架构设计采用REST（REpresentational State Transfer，表征状态转移）标准的同类Web网站，就可能会开放使用PUT方法。<br><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmwphtwlhj20kl05uaau.jpg" alt=""></li>
-</ul>
-</li>
-<li>HEAD：获得报文首部<ul>
-<li>HEAD方法和GET一样，只是不返回报文主体部分。</li>
-<li>HEAD方法用于确认URI资源的有效性和资源更新的时间等。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwrszpv2j20kc04ejrt.jpg" alt=""></li>
-</ul>
-</li>
-<li>DELETE：删除文件<ul>
-<li>它是和PUT方法相反的方法。</li>
-<li>当配合Web应用程序的验证机制，或架构设计采用REST（REpresentational State Transfer，表征状态转移）标准的同类Web网站，就可能会开放使用DELETE方法。<br><img src="http://ww3.sinaimg.cn/large/bc1d18eagw1fbmwuclf80j20kp04idgg.jpg" alt=""></li>
-</ul>
-</li>
-<li>OPTIONS：询问支持的方法<ul>
-<li>OPTIONS用来查询所请求的URI所支持的方法。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmwwcrpd9j20kr05waat.jpg" alt=""></li>
-</ul>
-</li>
-<li>TRACE：追踪路径<ul>
-<li>发送请求时，在Max-Forwards首部字段中填入数值，每经过一个服务器端就将该数值减1，当数值刚好减为0时，就停止传输，最后接收到请求的服务器端则返回状态码200 OK的响应。</li>
-<li>客户端通过TRACE方法可以查询发送出去的请求是怎样被修改/篡改的。</li>
-<li>请求想要连接的源目标服务器可能会通过代理中转，TRACE方法就是用来确认连接过程中发生的一系列操作。</li>
-<li>容易引发XST（Cross-Site Tracing，跨站追踪）攻击，通常不用。</li>
-</ul>
-</li>
-<li>CONNECT：要求用隧道协议连接代理<ul>
-<li>CONNECT方法要求在与代理服务器通信时建立隧道，实现用隧道协议进行TCP通信。主要使用SSL（Secure Sockets Layer，安全套接层）和TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输。</li>
-<li>CONNECT方法的格式如下：<br><code>CONNECT 代理服务器名:端口号 HTTP版本</code><br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbn1apjm22j20ld0cvdhd.jpg" alt=""></li>
-</ul>
-</li>
-</ul>
-<h2 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h2><ul>
-<li>HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连接。</li>
-<li>使用浏览器浏览一个包含多张图片的HTML页面时，在发送请求访问HTML页面的同时，也会请求该HTML页面里包含的图片资源。因此，每次的请求都会造成无谓的TCP连接建立和断开，增加通信量的开销。</li>
-</ul>
-<h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><ul>
-<li>为解决上述TCP连接的问题，HTTP/1.1和HTTP/1.0想出了持久连接（HTTP Persistent Connections，也称为HTTP keep-alive或HTTP connection reuse）的方法。</li>
-<li>持久连接的特点：只要任意一端没有提出断开连接，则保持TCP连接状态。</li>
-<li>持续连接旨在建立1次TCP连接后能进行多次请求和响应的交互。</li>
-<li>持久连接的好处在于减少了TCP连接的重复建立和断开造成的额外开销，减轻了服务器的负载。另外，减少开销的那部分时间，使HTTP请求和响应能够更早地结束，这样Web页面的显示速度也相应提高了。</li>
-<li>在HTTP/1.1中，所有的连接都默认是持久连接，但在HTTP/1.0中并未标准化，一部分服务器用非标准手段实现了持久连接。</li>
-<li>除了服务器端，客户端也需要支持持久连接。</li>
-</ul>
-<h3 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h3><ul>
-<li>持久连接使得多数请求以管线化（pipelining）方式发送成为可能。</li>
-<li>从前发送请求后需等待并收到响应，才能发送下一个请求。</li>
-<li>管线化技术出现后，不用等待响应就可以发送下一个请求。这样能做到同时并行发送多个请求。<br><img src="http://ww4.sinaimg.cn/large/bc1d18eagw1fbnsb87v9kj20jq09ldgz.jpg" alt=""></li>
-</ul>
-<h2 id="使用Cookie的状态管理"><a href="#使用Cookie的状态管理" class="headerlink" title="使用Cookie的状态管理"></a>使用Cookie的状态管理</h2><ul>
-<li>前面已经说过了HTTP协议是无状态协议，它不对之前发生过的请求和响应的状态进行管理，无法根据之前的状态进行本次的请求处理。</li>
-<li>无状态协议也有优点：由于不必保存状态，自然可以减少服务器的CPU及内存损耗。从另一方面讲，正式因为HTTP协议如此简单，才能被应用到各种场景里。</li>
-<li>保留无状态协议这个特征的同时又要解决类似的矛盾问题，于是引入了Cookie技术。</li>
-<li>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态。</li>
-<li>Cookie会根据从服务器端发送的响应报文内的一个叫做Set-Cookie的首部字段信息，通知客户端保存Cookie。当下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入Cookie值后发送出去。</li>
-<li>服务器端发现客户端发送过来的Cookie后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。<br><img src="http://ww3.sinaimg.cn/large/bc1d18eagw1fbnsulhdgcj20jl05874q.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbnsuuq99bj20jm0c640a.jpg" alt=""></li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/#more">more >></a>
+        
       
 
       
@@ -1019,61 +767,9 @@
 <p>Web使用一种名为<strong>HTTP</strong>(HyperText Transfer Protocol，超文本传输协议)的协议作为规范，完成从客户端到服务器端等一系列运作流程。协议指规则的约定。Web是建立在HTTP协议上通信的。</p>
 <p>作为Web文档传输协议的HTTP，它的版本更新非常非常慢，现在刚到HTTP/2.0。</p>
 <p>当年HTTP协议的出现主要是为了解决文本传输的难题。由于协议本身非常简单，于是在此基础上设想了很多应用方法并投入了实际使用。现在HTTP协议已经超出了Web这个框架的局限，被运用到了各种场景里。</p>
-<h2 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h2><p>通常使用的网络（包括互联网）是在TCP/IP协议族的基础上运作的，HTTP属于它内部的一个子集。</p>
-<h3 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h3><p>计算机与网络设备要相互通信，双方就必须基于相同的方法。比如，如何探测到通信目标、由哪一边先发起通信、使用哪种语言进行通信、怎样结束通信等规则都要事先确定。不同的硬件、操作系统之间的通信，所有的这一切都需要一种规则。而我们就把这种规则成为<strong>协议</strong>（protocol）。</p>
-<p>TCP/IP是互联网相关的各类协议族的总称。它的子集有：TCP、IP、DNS、HTTP、FTP、ICMP、UDP、PPPoE等。</p>
-<h3 id="TCP-IP分层管理"><a href="#TCP-IP分层管理" class="headerlink" title="TCP/IP分层管理"></a>TCP/IP分层管理</h3><p>TCP/IP协议族按层次分为以下四层：应用层、传输层、网络层、数据链路层。</p>
-<p>分层的好处：</p>
-<ul>
-<li>某个地方需要改动时，只需要把变动的层替换掉，不用把整体替换掉。</li>
-<li>设计变得简单，处于各层的应用只用考虑分派给自己的任务。</li>
-</ul>
-<p>各层的作用：<br><strong>应用层：</strong><br>应 用 层 决 定 了 向 用 户 提 供 应 用 服 务 时 通 信 的 活 动 。<br>TCP/IP协 议 族 内 预 存 了 各 类 通 用 的 应 用 服 务 比 如 ， FTP （ File Transfer Protocol ， 文 件 传 输 协 议 ） 和 DNS （ Domain Name System ， 域 名 系 统 ） 服 务 就 是 其 中 两 类 。<br>HTTP 协 议 也 处 于 该 层 。</p>
-<p><strong>传输层：</strong><br>传 输 层 对 上 层 应 用 层 ， 提 供 处 于 网 络 连 接 中 的 两 台 计 算 机 之 间 的 数 据 传 输 。<br>在 传 输 层 有 两 个 性 质 不 同 的 协 议 ： TCP （ Transmission Control Protocol, 传 输 控 制 协 议 ） 和 UDP （ User Data Protocol ， 用 户 数 据 报 协 议 ） 。 </p>
-<p><strong>网络层（又名网络互连层）：</strong><br>网 络 层 用 来 处 理 在 网 络 上 流 动 的 数 据 包 。数 据 包 是 网 络 传 输 的 最 小 数 据 单 位 。 该 层 规 定 了 通 过 怎 样 的 路 径 （ 所 谓 的 传 输 路 线 ） 到 达 对 方 计 算 机 ， 并 把 数 据 包 传 送 给 对 方 。 </p>
-<p><strong>链路层（又 名 数 据 链 路 层 ， 网 络 接 口 层 ）：</strong><br>用 来 处 理 连 接 网 络 的 硬 件 部 分 。 包 括 控 制 操 作 系 统 、 硬 件 的 设 备 驱 动 、 NIC （ Network Interface Card ， 网 络 适 配 器 ， 即 网 卡 ） ， 及 光 纤 等 物 理 可 见部 分。硬 件 上 的 范 畴 均 在 链 路 层 的 作 用 范 围 之 内 。</p>
-<h3 id="TCP-IP通信传输流"><a href="#TCP-IP通信传输流" class="headerlink" title="TCP/IP通信传输流"></a>TCP/IP通信传输流</h3><p><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1fe8ba02uu8j20go0cy75d.jpg" alt=""></p>
-<p>利 用 TCP/IP 协 议 族 进 行 网 络 通 信 时 ， 会 通 过 分 层 顺 序 与 对 方 进 行 通 信 。发 送 端 从 应 用 层 往 下 走 ， 接 收 端 则 往 应 用 层 往 上 走 。 </p>
-<p>我 们 用 HTTP 举 例 来 说 明 ， 首 先 作 为 发 送 端 的 客 户 端 在 应 用 层 （ HTTP 协 议 ） 发 出 一 个 想 看 某 个 web 页 面 的 HTTP 请 求 。</p>
-<p>接 着 ， 为 了 传 输 方 便 ， 在 传 输 层 （ TCP 协 议 ） 把 从 应 用 层 处 收 到 的 数 据 （ HTTP 请 求 报 文 ） 进 行 分 割 ， 并 在 各 个 报 文 上 打 上 标 记 序 号 及 端 口 号 后 转 发 给 网 络 层 。 </p>
-<p>在 网 络 层 （ IP 协 议 ） ， 增 加 作 为 通 信 目 的 地 的 MAC 地 址 后 转 发 给 链 路 层 。 这 样 一 来 ， 发 往 网 络 的 通 信 请 求 就 准 备 齐 全 了 。 </p>
-<p>接 收 端 的 服 务 器 在 链 路 层 接 收 到 数 据 ， 按 序 往 上 层 发 送 ， 一 直 到 应 用 层。 当 传 输 到 应 用 层 ，才 能 算 真 正 接 收 到 由 客 户 端 发 送 过 来 的 H T T P 请 求。</p>
-<p>发 送 端 在 层 与 层 之 间 传 输 数 据 时 ， 每 经 过 一 层 时 必 定 会 被 打 上 该 层 所 属 的 首 部 信 息 。 反 之 ， 接 收 端 在 层 与 层 传 输 数 据 时 ， 每 经 过 一 层 时 会 把 对 应 的 首 部 消 去 。 </p>
-<p>这 种 把 数 据 信 息 包 装 起 来 的 做 法 你 为 封 装 （ encapsulate ） 。 </p>
-<p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmqg9co1ej20n00l7q5n.jpg" alt=""></p>
-<h2 id="与HTTP关系紧密的协议：IP、TCP和DNS"><a href="#与HTTP关系紧密的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系紧密的协议：IP、TCP和DNS"></a>与HTTP关系紧密的协议：IP、TCP和DNS</h2><h3 id="负责传输的IP协议"><a href="#负责传输的IP协议" class="headerlink" title="负责传输的IP协议"></a>负责传输的IP协议</h3><p>IP（Internet Protocol）网际协议位于网络层。不要把“IP”和“IP地址”搞混，“IP”是一种协议的名称。</p>
-<p>IP协议的作用是把各种数据包传送给对方。而要保证确实传送到对方那里，需要满足各类条件。其中最重要的两个条件是IP地址和MAC地址（Media Access Control Address）。</p>
-<p>IP 地 址 指 明 了 节 点 被 分 配 到 的 地 址 ， MAC 地 址 是 指 网 卡 所 属 的 固 定 地 址。IP 地 址 可 以 和 MAC 地 址 进 行 配 对 。 IP 地 址 可 变 换 ， 但 MAC 地 址 基 本 上 不 会 更 改 。</p>
-<ul>
-<li>根据MAC地址的设计原则，理论上MAC地址不会重复，但实际生活中MAC地址重复的现象并不少。</li>
-</ul>
-<p><strong>使用ARP协议凭借MAC地址进行通信</strong><br>IP间的通信协议依赖MAC地址。在网络上，通信的双方都在同一局域网（LAN）内的情况是很少的，通常是经过多台计算机和网络设备中转才能连接到对方。而在进行中转时，会利用下一站中转设备的MAC地址来搜索下一个中转目标。这时，会采用ARP协议（Address Resolution Protocal）。ARP是一种用来解析地址的协议，根据通信双方的IP地址就可以反查出对应的MAC地址。</p>
-<p><strong>没人能够全面掌握互联网中的传输状况</strong><br>在 到 达 通 信 目 标 前 的 中 转 过 程 中 ， 那 计 算 机 和 路 由 器 等 网 络 设 备 只 能 获 悉 很 粗 略 的 传 输 路 线 。 </p>
-<p>这 种 机 制 称 为 路 由 选 择 （ routing ） ， 有 点 像 快 递 公 司 的 送 货 过 程 。想 要 寄 快 递 的 人 ， 只 要 将 自 己 的 货 物 送 到 集 散 中 心 ， 就 可 以 知 道 快 递 公 司 是 否 肯 收 件 发 货 ， 该 快 递 公 司 的 集 散 中 心 检 查 货 物 的 送 达 地 址 ， 明 确 下 站 该 送 往 哪 个 区 域 的 集 散 中 心 。 接 着 ， 那 个 区 域 的 集 散 中 心 自 会 判 断 是 否 能 送 到 对 方 的 家 中 。<br>通 过 这 个 比 喻 说 明 ， 无 论 哪 台 计 算 机 、 哪 台 网 络 设 备 都 无 法 全 面 掌 握 互 联 网 中 的 细 节 。<br><img src="http://ww3.sinaimg.cn/large/bc1d18eagw1fbmobma5ulj20nq0lxacv.jpg" alt=""></p>
-<h3 id="确保可靠性的TCP协议"><a href="#确保可靠性的TCP协议" class="headerlink" title="确保可靠性的TCP协议"></a>确保可靠性的TCP协议</h3><p>TCP位于传输层，提供可靠的字节流服务。<br>TCP 协 议 为 了 更 容 易 传 送 大 数 据 才 把 数 据 分 割 ， 而 且 TCP 协 议 能 够 确 认 数 据 最 终 是 否 送 达 到 对 方 。 </p>
-<p>字节流服务：<br> 为 了 方 便 传 输 ， 将 大 块 数 据 分 割 成 以 报 文 段 （ segment ） 为 单 位 的 数 据 包 进 行 管 理 。</p>
-<p>可靠的传输服务：<br>能 够 把 数 据 准 确 可 靠 地 传 给 对 方 。</p>
-<p><strong>确 保 数 据 能 到 达 目 标</strong><br>为 了 准 确 无 误 地 将 数 据 送 达 目 标 处 ， TCP 协 议 采 用 了 三 次 握 手 （ three-way handshaking ） 策 略 。 握 手 过 程 中 使 用 了 TCP 的 标 志 （ flag ）——SYN （ synchronize ） 和 ACK（ acknowledgement ） 。 </p>
-<p>发 送 端 首 先 发 送 一 个 带 SYN 标 志 的 数 据 包 给 对 方 。 接 收 端 收 到 后 ， 回 传 一 个 带 有 SYN/ACK 标 志 的 数 据 包 以 示 传 达 确 认 信 息 。 最 后 ， 发 送 端 再 回 传 一 个 带 ACK 标 志 的 数 据 包 ， 代 表 “ 握 手 “ 结 束 。</p>
-<p>若 在 握 手 过 程 中 某 个 阶 段 莫 名 中 断 ， TCP 协 议 会 再 次 以 相 同 的 顺 序 发 送 相 同 的 数 据 包 。</p>
-<p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmod5omy6j20nf0dkjt1.jpg" alt=""></p>
-<p><strong>TCP协议三次握手策略形象说法：</strong><br><code>比如在红军时代，A连和B连分在左右翼，约定在几时几分一同发起打击。这个几时几分的信息就需要人工通过通讯员来走路传递。所以A连指挥官派出通讯员。
-这是第一次。
-假设通讯员到达了B连，并且告知了B连指挥官几时几分，B连指挥官一定会让通讯员再回去通知A连指挥官，可怜的通讯员只能冒着危险返回A连，因为A连指挥官看不到通讯员返回的话，不知道几时几分这个信息到底传达到了B连没有。
-这是第二次。
-现在B连指挥官开始担心通讯员是否回到了A连，如果没回到，B连指挥官会设身处地的想一想A连指挥官见不到返回的通讯员，肯定是不敢打的，所以B连指挥官最盼望的是再次看到通讯员出现在B连，所以A连指挥官会让通讯员再回B连一次。
-这是第三次。</code></p>
-<p>除了三次握手，TCP协议还有其他各种手段来保证通信的可靠性。</p>
-<h2 id="负责域名解析的DNS服务"><a href="#负责域名解析的DNS服务" class="headerlink" title="负责域名解析的DNS服务"></a>负责域名解析的DNS服务</h2><p>DNS（Domain Name System）服务是和HTTP协议一样位于应用层的协议。它提供域名到IP地址之间的解析服务。既可以通过域名查找IP地址，也可以逆向从IP地址反查域名。</p>
-<h2 id="各种协议与HTTP协议的关系"><a href="#各种协议与HTTP协议的关系" class="headerlink" title="各种协议与HTTP协议的关系"></a>各种协议与HTTP协议的关系</h2><p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmoe145k2j20kq0uwn2d.jpg" alt=""></p>
-<h2 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h2><p>URI是Uniform Resource Identifier的缩写。RFC2396分别对这三个单词作了如下定义。</p>
-<p><strong>Uniform</strong><br>规 定 统 一 的 格 式 可 方 便 处 理 多 种 不 同 类 型 的 资 源 ， 而 不 用 根 据 上 下 文 环 境 来 识 别 资 源 指 定 的 访 问 方 式 。 另 外 ， 加 入 新 增 的 协 议 方 案 （ 如 http: 或 ftp: ） 也 更 容 易 。</p>
-<p><strong>Resource</strong><br>资 源 的 定 义 是 “ 可 标 识 的 任 何 东 西 “ 除 了 文 档 文 件 、 图 像 或 服 务 （ 例 如 当 天 的 天 气 预 报 ） 等 能 够 区 别 于 其 他 类 型 的 ， 全 都 可 作 为 资 源 。 另 外 ， 资 源 不 仅 可 以 是 单 一 的 ， 也 可 以 是 多 数 的 集 合 体 。</p>
-<p><strong>Identifier</strong><br>表 示 可 标 识 的 对 象 也 称 为 标 识 符 。<br>综 上 所 述 ， URI 就 是 由 某 个 协 议 方 案 表 示 的 资 源 的 定 位 标 识 符。 协 议 方 案 是 指 访 问 资 源 所 使 用 的 协 议 类 型 名 称（http、ftp、telnet等）。 </p>
-<p>URI例子：<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagw1fbmoep44txj20ms07r75s.jpg" alt=""></p>
-<p>URI用字符串标识某一互联网资源，而URL表示资源的地点（互联网上所处的位置）。可见URL是URI的子集。</p>
-<h3 id="URI格式"><a href="#URI格式" class="headerlink" title="URI格式"></a>URI格式</h3><p><img src="http://ww2.sinaimg.cn/large/bc1d18eagw1fbmoflbhjqj20ib03xdgf.jpg" alt=""></p>
-
+        
+          <a class="article-more-a" href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/#more">more >></a>
+        
       
 
       
