@@ -249,30 +249,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="什么是动态规划？动态规划的意义？"><a href="#什么是动态规划？动态规划的意义？" class="headerlink" title="什么是动态规划？动态规划的意义？"></a>什么是动态规划？动态规划的意义？</h2><ul>
-<li>对于这个问题，<a href="https://www.zhihu.com/question/23995189" target="_blank" rel="external">知乎上的最高票答案</a>已经说的很好很清楚了，大家可以去看看。</li>
+<li>对于这个问题，<a href="https://www.zhihu.com/question/23995189">知乎上的最高票答案</a>已经说的很好很清楚了，大家可以去看看。</li>
 </ul>
 <h2 id="3个典型问题"><a href="#3个典型问题" class="headerlink" title="3个典型问题"></a>3个典型问题</h2><ul>
 <li>斐波那契数列</li>
 <li>最大子段和</li>
 <li>01背包</li>
 </ul>
-<h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><ul>
-<li><p>斐波那契数列定义<br>F(n)=n (n&lt;=1)<br>F(n)=F(n-1)+F(n-2) (n&gt;1)</p>
-</li>
-<li><p>普通递归求解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fibRecur</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(n&lt;=<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> n;</div><div class="line">  <span class="keyword">return</span> fibRecur(n-<span class="number">1</span>)+fibRecur(n-<span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>DP求解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fibDP</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> fib[]=<span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">  fib[<span class="number">0</span>]=<span class="number">0</span>;</div><div class="line">  fib[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n+<span class="number">1</span>;++i)&#123;</div><div class="line">    fib[i]=fib[i-<span class="number">1</span>]+fib[i-<span class="number">2</span>];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> fib[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="最大子段和"><a href="#最大子段和" class="headerlink" title="最大子段和"></a>最大子段和</h3><ul>
-<li><p>DP求解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      <span class="keyword">int</span>[] arr=&#123;-<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,-<span class="number">4</span>,<span class="number">2</span>&#125;;</div><div class="line">      System.out.println(maxSum(arr));</div><div class="line">  &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxSum</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">      <span class="keyword">int</span> maxSum=arr[<span class="number">0</span>];</div><div class="line">      <span class="keyword">int</span> tempSum=arr[<span class="number">0</span>];</div><div class="line">      <span class="keyword">if</span>(arr.length&gt;<span class="number">1</span>)&#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;arr.length;++i)&#123;</div><div class="line">              tempSum= tempSum+arr[i]&gt;arr[i]?tempSum+arr[i]:arr[i];</div><div class="line">              <span class="keyword">if</span>(tempSum&gt;maxSum)</div><div class="line">                  maxSum=tempSum;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> maxSum;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h3><p>01背包问题，是用来介绍动态规划算法最经典的例子，网上关于01背包问题的讲解也很多。这篇博客讲得非常好，大家可以去看看，不用看代码，就看前面的图和解释大家就应该非常了解了。<br><a href="http://blog.csdn.net/mu399/article/details/7722810" target="_blank" rel="external">动态规划之01背包问题（最易理解的讲解）</a></p>
-
+        
+          <a class="article-more-a" href="/2017/04/02/3道题搞定动态规划/#more">more >></a>
+        
       
 
       
@@ -971,14 +957,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
              
@@ -987,15 +965,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TCP/IP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
