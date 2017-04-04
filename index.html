@@ -181,41 +181,9 @@
         <h2 id="初识Hadoop"><a href="#初识Hadoop" class="headerlink" title="初识Hadoop"></a>初识Hadoop</h2><h3 id="Hadoop的前世今生"><a href="#Hadoop的前世今生" class="headerlink" title="Hadoop的前世今生"></a>Hadoop的前世今生</h3><p>随着数据量扩大，系统遇上了瓶颈。<br>系统瓶颈：存储容量，读写速率，计算效率……</p>
 <p>为了解决以上困难，Google提出了革命性的大数据技术：<br>MapReduce,BigTable,GFS</p>
 <p>Google提出这些技术之前，人们解决分布式存储和计算的时候，比如像银行和通信业，解决分布式计算时会采用大量的大型机、小型机，超级计算机，或者买一些高端的存储。</p>
-<p>革命性的变化1：<br>成本降低，能用PC机，就不用大型机和高端存储。三个臭皮匠赛过诸葛亮。<br>革命性的变化2：<br>软件容错硬件故障视为常态，通过软件保证高可靠性。<br>革命性的变化3：<br>简化并行分布式计算，无须控制节点同步和数据交换。</p>
-<p>然而Google只发表了相关的论文，没有公布源码。<br>一个模仿Google大数据技术的开源实现来了！<br>那就是Hadoop!</p>
-<p>###　Hadoop的功能和优势<br>什么是Hadoop?<br>Hadoop是一个开源的分布式存储和分布式计算平台。</p>
-<p>Hadoop包括两个核心组成：</p>
-<ul>
-<li>HDFS:分布式文件系统，存储海量数据</li>
-<li>MapReduce:并行处理框架，实现任务的分解和调度</li>
-</ul>
-<p>Hadoop可以用来做什么？<br>搭建大型数据仓库，PB级数据的存储、处理、分析、统计等业务。<br>比如：<br>搜索引擎　网页的数据处理<br>商业智能　风险评估和预警<br>日志分析<br>数据挖掘</p>
-<p>Hadoop的优势：<br>１．高扩展<br>２．低成本<br>３．成熟的生态圈</p>
-<p>Hadoop的人才需求：<br>Hadoop开发<br>Hadoop运维</p>
-<h3 id="Hadoop的生态系统及版本"><a href="#Hadoop的生态系统及版本" class="headerlink" title="Hadoop的生态系统及版本"></a>Hadoop的生态系统及版本</h3><p>除了HDFS和MapReduce，还有很多开源工具：<br><em>Hive:</em>　不用编写复杂的Hadoop任务程序，它可以把SQL语句转换成Hadoop任务去执行，降低使用Hadoop的门槛。<br><em>HBASE:</em> 存储结构化数据的分布式数据库<br><em>zookeeper:</em> 监控Hadoop集群里每个节点的状态，管理整个集群的配置，维护节点间数据的一致性等。</p>
-<h2 id="Hadoop的安装"><a href="#Hadoop的安装" class="headerlink" title="Hadoop的安装"></a>Hadoop的安装</h2><p>我是在阿里云上租了一个Ubuntu服务器，然后直接用Xshell连接SSH。然后根据这篇博客搭建的环境。<br><a href="http://www.powerxing.com/install-hadoop/" target="_blank" rel="external">Hadoop安装教程_单机/伪分布式配置_Hadoop2.6.0/Ubuntu14.04</a></p>
-<h2 id="Hadoop的核心-HDFS简介"><a href="#Hadoop的核心-HDFS简介" class="headerlink" title="Hadoop的核心-HDFS简介"></a>Hadoop的核心-HDFS简介</h2><h3 id="HDFS基本概念"><a href="#HDFS基本概念" class="headerlink" title="HDFS基本概念"></a>HDFS基本概念</h3><p><em>Block</em><br>HDFS的文件被分成块进行存储<br>HDFS块的默认大小为64MB<br>块是文件存储处理的逻辑单元</p>
-<p><em>NameNode</em><br>NameNode是管理节点，存放文件元数据<br>元数据包含两个部分：<br>1.数据块与数据节点的映射表<br>2.文件与数据块的映射表</p>
-<p><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1feb1pstjc0j210y0obtg2.jpg" alt="HDFS体系结构"></p>
-<p><em>DataNoDe</em><br>DataNode是HDFS的工作节点，存放数据块</p>
-<h3 id="数据管理策略"><a href="#数据管理策略" class="headerlink" title="数据管理策略"></a>数据管理策略</h3><p>对于任何的数据块，都是存3份。<br>每个数据块3个副本，分布在两个机架内的三个节点。<br>这样是为了保证出现故障时，数据不会丢失。</p>
-<p><em>心跳检测</em><br>DataNode与NameNode之间有一个心跳协议。<br>DataNode定期向NameNode发送心跳消息。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1feb1qceg8mj210p0pek3b.jpg" alt="心跳检测"></p>
-<p><em>Secondary NameNode</em><br>也就是二级NameNode<br>Secondary NameNode定期同步元数据映像文件和修改日志。<br>NameNode无故障时，Secondary NameNode只是做一个同步备份，并不接受请求。<br>NameNode发生故障时，备胎转正。</p>
-<h3 id="HDFS中文件的读写操作"><a href="#HDFS中文件的读写操作" class="headerlink" title="HDFS中文件的读写操作"></a>HDFS中文件的读写操作</h3><p><em>HDFS中读文件的流程</em><br>1.客户端（可能时一个Java程序，也可能是命令行）向NameNode发起文件读取请求<br>2.NameNode把元数据返回给客户端。客户端就知道了文件包含哪些块，这些块在哪些DataNode可以找到。<br>3.客户端找到这些DataNode读取这些Block，下载下来后再进行组装。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1feb1qpe7v0j20xp0mbwnu.jpg" alt="HDFS读取文件的流程"></p>
-<p><em>HDFS中写文件的流程</em><br>1.文件拆分成Blocks。<br>2.NameNode找到当前在线的且有足够磁盘空间的DataNode，返回给客户端。<br>3.客户端在DataNode中写入Blocks。<br>4.流水线复制。比如：把第一个块写入到机架1的DataNode1后，进行流水线复制，通过复制管道，先复制到机架1的DataNode3，再复制到机架2的DataNode4<br>5.复制完成后，更新元数据。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1feb1r7jeiuj211d0mrn82.jpg" alt="HDFS写入文件的流程"></p>
-<h3 id="HDFS特点"><a href="#HDFS特点" class="headerlink" title="HDFS特点"></a>HDFS特点</h3><p>1.数据冗余，硬件容错<br>2.流式的数据访问。一次写入，多次读取。一旦写入，无法修改；想修改只能把之前的块删除，再加入新的块。<br>3.适合存储大文件</p>
-<p>适用性和局限性<br>1.适合数据批量读写，吞吐量高。<br>2.不适合交互式应用，很难满足低延迟。<br>3.适合一次写入多次读取，顺序读写。<br>4.不支持多用户并发写相同文件。</p>
-<h3 id="HDFS的使用"><a href="#HDFS的使用" class="headerlink" title="HDFS的使用"></a>HDFS的使用</h3><p>hdfs dfs -ls /<br>hdfs dfs -mkdir input<br>把文件传到HDFS<br>hdfs dfs -put hadoop-env.sh input/<br>hdfs dfs -car input/hadoop-env.sh<br>把文件从HDFS中下载下来<br>hdfs dfs -get input//hadoop-env.sh hadoop-env2.sh<br>查看文件系统所有的信息<br>hadoop dfsadmin -report</p>
-<p>注意：<br>hadoop fs：使用面最广，可以操作任何文件系统。<br>hadoop dfs与hdfs dfs：只能操作HDFS文件系统相关（包括与Local FS间的操作），前者已经Deprecated，一般使用后者。</p>
-<h2 id="Hadoop的核心-MapReduce原理与实现"><a href="#Hadoop的核心-MapReduce原理与实现" class="headerlink" title="Hadoop的核心-MapReduce原理与实现"></a>Hadoop的核心-MapReduce原理与实现</h2><h3 id="MapReduce的原理"><a href="#MapReduce的原理" class="headerlink" title="MapReduce的原理"></a>MapReduce的原理</h3><p>MapReduce是hadoop的并行计算框架<br>MapReduce采用分而治之的思想，将一个大任务分成多个小的子任务(map)，并行执行后，合并结果(reduce)。</p>
-<p>比如说我们有1000副扑克牌(不含大小王)，其中一副扑克牌中少一张牌，所以一共有51999张扑克牌。现在我们要找出缺少的是哪一张牌，该如何做呢？<br>我们可以将这51999张牌分给5个人，每个人数出每个点数的牌各有多少张(map tasks)，然后交换他们的数据，再把每个点数的牌共有多少张进行统计(reduce task)，如果有张牌出现999次就能筛选出结果。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1feb1rquntgj214g0mpqfl.jpg" alt="扑克牌例子"></p>
-<h3 id="MapReduce的运行流程"><a href="#MapReduce的运行流程" class="headerlink" title="MapReduce的运行流程"></a>MapReduce的运行流程</h3><p><em>基本概念</em><br>Job: 一个任务，一个作业，比如说找出访问次数最多的IP地址</p>
-<p>Task：一个job的完成要被分成多个tasks，Task又分为MapTask和ReduceTask</p>
-<p>整个Hadoop MapReduce体系结构中有两类节点，一类是JobTracker，它也是一个管理节点；一类是TaskTracker，实际上TaskTracker与DataNode是同一类节点。<br><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1feb1sf2cuuj20wo0nndof.jpg" alt="MapReduce体系结构"><br>JobTracker的角色:<br>1.作业调度，在作业队列中按照某种规则调度作业，比如说先到先服务<br>2.分配任务，监控任务执行进度<br>3.监控TaskTracker的状态</p>
-<p>TaskTracker的角色：<br>1.执行任务<br>2.汇报任务状态</p>
-<p><em>MapReduce作业执行过程</em><br><img src="http://ww1.sinaimg.cn/large/bc1d18eagy1feb1p0dcghj20z90n312s.jpg" alt="MapReduce作业执行过程"></p>
-<p><em>MapReduce的容错机制</em><br>1.重复执行。重复执行4次后还是失败就放弃执行。<br>2.推测执行。因为会等到所有Map端算完之后，Reduce端才后开始计算，如果有一个Map端的TaskTracker算得特别慢，说明它出现了问题，这时候就新建另一个TaskTracker做同样的事情，这个新建的TaskTracker和之前的，谁先算完，就终止另一个。通过推测执行，保证整个任务的计算不会因为某一两个TaskTracker的故障而效率很低。</p>
-
+        
+          <a class="article-more-a" href="/2017/04/04/Hadoop基础篇/#more">more >></a>
+        
       
 
       
@@ -1019,15 +987,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TCP/IP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
