@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="sherrywong1220.github.io">
-  <title>Tag: TCP/IP | Sherry的博客</title>
+  <title>用Java打印排列组合的情况 | Sherry的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里是Sherry的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sherry的博客">
-<meta property="og:url" content="sherrywong1220.github.io/tags/TCP-IP/index.html">
+  <meta name="description" content="有时候，我们不仅需要知道排列或组合的数量，而且需要知道有哪些排列或组合，并列举出所有的排列或组合，人工列举工作量大而且容易出错，那么，如何利用计算机帮忙列举出所有的这些排列或组合呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Java打印排列组合的情况">
+<meta property="og:url" content="sherrywong1220.github.io/2017/04/08/用Java打印排列组合的情况/index.html">
 <meta property="og:site_name" content="Sherry的博客">
-<meta property="og:description" content="这里是Sherry的博客">
+<meta property="og:description" content="有时候，我们不仅需要知道排列或组合的数量，而且需要知道有哪些排列或组合，并列举出所有的排列或组合，人工列举工作量大而且容易出错，那么，如何利用计算机帮忙列举出所有的这些排列或组合呢？">
+<meta property="og:updated_time" content="2017-04-07T16:05:19.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sherry的博客">
-<meta name="twitter:description" content="这里是Sherry的博客">
+<meta name="twitter:title" content="用Java打印排列组合的情况">
+<meta name="twitter:description" content="有时候，我们不仅需要知道排列或组合的数量，而且需要知道有哪些排列或组合，并列举出所有的排列或组合，人工列举工作量大而且容易出错，那么，如何利用计算机帮忙列举出所有的这些排列或组合呢？">
   
     <link rel="alternative" href="/atom.xml" title="Sherry的博客" type="application/atom+xml">
   
@@ -156,284 +157,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-用Java打印排列组合的情况" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用Java打印排列组合的情况
+    </h1>
+  
+
+        
+        <a href="/2017/04/08/用Java打印排列组合的情况/" class="archive-article-date">
+  	<time datetime="2017-04-07T16:01:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时候，我们不仅需要知道排列或组合的数量，而且需要知道有哪些排列或组合，并列举出所有的排列或组合，人工列举工作量大而且容易出错，那么，如何利用计算机帮忙列举出所有的这些排列或组合呢？ </p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] datalist=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</div><div class="line">        System.out.println(<span class="string">"7个里面选6个的组合结果"</span>);</div><div class="line">        combinationSelect(datalist, <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>], <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        System.out.println(<span class="string">"7个里面选2个的组合结果排列结果"</span>);</div><div class="line">        arrangementSelect(datalist, <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>], <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/*</span></div><div class="line">     * datalist: 数据集</div><div class="line">     * resultlist:  结果集</div><div class="line">     * start: 从datalist[start]开始选择放入resultlist</div><div class="line">     * selectedCount: 已选的个数</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">combinationSelect</span><span class="params">(<span class="keyword">int</span>[] dataList,<span class="keyword">int</span>[] resultList,<span class="keyword">int</span> start,<span class="keyword">int</span> selctedCount)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> ncount=resultList.length;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(selctedCount==ncount)&#123;   <span class="comment">// 全部选择完时，输出组合结构</span></div><div class="line"></div><div class="line">            System.out.println(Arrays.toString(resultList));</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=start;i&lt;=dataList.length-(ncount-selctedCount);++i)&#123;</div><div class="line">            resultList[selctedCount]=dataList[i];</div><div class="line">            combinationSelect(dataList, resultList, i+<span class="number">1</span>, selctedCount+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line">     * datalist: 数据集</div><div class="line">     * resultlist:  结果集</div><div class="line">     * selectedCount: 已选的个数</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">arrangementSelect</span><span class="params">(<span class="keyword">int</span>[] datalist,<span class="keyword">int</span>[] resultList,<span class="keyword">int</span> selectedCount)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> ncount=resultList.length;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(selectedCount==ncount)&#123;      <span class="comment">// 全部选择完时，输出排列结构</span></div><div class="line">            System.out.println(Arrays.toString(resultList));</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line">    </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;datalist.length;++i)&#123;</div><div class="line">            <span class="comment">// 判断datalist[i]是否已经存在于resultlist中</span></div><div class="line">            <span class="keyword">boolean</span> exists=<span class="keyword">false</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;selectedCount;++j)&#123;</div><div class="line">                <span class="keyword">if</span>(resultList[j]==datalist[i])&#123;</div><div class="line">                    exists=<span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        </div><div class="line">            <span class="keyword">if</span>(!exists)&#123;</div><div class="line">                resultList[selectedCount]=datalist[i];</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">            arrangementSelect(datalist,resultList,selectedCount+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考博客:<a href="http://cgs1999.iteye.com/blog/2327664" target="_blank" rel="external">http://cgs1999.iteye.com/blog/2327664</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/《图解HTTP》学习笔记（六）——HTTP首部/" class="archive-article-date">
-  	<time datetime="2017-03-02T07:00:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/《图解HTTP》学习笔记（六）——HTTP首部/">《图解HTTP》学习笔记（六）——HTTP首部</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/" class="archive-article-date">
-  	<time datetime="2017-03-01T15:40:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器/">《图解HTTP》学习笔记（五）——与HTTP协作的Web服务器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/" class="archive-article-date">
-  	<time datetime="2017-03-01T10:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/《图解HTTP》学习笔记（四）——返回结果的HTTP状态码/">《图解HTTP》学习笔记（四）——返回结果的HTTP状态码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/" class="archive-article-date">
-  	<time datetime="2017-01-13T07:49:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/">《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/" class="archive-article-date">
-  	<time datetime="2017-01-11T09:00:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/">《图解HTTP》学习笔记（二）—— 简单的HTTP协议</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/" class="archive-article-date">
-  	<time datetime="2016-12-14T10:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/14/《图解HTTP》学习笔记（一）——了解Web及网络基础/">《图解HTTP》学习笔记（一）——了解Web及网络基础</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:sherrywong1220.github.io/2017/04/08/用Java打印排列组合的情况/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/04/07/如何在Windows本地调试Hadoop/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何在Windows本地调试Hadoop</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -456,9 +333,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
