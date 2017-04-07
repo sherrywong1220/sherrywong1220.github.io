@@ -158,6 +158,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-如何在Windows本地调试Hadoop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/如何在Windows本地调试Hadoop/">如何在Windows本地调试Hadoop</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/如何在Windows本地调试Hadoop/" class="archive-article-date">
+  	<time datetime="2017-04-07T05:52:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我的Hadoop环境是在阿里云上搭建的，然后通过XShell连接到远程的阿里云服务器进行Hadoop开发。</p>
+<p>然而程序通常不是一次就能写好，阿里云服务器的无桌面环境也不利于程序的开发和调试，遂决定在本地IDAE进行开发调试，然后打好jar提交到服务器上执行，方法如下。</p>
+<h2 id="下载Hadoop并配置bin"><a href="#下载Hadoop并配置bin" class="headerlink" title="下载Hadoop并配置bin"></a>下载Hadoop并配置bin</h2><p>下载Hadoop到本地并解压，我用得Hadoop 2.7.3，你们可以自行选择需要的版本。</p>
+<p>推荐去github上搜winutils,只需要bin下面的几个执行文件包括winutils.pdb，winutils.exe，libwinutils.lib，Hadoop.pdb，hadoop.lib，hadoop.exp，hadoop.dll，版本一致的话直接把他的bin目录拷下来覆盖你的Hadoop的bin目录，没有bin目录自己创建一个。</p>
+        
+          <a class="article-more-a" href="/2017/04/07/如何在Windows本地调试Hadoop/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/如何在Windows本地调试Hadoop/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Hadoop基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -903,14 +974,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
              
@@ -919,15 +982,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TCP/IP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
