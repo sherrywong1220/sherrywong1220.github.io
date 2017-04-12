@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="sherrywong1220.github.io">
-  <title>Archives: 2017 | Sherry的博客</title>
+  <title>《图解HTTP》学习笔记（七）——确保Web安全的HTTPS | Sherry的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里是Sherry的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sherry的博客">
-<meta property="og:url" content="sherrywong1220.github.io/archives/2017/page/2/index.html">
+  <meta name="description" content="在HTTP协议中有可能存在信息窃听或者身份伪装等安全问题。使用HTTPS通信机制可以有效地防止这些问题。现在就让我们了解一些HTTPS。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《图解HTTP》学习笔记（七）——确保Web安全的HTTPS">
+<meta property="og:url" content="sherrywong1220.github.io/2017/04/12/《图解HTTP》学习笔记（七）——确保Web安全的HTTPS/index.html">
 <meta property="og:site_name" content="Sherry的博客">
-<meta property="og:description" content="这里是Sherry的博客">
+<meta property="og:description" content="在HTTP协议中有可能存在信息窃听或者身份伪装等安全问题。使用HTTPS通信机制可以有效地防止这些问题。现在就让我们了解一些HTTPS。">
+<meta property="og:updated_time" content="2017-04-12T09:41:17.072Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sherry的博客">
-<meta name="twitter:description" content="这里是Sherry的博客">
+<meta name="twitter:title" content="《图解HTTP》学习笔记（七）——确保Web安全的HTTPS">
+<meta name="twitter:description" content="在HTTP协议中有可能存在信息窃听或者身份伪装等安全问题。使用HTTPS通信机制可以有效地防止这些问题。现在就让我们了解一些HTTPS。">
   
     <link rel="alternative" href="/atom.xml" title="Sherry的博客" type="application/atom+xml">
   
@@ -156,36 +157,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-《图解HTTP》学习笔记（七）——确保Web安全的HTTPS" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/" class="archive-article-date">
-  	<time datetime="2017-01-13T07:49:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/13/《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息/">《图解HTTP》学习笔记（三）——HTTP报文内的HTTP信息</a>
+    <h1 class="article-title" itemprop="name">
+      《图解HTTP》学习笔记（七）——确保Web安全的HTTPS
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/12/《图解HTTP》学习笔记（七）——确保Web安全的HTTPS/" class="archive-article-date">
+  	<time datetime="2017-04-12T09:02:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在HTTP协议中有可能存在信息窃听或者身份伪装等安全问题。使用HTTPS通信机制可以有效地防止这些问题。现在就让我们了解一些HTTPS。</p>
+<a id="more"></a>
+<h3 id="HTTP的缺点："><a href="#HTTP的缺点：" class="headerlink" title="HTTP的缺点："></a>HTTP的缺点：</h3><ul>
+<li>通信使用明文（不加密），内容可能会被窃听</li>
+<li>不验证通信方的身份，因此可能遭遇伪装</li>
+<li>无法证明报文的完整性，所以可能已遭篡改</li>
+</ul>
+<h3 id="HTTP-加密-认证-完整性保护-HTTPS"><a href="#HTTP-加密-认证-完整性保护-HTTPS" class="headerlink" title="HTTP+ 加密 + 认证 + 完整性保护 =HTTPS"></a>HTTP+ 加密 + 认证 + 完整性保护 =HTTPS</h3><p>HTTPS并非是应用层的一种新协议。只是HTTP通信接口部分用SSL（Secure Socket Layer）和 TLS（Transport Layer Security）协议替代而已。</p>
+<p>通常，HTTP直接和TCP通信。当使用SSL时，则演变成先和SSL通信，再由SSL和TCP通信。简言之，所谓HTTPS，其实就是身披SSL协议这层外壳的HTTP。</p>
+<p>在采用SSL后，HTTP就拥有了HTTPS的加密、证书和完整性保护这些功能。</p>
+<ul>
+<li><p>共享密钥加密技术</p>
+<p>加密和解密用同一个密钥的方式称为共享密钥加密，也叫对称密钥加密。发送密钥的时候就有被窃听的危险，另外还得设法安全保管接收到的密钥。</p>
+</li>
+<li><p>公开密钥加密</p>
+<p>公开密钥加密，私有密钥解密。但是公开密钥加密与共享密钥加密相比，其处理速度要慢。</p>
+</li>
+<li><p>HTTPS采用混合密钥加密</p>
+<p>HTTPS采用共享密钥加密和公开密钥加密两者并用的混合密钥加密。先使用公开密钥加密的方式安全地交换稍后在共享密钥中要使用的密钥，再用共享密钥加密方式进行通信。</p>
+</li>
+<li><p>证明公开密钥正确性的证书</p>
+<p>公开密钥加密也存在一些问题。那就是无法证明公开密钥本身是货真价实的公开密钥，因为有可能在公开密钥传输途中，真正的公开密钥已经被攻击者替换掉了。</p>
+<p>为了解决上述问题，可以使用由数字证书认证机构（CA，Certificate Authority）和其相关机关颁发的公开密钥证书。</p>
+<p>首先，服务器的运营人员向数字证书认证机构提出公开密钥的申请。CA在判断提出申请者的身份之后，会对已申请的公开密钥做数字签名（私钥加密），然后分配这个已经签名的公开密钥，并将该公开密钥放入公钥证书后绑定在一起。</p>
+<p>服务器会将这份由CA颁发的公钥证书发送给客户端，以进行公开密钥方式进行通信。公钥证书也可以叫数字证书或者直接成为证书。</p>
+<p>接到证书的客户端可使用CA的公开密钥，对那张证书上的数字签名进行验证，一旦验证通过，客户端便可以明确两件事：一，认证服务器的公开密钥的是真实有效的数字认证机构。二，服务器的公开密钥是值得信赖的。</p>
+<p>此处认证机关的公开密钥必须安全地转交给客户端。使用通信方式时，如何安全转交是一件很困难地事，因此多数浏览器开发商发布版本时，会事先在内部植入常用认证机关地公开密钥。</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,65 +250,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:sherrywong1220.github.io/2017/04/12/《图解HTTP》学习笔记（七）——确保Web安全的HTTPS/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/" class="archive-article-date">
-  	<time datetime="2017-01-11T09:00:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/11/《图解HTTP》学习笔记（二）——简单的HTTP协议/">《图解HTTP》学习笔记（二）—— 简单的HTTP协议</a>
-    </h1>
+  
+    <a href="/2017/04/08/2017京东暑期实习面试题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2017京东暑期实习笔试题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TCP/IP</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -282,8 +354,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
