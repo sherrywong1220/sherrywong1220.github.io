@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>对程序员友好的绘图工具 Mermaid | Sherry Wang</title>
+  <meta name="google-site-verification" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta itemprop="name" content="Sherry Wang" />
+  <meta itemprop="description" content="吾将上下而求索" />
+  <meta itemprop="image" content="" />
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <!-- keywords and description -->
+  
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <header>
+  <div class="site-title">
+    <a href="/">
+      Sherry Wang
+    </a>
+  </div>
+  
+  <div class="site-subtitle">
+    吾将上下而求索
+  </div>
+  
+  <!-- 
+  <p class="links">
+    
+    <a href="">
+      <img src="/images/links/" alt="">
+    </a>
+    
+  </p>
+   -->
+</header>
+    <div id="main">
+      <article class="post">
+  <h3 class="date">
+  <time datetime="2022-03-10T09:48:36.000Z">
+    Mar 10, 2022
+  </time>
+</h3>
+  <h1>对程序员友好的绘图工具 Mermaid</h1>
+  <!-- <p class="post-info">
+  
+  
+  <a href="/2022/03/10/mermaid/#waline" class="post-info-item comment-count waline-comment-count" id="/2022/03/10/mermaid/">获取中...</a>
+  <span class="post-info-item view-count waline-visitor-count" id="/2022/03/10/mermaid/">获取中...</span>
+  
+</p> -->
+  
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a></li></ul>
+
+  
+  <article>
+    <p><a target="_blank" rel="noopener" href="https://mermaid-js.github.io/">Mermaid</a> 是一款基于 JavaScript 的绘图工具。利用 Mermaid 你可以使用文本和编码的方式绘制流程图、时序图、甘特图。</p>
+<p>在使用 Mermaid 前，我曾经尝试过使用 PlantUML 进行绘图。因为基本没有 Markdown 编辑器原生支持 PlantUML，所以我采用 VS Code 外加 PlantUML 插件的方式进行绘图，但实际使用时存在如下问题：</p>
+<ol>
+<li>使用 PlantUML 绘制的流程图无法友好地与别人分享，即时是导出成 PNG 也会出现失真的问题。</li>
+<li>流程图通常需要与文本文档共同组合最终呈现给读者，但如果使用 PlantUML 绘图，对于未集成 PlantUML 的文档工具，只能将最终生成的图片贴到文档中，之后我们想再次编辑图片就成了一个难事。</li>
+</ol>
+<p>基于这些原因，最终我放弃了使用 PlantUML。后来 <a target="_blank" rel="noopener" href="https://www.draw.io/">draw.io</a> 成为了我的主力绘图工具，不得不说 draw.io 是我目前使用过体验最好的绘图工具，并且由于公司的 Wiki 系统对 draw.io 有完善的集成，所以工作中我基本都会使用它来绘图。</p>
+<p>工作之外， 当我使用 Markdown 进行写作时，我依然希望追求一种行云流水的写作感觉，文章里的文本和流程图最好一体化，方便日后再次编辑。后来惊喜地发现了 Mermaid，我日常使用的 <a target="_blank" rel="noopener" href="https://typora.io/">Typora</a> 编辑器，就对 Mermaid 支持得很好。</p>
+<p>Hexo 博客框架也是支持渲染 Mermaid 流程图的，安装方式可见 <a target="_blank" rel="noopener" href="https://github.com/webappdevelp/hexo-filter-mermaid-diagrams"> hexo-filter-mermaid-diagrams</a> 。</p>
+<p>以下是 Hexo 中直接渲染 Mermaid 的时序图效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre class=&quot;mermaid&quot;&gt;sequenceDiagram</span><br><span class="line">    participant Alice</span><br><span class="line">    participant Bob</span><br><span class="line">    Alice-&gt;&gt;John: Hello John, how are you?</span><br><span class="line">    loop Healthcheck</span><br><span class="line">        John-&gt;&gt;John: Fight against hypochondria</span><br><span class="line">    end</span><br><span class="line">    Note right of John: Rational thoughts &lt;br/&gt;prevail!</span><br><span class="line">    John--&gt;&gt;Alice: Great!</span><br><span class="line">    John-&gt;&gt;Bob: How about you?</span><br><span class="line">    Bob--&gt;&gt;John: Jolly good!&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+
+<pre class="mermaid">sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!</pre>
+
+
+<p>目前如果我使用的文档系统支持 draw.io， 我依然会优先使用 draw.io 绘图。 编写 Markdown 时我会使用 Mermaid 进行绘图。当要绘制复杂的流程图时，使用 Mermaid 是一种不错的选择，毕竟大家都不愿意把大部分时间花在调整流程图中各种元素的尺寸、对齐等问题上。</p>
+
+  </article>
+  
+  <hr>
+  <blockquote>
+    <p>
+      本文由 <a href="">Sherry Wang</a> 创作，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0</a> 国际许可协议。
+    </p>
+    <p>
+      本站文章除注明转载/出处外，均为本站原创或翻译，转载请务必署名。
+    </p>
+  </blockquote>
+  
+</article>
+
+
+<div id="waline"></div>
+
+    </div>
+  </div>
+  <footer>
+  
+  
+  <p id="busuanzi_container_site_pv">
+    本站访问量 <span id="busuanzi_value_site_pv">获取中...</span>
+  </p>
+  
+  <p>
+    Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/syy11cn/hexo-theme-linear">Linear</a> from <a target="_blank" rel="noopener" href="https://syy11.cn">Yiyang Sun</a>
+  </p>
+  <script src='https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js'></script>
+</footer>
+<!-- 
+<script src='https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js'></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+ -->
+
+
+<script src='https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js'></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: 'forest' });
+  }
+</script>
+
+  
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <script>
+    Waline({
+      el: '#waline',
+      placeholder: '',
+      avatar: 'retro',
+      visitor: true,
+      requiredFields: ['nick', 'mail'],
+      serverURL: '',
+      emoji: [
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
+      ]
+    });
+  </script>
+</body>
+
+</html>
