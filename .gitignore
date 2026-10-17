@@ -4,7 +4,6 @@ _site
 .idea
 .jekyll-cache
 .jekyll-metadata
-.ruby-version
 .sass-cache
 .tweet-cache
 .venv
@@ -19,3 +18,6 @@ vendor
 # Python bytecode from bin/ helper scripts
 __pycache__/
 *.pyc
+
+output/
+_config.pages.yml

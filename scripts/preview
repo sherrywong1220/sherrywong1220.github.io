@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+# Homebrew Ruby is intentionally not linked over macOS's system Ruby.
+if [[ -x /opt/homebrew/opt/ruby@3.3/bin/ruby ]]; then
+  export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+elif [[ -x /usr/local/opt/ruby@3.3/bin/ruby ]]; then
+  export PATH="/usr/local/opt/ruby@3.3/bin:$PATH"
+fi
+exec bundle exec jekyll serve --host 127.0.0.1 --port "${PORT:-4000}" --livereload "$@"

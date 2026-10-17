@@ -1,0 +1,229 @@
+// Personal site styles layered over the al-folio runtime.
+:root {
+  --global-theme-color: #086b64;
+  --global-hover-color: #064f4a;
+  --global-text-color: #272b31;
+  --global-text-color-light: #656b73;
+  --global-bg-color: #fff;
+}
+
+html[data-theme="dark"] {
+  --global-theme-color: #7bd5c9;
+  --global-hover-color: #a1e7de;
+  --global-bg-color: #191d22;
+  --global-text-color: #e3e7eb;
+  --global-text-color-light: #a7b0bb;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.post-header {
+  margin-bottom: 2.4rem;
+}
+
+.post-title {
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.post-header .desc {
+  margin-top: 0.65rem;
+  color: var(--global-text-color-light);
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 1.65rem;
+  letter-spacing: -0.025em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.research-eyebrow {
+  color: var(--global-theme-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.profile {
+  width: 25%;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+}
+
+.profile img {
+  border-radius: 6px;
+  box-shadow: none !important;
+}
+
+.profile .more-info {
+  margin-top: 0.8rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--global-text-color-light);
+}
+
+.profile .more-info p {
+  display: block;
+  margin: 0;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.profile-links a {
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.profile-links span {
+  margin-left: 0.2rem;
+  font-size: 0.8em;
+}
+
+.research-overview {
+  clear: both;
+  padding-top: 0.1rem;
+}
+
+.research-overview ul {
+  padding-left: 1.15rem;
+}
+
+.research-overview li {
+  margin-bottom: 0.4rem;
+}
+
+.research-section {
+  border-top: 1px solid var(--global-divider-color);
+  padding-top: 1.6rem;
+  margin-top: 2.2rem;
+}
+
+.research-section h2 {
+  margin-top: 0;
+}
+
+.research-section .topic-label {
+  color: var(--global-theme-color);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.research-section ul {
+  padding-left: 1.2rem;
+}
+
+.publications ol.bibliography li {
+  margin-bottom: 1.8rem;
+}
+
+.publications .title {
+  line-height: 1.5;
+  margin-bottom: 0.3rem;
+}
+
+.publications .author,
+.publications .periodical {
+  line-height: 1.65;
+  font-size: 0.88rem;
+}
+
+.publications .links {
+  margin-top: 0.6rem;
+}
+
+.publications .links a.btn {
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.65rem;
+}
+
+.publications .badge {
+  letter-spacing: 0.03em;
+  font-size: 0.75rem;
+}
+
+.social {
+  border-top: 1px solid var(--global-divider-color);
+  margin-top: 2.5rem;
+  padding-top: 1.8rem;
+}
+
+.social .contact-icons {
+  font-size: 2rem;
+}
+
+.contact-note {
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;
+}
+
+footer {
+  margin-top: 3rem;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 4px;
+}
+
+@media (max-width: 575px) {
+  body {
+    font-size: 15px;
+  }
+
+  .post-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-title {
+    font-size: 2.15rem;
+  }
+
+  .profile {
+    width: 150px;
+    float: none !important;
+    margin: 0 0 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.publications .badge,
+.publications .badge div,
+.publications .badge a {
+  color: #fff;
+}
+
+.publications h2.bibliography {
+  color: var(--global-text-color-light);
+  font-size: 1.1rem;
+}
+
+::highlight(search) {
+  background-color: #086b64;
+  color: #fff;
+}

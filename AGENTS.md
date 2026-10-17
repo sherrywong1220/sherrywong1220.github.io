@@ -1,3 +1,16 @@
+# Personal-site scope (takes precedence over upstream notes below)
+
+This checkout is Xi (Sherry) Wang's personal website created from al-folio, not the upstream starter itself.
+
+- Use `README.md` for this site's commands and GitHub Pages deployment. The default local baseurl is empty, not `/al-folio`.
+- `upstream` is read-only for provenance. Never publish or open a PR to the al-folio repository for personal-site changes.
+- The site owns `_pages`, `_data`, `_bibliography`, and its portrait. Verify biographical and publication facts against `docs/CONTENT_SOURCES.md`.
+- `_sass/_site.scss` and the one-line addition to `assets/css/main.scss` are intentional site customization; preserve the override acknowledgement.
+- Upstream demo integration / screenshot tests were removed because they depend on demo content. Validate with the Jekyll build, `scripts/check_site.py`, the upgrade audits, and browser review. Formatting uses `npm run lint:prettier`.
+- Keep generated output, dependencies, and local preview state out of Git. No remote publication is authorized by an ordinary local content edit.
+
+---
+
 # Agent Guidelines for al-folio (v1.x)
 
 **This file is the authoritative entry point for coding agents working in this repo.** Read it before making any change. It is intentionally short and tool-neutral; it links to the one place each longer-form fact lives.
