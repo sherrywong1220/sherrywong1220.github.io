@@ -7,9 +7,6 @@ profile:
   align: right
   image: xi-sherry-wang.jpg
   image_circular: false
-  more_info: >
-    <p>PASA Lab · UC Merced</p>
-    <p>Merced, California</p>
 selected_papers: false
 social: false
 announcements:
