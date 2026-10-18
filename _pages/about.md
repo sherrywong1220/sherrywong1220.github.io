@@ -28,7 +28,7 @@ including Compute Express Link (CXL). I study how software can make effective us
 memory, from memory management in the operating system to communication and inference runtimes.
 
 Outside of research, I enjoy snowboarding 🏂, working out 🏋️‍♀️, tennis 🎾, climbing 🧗‍♀️, and surfing 🏄‍♀️.
-When I’m away from campus and the office, you might find me hanging out on snowy slopes, on a tennis court, or at a climbing gym.
+When I’m away from campus and the office, you might find me hanging out in the snowy mountains, on a tennis court, or at a climbing gym.
 
 <div class="research-overview" markdown="1">
 
