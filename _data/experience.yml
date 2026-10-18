@@ -2,9 +2,6 @@
 - company: SK hynix America
   period: Oct 2024 – May 2025
   role: CXL System Engineer · Internship
-  description: CXL memory sharing for MPI one-sided and two-sided communication.
-  project: cMPI · SC 2025
-  project_url: https://doi.org/10.1145/3712285.3759816
 
 - company: Tencent
   period: May 2021 – May 2023
