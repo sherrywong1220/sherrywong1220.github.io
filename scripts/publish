@@ -24,7 +24,7 @@ fi
 publish_tmp="$(mktemp -d "${TMPDIR:-/tmp}/sherryhomepage-publish.XXXXXX")"
 trap 'rm -rf "$publish_tmp"' EXIT
 cat > "$publish_tmp/pages.yml" <<'YAML'
-url: "https://sherrywong1220.github.io"
+url: "https://xisherry.wang"
 baseurl: ""
 YAML
 
