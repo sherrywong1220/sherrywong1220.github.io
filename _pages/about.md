@@ -19,8 +19,8 @@ latest_posts:
 ---
 
 Hello! I am a Ph.D. candidate at the [University of California, Merced](https://www.ucmerced.edu/),
-where I work with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
-[PASA Lab](https://www.pasalabs.org/).
+where I have been working with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
+[PASA Lab](https://www.pasalabs.org/) since 2023.
 
 My research focuses on optimizing **LLM systems and operating systems** with **emerging memory technologies** (e.g., CXL memory).
 
