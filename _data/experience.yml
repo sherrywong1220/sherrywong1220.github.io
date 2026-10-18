@@ -1,0 +1,8 @@
+# Add entries in reverse chronological order when dates are available.
+# The cMPI paper confirms the internship; exact dates and the formal title are unverified.
+- company: SK hynix
+  period:
+  role: Research internship
+  description: CXL memory sharing for MPI one-sided and two-sided communication.
+  project: cMPI · SC 2025
+  project_url: https://doi.org/10.1145/3712285.3759816

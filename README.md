@@ -36,6 +36,7 @@ npm ci
 | -------------------------- | ------------------------------- |
 | 个人简介与完整论文列表     | `_pages/about.md`               |
 | 研究方向                   | `_pages/research.md`            |
+| Industry Experience        | `_data/experience.yml`          |
 | 论文信息、PDF 和代码链接   | `_bibliography/papers.bib`      |
 | 论文页结构                 | `_pages/publications.md`        |
 | 邮箱、Scholar、LinkedIn    | `_data/socials.yml`             |

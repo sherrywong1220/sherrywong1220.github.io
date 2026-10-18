@@ -39,6 +39,22 @@ memory, from memory management in the operating system to communication and infe
 
 </div>
 
+<section class="industry-experience" aria-labelledby="industry-experience">
+  <h2 id="industry-experience">Industry Experience</h2>
+  <ul class="experience-list">
+    {% for experience in site.data.experience %}
+      <li>
+        <div class="experience-heading">
+          <h3>{{ experience.company }}</h3>
+          {% if experience.period %}<span class="experience-period">{{ experience.period }}</span>{% endif %}
+        </div>
+        <p class="experience-role">{{ experience.role }}</p>
+        <p class="experience-description">{{ experience.description }} <a href="{{ experience.project_url }}">{{ experience.project }}</a>.</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
 ## [Publications]({{ '/publications/' | relative_url }})
 
 <div class="publications">
