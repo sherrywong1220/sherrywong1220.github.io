@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Ph.D. student · University of California, Merced
+subtitle: Ph.D. candidate · University of California, Merced
 profile:
   align: right
   image: xi-sherry-wang.jpg
@@ -18,7 +18,7 @@ latest_posts:
   enabled: false
 ---
 
-I am **Xi (Sherry) Wang**, a Ph.D. student at the [University of California, Merced](https://www.ucmerced.edu/),
+I am **Xi (Sherry) Wang**, a Ph.D. candidate at the [University of California, Merced](https://www.ucmerced.edu/),
 where I work with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
 [Parallel Architecture, System, and Algorithm (PASA) Lab](https://www.pasalabs.org/).
 I joined the lab in Fall 2023.
