@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+if [[ -x /opt/homebrew/opt/ruby@3.3/bin/ruby ]]; then
+  export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+elif [[ -x /usr/local/opt/ruby@3.3/bin/ruby ]]; then
+  export PATH="/usr/local/opt/ruby@3.3/bin:$PATH"
+fi
+
+if [[ "$(git branch --show-current)" != main || -n "$(git status --porcelain)" ]]; then
+  echo "Publish from a clean main branch. Commit your changes first." >&2
+  exit 1
+fi
+
+publish_remote="https://github.com/sherrywong1220/sherrywong1220.github.io.git"
+publish_revision="$(git rev-parse HEAD)"
+publish_remote_revision="$(git ls-remote "$publish_remote" refs/heads/main | cut -f1)"
+if [[ "$publish_revision" != "$publish_remote_revision" ]]; then
+  echo "Local main differs from GitHub. Synchronize and push main before publishing." >&2
+  exit 1
+fi
+
+publish_tmp="$(mktemp -d "${TMPDIR:-/tmp}/sherryhomepage-publish.XXXXXX")"
+trap 'rm -rf "$publish_tmp"' EXIT
+cat > "$publish_tmp/pages.yml" <<'YAML'
+url: "https://sherrywong1220.github.io"
+baseurl: ""
+YAML
+
+JEKYLL_ENV=production bundle exec jekyll build \
+  --config "_config.yml,$publish_tmp/pages.yml" \
+  --destination "$publish_tmp/build"
+python3 scripts/check_site.py "$publish_tmp/build"
+touch "$publish_tmp/build/.nojekyll"
+
+git clone --quiet --depth 1 --single-branch --branch gh-pages "$publish_remote" "$publish_tmp/branch"
+rsync -a --delete --exclude='.git/' "$publish_tmp/build/" "$publish_tmp/branch/"
+git -C "$publish_tmp/branch" config user.name "$(git config user.name)"
+git -C "$publish_tmp/branch" config user.email "$(git config user.email)"
+git -C "$publish_tmp/branch" add --all
+if git -C "$publish_tmp/branch" diff --cached --quiet; then
+  echo "The published files already match this build."
+  exit 0
+fi
+git -C "$publish_tmp/branch" commit --quiet -m "Publish homepage from $publish_revision"
+git -C "$publish_tmp/branch" push origin HEAD:gh-pages
+echo "Uploaded. Check the Pages deployment at:"
+echo "https://github.com/sherrywong1220/sherrywong1220.github.io/actions"

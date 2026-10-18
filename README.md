@@ -69,15 +69,18 @@ python3 scripts/check_site.py _site
 
 生产地址：<https://sherrywong1220.github.io/>。源码仓库：[sherrywong1220/sherrywong1220.github.io](https://github.com/sherrywong1220/sherrywong1220.github.io)。
 
-`.github/workflows/deploy.yml` 使用 GitHub Pages 官方 Actions：PR 构建检查；推送 `main` 后构建、检查站内链接和论文内容，再部署。仓库 **Settings → Pages → Build and deployment → Source** 使用 **GitHub Actions**。流程根据实际 Pages 地址生成 `url` / `baseurl`，个人主页的 `baseurl` 为空。
+当前使用 **本地生产构建 → `gh-pages` 分支 → GitHub Pages**。仓库 **Settings → Pages → Build and deployment → Source** 为 **Deploy from a branch**，分支为 **`gh-pages`**，目录为 **`/ (root)`**。`main` 保留可编辑源码，`gh-pages` 保存构建后的静态网站及 `.nojekyll`；个人主页的 `baseurl` 为空。
 
 后续更新：修改内容、执行上面的验证命令，将修改提交到本地 Git，然后运行：
 
 ```bash
 git push origin main
+./scripts/publish
 ```
 
-在 [Actions → Build and deploy to GitHub Pages](https://github.com/sherrywong1220/sherrywong1220.github.io/actions/workflows/deploy.yml) 查看构建和部署结果。
+`scripts/publish` 要求 `main` 工作区干净，且本地提交已推送到源码仓库。脚本使用正式网址构建、检查页面和站内链接，然后以普通 Git 提交更新 `gh-pages`，保留发布历史。在 [Actions → pages build and deployment](https://github.com/sherrywong1220/sherrywong1220.github.io/actions) 查看最终部署结果。
+
+首次发布时，自定义 Actions 因 GitHub 账户的 billing issue 未能启动；GitHub 内置的 Pages 分支部署已成功。为避免每次推送源码触发同样的失败，暂时停用自定义 `Build and deploy to GitHub Pages` 工作流，其配置仍保留在 `.github/workflows/deploy.yml`。账户限制解除后，可将 Pages Source 改回 **GitHub Actions**、启用该工作流并手动运行一次，以恢复推送 `main` 后自动构建发布。
 
 ### 旧主页归档
 
