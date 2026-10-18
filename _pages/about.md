@@ -18,14 +18,11 @@ latest_posts:
   enabled: false
 ---
 
-I am **Xi (Sherry) Wang**, a Ph.D. candidate at the [University of California, Merced](https://www.ucmerced.edu/),
+Hello! I am a Ph.D. candidate at the [University of California, Merced](https://www.ucmerced.edu/),
 where I work with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
-[Parallel Architecture, System, and Algorithm (PASA) Lab](https://www.pasalabs.org/).
-I joined the lab in Fall 2023.
+[PASA Lab](https://www.pasalabs.org/).
 
-My research focuses on **LLM systems, operating systems, and emerging memory technologies**,
-including Compute Express Link (CXL). I study how software can make effective use of heterogeneous
-memory, from memory management in the operating system to communication and inference runtimes.
+My research focuses on optimizing **LLM systems and operating systems** with **emerging memory technologies** (e.g., CXL memory).
 
 Outside of research, I enjoy snowboarding 🏂, working out 🏋️‍♀️, tennis 🎾, climbing 🧗‍♀️, and surfing 🏄‍♀️.
 When I’m away from campus and the office, you might find me hanging out in the snowy mountains, on a tennis court, or at a climbing gym.
