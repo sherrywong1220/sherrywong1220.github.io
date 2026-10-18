@@ -67,20 +67,25 @@ python3 scripts/check_site.py _site
 
 ## 发布到 GitHub Pages
 
-已配置 `.github/workflows/deploy.yml`：PR 构建检查；推送 `main` 后构建并部署。流程使用 GitHub Pages 官方 Actions，并根据实际 Pages 地址生成 `url` / `baseurl`，支持个人站、项目站和自定义域名，不需要提前猜 GitHub 用户名。
+生产地址：<https://sherrywong1220.github.io/>。源码仓库：[sherrywong1220/sherrywong1220.github.io](https://github.com/sherrywong1220/sherrywong1220.github.io)。
 
-1. 在自己的 GitHub 账号创建一个空仓库。根域名主页可命名为 `USERNAME.github.io`；项目主页可以使用 `sherryhomepage`。
-2. 在仓库 **Settings → Pages → Build and deployment** 中，将 **Source** 设为 **GitHub Actions**。
-3. 为本地项目添加你自己的远程并推送：
+`.github/workflows/deploy.yml` 使用 GitHub Pages 官方 Actions：PR 构建检查；推送 `main` 后构建、检查站内链接和论文内容，再部署。仓库 **Settings → Pages → Build and deployment → Source** 使用 **GitHub Actions**。流程根据实际 Pages 地址生成 `url` / `baseurl`，个人主页的 `baseurl` 为空。
 
-   ```bash
-   git remote add origin https://github.com/USERNAME/REPOSITORY.git
-   git push -u origin main
-   ```
+后续更新：修改内容、执行上面的验证命令，将修改提交到本地 Git，然后运行：
 
-4. 在 **Actions → Build and deploy to GitHub Pages** 查看部署结果；部署任务会显示网站地址。
+```bash
+git push origin main
+```
 
-当前仅在本地创建，没有创建远程仓库或公开发布。`upstream` 指向 al-folio 用于溯源，推送地址已设为 `DISABLED`；发布时只使用自己的 `origin`。当前仓库的提交身份使用公开姓名及 UC Merced 邮箱，仅设置在本仓库。
+在 [Actions → Build and deploy to GitHub Pages](https://github.com/sherrywong1220/sherrywong1220.github.io/actions/workflows/deploy.yml) 查看构建和部署结果。
+
+### 旧主页归档
+
+2026-10-17，原仓库改名为 [sherrywong1220.github.io-archive](https://github.com/sherrywong1220/sherrywong1220.github.io-archive)，保留原仓库及全部提交历史，并设为只读归档。归档时 `master` 的提交为 `b8921305d9f7a1b32a44d555f892e74041b3217e`。旧仓库的 Pages 已停用，新版使用原来的主页网址。
+
+本机另有完整 Git 备份 `output/deployment/old-homepage-2026-10-17.bundle`，以及发布前的新版备份 `output/deployment/new-homepage-before-publish.bundle`。这些文件只保存在本地，不上传到源码仓库或网站。
+
+`origin` 指向自己的新主页仓库。`upstream` 指向 al-folio 用于溯源，推送地址已设为 `DISABLED`；发布时只使用 `origin`。当前仓库的提交身份使用公开姓名及 UC Merced 邮箱，仅设置在本仓库。
 
 部署流程参考 [GitHub Pages 官方文档](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。`docs/` 中其余文件是保留的上游说明；本项目部署方式以本 README 为准。
 
