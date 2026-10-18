@@ -27,12 +27,6 @@ My research focuses on **LLM systems, operating systems, and emerging memory tec
 including Compute Express Link (CXL). I study how software can make effective use of heterogeneous
 memory, from memory management in the operating system to communication and inference runtimes.
 
-<div class="profile-links">
-  <a class="email" href="mailto:swang166@ucmerced.edu">swang166@ucmerced.edu</a>
-  <a href="https://scholar.google.com/citations?user=JHXk0gcAAAAJ">Google Scholar</a>
-  <a href="https://www.linkedin.com/in/xi-sherry-wang/">LinkedIn</a>
-</div>
-
 <div class="research-overview" markdown="1">
 
 ## Research Interests

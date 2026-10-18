@@ -133,19 +133,6 @@ h3 {
   color: var(--global-text-color-light);
 }
 
-.profile-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.2rem;
-  margin: 1.2rem 0 1.5rem;
-  font-size: 0.85rem;
-}
-
-.profile-links .email {
-  font-family: "Ubuntu Mono", ui-monospace, monospace;
-  font-size: 1rem;
-}
-
 .research-overview {
   clear: both;
   padding-top: 0.1rem;
