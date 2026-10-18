@@ -45,7 +45,7 @@ npm ci
 | 个人配色、间距、移动端样式 | `_sass/_site.scss`              |
 | 事实来源与取舍记录         | `docs/CONTENT_SOURCES.md`       |
 
-首页与 Publications 页面均将全部论文合并在一个 `Preprints` 列表中，按 `papers.bib` 中的条目顺序排列：cMPI → CXL characterization → HybridGen → OCEAN → mLR → TierBPF → Hybrid Adaptive Tuning。会议论文标签保留会议名和年份，SC 与 IPDPS 统一使用酒红色；预印本标签显示为 `arXiv`。BibTeX 中仍保留正确的 `@inproceedings` 与 `@misc` 类型。新增论文也应更新 `scripts/check_site.py` 中的预期论文键。
+首页与 Publications 页面均将全部论文合并在一个 `Publications` 列表中，按 `papers.bib` 中的条目顺序排列：cMPI → CXL characterization → HybridGen → OCEAN → mLR → TierBPF → Hybrid Adaptive Tuning。会议论文标签保留会议名和年份，SC 与 IPDPS 统一使用酒红色；预印本标签显示为 `arXiv`。BibTeX 中仍保留正确的 `@inproceedings` 与 `@misc` 类型。新增论文也应更新 `scripts/check_site.py` 中的预期论文键。
 
 没有虚构本科／硕士学历、预计毕业日期、引用次数或 CV 下载。需要补充时直接编辑这些源文件。
 

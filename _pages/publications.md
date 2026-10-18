@@ -11,8 +11,6 @@ For citation metrics and my Scholar profile, visit [Google Scholar](https://scho
 
 {% include bib_search.liquid %}
 
-## Preprints
-
 <div class="publications">
 {% bibliography %}
 </div>

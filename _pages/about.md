@@ -60,7 +60,7 @@ When I’m away from campus and the office, you might find me hanging out in the
   </ul>
 </section>
 
-## [Preprints]({{ '/publications/' | relative_url }})
+## [Publications]({{ '/publications/' | relative_url }})
 
 <div class="publications">
 {% bibliography %}
