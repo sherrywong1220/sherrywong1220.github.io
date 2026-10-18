@@ -49,7 +49,12 @@ memory, from memory management in the operating system to communication and infe
           {% if experience.period %}<span class="experience-period">{{ experience.period }}</span>{% endif %}
         </div>
         <p class="experience-role">{{ experience.role }}</p>
-        <p class="experience-description">{{ experience.description }} <a href="{{ experience.project_url }}">{{ experience.project }}</a>.</p>
+        {% if experience.description or experience.project %}
+          <p class="experience-description">
+            {{ experience.description }}
+            {% if experience.project and experience.project_url %}<a href="{{ experience.project_url }}">{{ experience.project }}</a>.{% endif %}
+          </p>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
