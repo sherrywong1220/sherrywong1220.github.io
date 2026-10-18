@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /publications/
-title: publications
+title: Publications
 description: Research on memory systems, LLM inference, and high-performance computing.
 nav: true
 nav_order: 2
@@ -12,13 +12,13 @@ Preprints are listed separately from conference papers.
 
 {% include bib_search.liquid %}
 
-## conference papers
+## Conference Papers
 
 <div class="publications">
 {% bibliography --query @inproceedings %}
 </div>
 
-## preprints
+## Preprints
 
 <div class="publications">
 {% bibliography --query @misc %}

@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: Ph.D. student · Computer Science · University of California, Merced
 profile:
@@ -10,15 +10,13 @@ profile:
   more_info: >
     <p>PASA Lab · UC Merced</p>
     <p>Merced, California</p>
-selected_papers: true
-social: true
+selected_papers: false
+social: false
 announcements:
   enabled: false
 latest_posts:
   enabled: false
 ---
-
-<p class="research-eyebrow">Computer systems &amp; emerging memory</p>
 
 I am **Xi (Sherry) Wang**, a Ph.D. student at the [University of California, Merced](https://www.ucmerced.edu/),
 where I work with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
@@ -30,14 +28,14 @@ including Compute Express Link (CXL). I study how software can make effective us
 memory, from memory management in the operating system to communication and inference runtimes.
 
 <div class="profile-links">
-  <a href="mailto:swang166@ucmerced.edu">Email <span aria-hidden="true">↗</span></a>
-  <a href="https://scholar.google.com/citations?user=JHXk0gcAAAAJ">Google Scholar <span aria-hidden="true">↗</span></a>
-  <a href="https://www.linkedin.com/in/xi-sherry-wang/">LinkedIn <span aria-hidden="true">↗</span></a>
+  <a class="email" href="mailto:swang166@ucmerced.edu">swang166@ucmerced.edu</a>
+  <a href="https://scholar.google.com/citations?user=JHXk0gcAAAAJ">Google Scholar</a>
+  <a href="https://www.linkedin.com/in/xi-sherry-wang/">LinkedIn</a>
 </div>
 
 <div class="research-overview" markdown="1">
 
-## research interests
+## Research Interests
 
 - **Memory systems:** CXL memory, memory tiering, and programmable OS memory management.
 - **LLM infrastructure:** inference across heterogeneous processors and memory tiers.
@@ -45,4 +43,16 @@ memory, from memory management in the operating system to communication and infe
 
 [Explore my research →]({{ '/research/' | relative_url }})
 
+</div>
+
+## [Publications]({{ '/publications/' | relative_url }})
+
+<div class="publications">
+{% bibliography --query @inproceedings %}
+</div>
+
+### Preprints
+
+<div class="publications">
+{% bibliography --query @misc %}
 </div>

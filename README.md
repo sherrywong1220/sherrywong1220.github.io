@@ -4,6 +4,8 @@
 
 包含英文个人简介、PASA Lab 公开头像、研究方向、7 项论文记录、Google Scholar / LinkedIn / 邮箱链接、论文检索，以及响应式布局和深浅色切换。正式论文、已接收论文与预印本均标明状态。
 
+排版参考 [Haobo Yuan](https://yuanhaobo.me/) 的居中窄版、左文右图结构，配色与字体参考 [Tal Zussman](https://talzussman.com/)：860px 阅读宽度、白底、酒红色 `#8c1515`、Inter 正文与 Ubuntu Mono 辅助信息。保留 al-folio 的导航、论文管理和深浅色切换。
+
 ## 本地预览
 
 当前电脑已安装 Homebrew Ruby 3.3，依赖在项目的 `vendor/bundle`，没有修改 macOS 自带 Ruby。
@@ -32,7 +34,7 @@ npm ci
 
 | 内容                       | 文件                            |
 | -------------------------- | ------------------------------- |
-| 个人简介与精选论文开关     | `_pages/about.md`               |
+| 个人简介与完整论文列表     | `_pages/about.md`               |
 | 研究方向                   | `_pages/research.md`            |
 | 论文信息、PDF 和代码链接   | `_bibliography/papers.bib`      |
 | 论文页结构                 | `_pages/publications.md`        |
@@ -42,7 +44,7 @@ npm ci
 | 个人配色、间距、移动端样式 | `_sass/_site.scss`              |
 | 事实来源与取舍记录         | `docs/CONTENT_SOURCES.md`       |
 
-BibTeX 的 `selected = {true}` 会把论文显示在首页。`@inproceedings` 显示在会议论文区，`@misc` 显示在预印本区。新增论文也应更新 `scripts/check_site.py` 中的预期论文键。
+首页与 Publications 页面均展示全部论文，并按 `papers.bib` 中的条目顺序排列：SC 2025 → IPDPS 2025 → SC 2026 → 预印本。`@inproceedings` 显示在会议论文区，`@misc` 显示在预印本区。新增论文也应更新 `scripts/check_site.py` 中的预期论文键。
 
 没有虚构本科／硕士学历、预计毕业日期、引用次数或 CV 下载。需要补充时直接编辑这些源文件。
 

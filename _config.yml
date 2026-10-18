@@ -103,7 +103,7 @@ posts_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 1000px
+max_width: 860px
 
 # -----------------------------------------------------------------------------
 # Open Graph & Schema.org
@@ -350,8 +350,9 @@ scholar:
   details_link: Details
 
   query: "@*"
-  group_by: year
-  group_order: descending
+  # Preserve the curated order in papers.bib: SC 2025, IPDPS 2025, then other work.
+  sort_by: none
+  group_by: none
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
@@ -362,34 +363,33 @@ enable_publication_badges:
   inspirehep: false # Inspire HEP badge (https://help.inspirehep.net/knowledge-base/citation-metrics/)
 
 # Filter out certain bibtex entry keywords used internally from the bib output
-filtered_bibtex_keywords: Xi Wang, Sherry Wang, UC Merced, PASA Lab, CXL, LLM systems, operating systems, memory systems
+filtered_bibtex_keywords:
   [
-  abbr,
-  abstract,
-  additional_info,
-  altmetric,
-  annotation,
-  arxiv,
-  award,
-  award_name,
-  bibtex_show,
-  blog,
-  code,
-  dimensions,
-  eprint,
-  google_scholar_id,
-  hal,
-  html,
-  inspirehep_id,
-  pdf,
-  pmid,
-  poster,
-  preview,
-  selected,
-  slides,
-  supp,
-  video,
-  website,
+    abbr,
+    abstract,
+    additional_info,
+    altmetric,
+    annotation,
+    arxiv,
+    award,
+    award_name,
+    bibtex_show,
+    blog,
+    code,
+    dimensions,
+    google_scholar_id,
+    hal,
+    html,
+    inspirehep_id,
+    pdf,
+    pmid,
+    poster,
+    preview,
+    selected,
+    slides,
+    supp,
+    video,
+    website,
   ]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
@@ -452,7 +452,7 @@ enable_masonry: false # enables automatic project cards arrangement
 enable_math: false # enables math typesetting (uses MathJax)
 enable_tooltips: false # enables automatic tooltip links generated for each section titles on pages and posts
 enable_darkmode: true # enables switching between light/dark modes
-enable_navbar_social: false # enables displaying social links in the navbar on the about page
+enable_navbar_social: true # enables displaying social links in the navbar on the about page
 enable_project_categories: true # enables categorization of projects into multiple categories
 enable_medium_zoom: false # enables image zoom feature (as on medium.com)
 enable_progressbar: false # enables a horizontal progress bar linked to the vertical scroll position
@@ -519,7 +519,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "https://fonts.googleapis.com/css?family=Inter:400,500,600,700|Ubuntu+Mono:400,700|Material+Icons&display=swap"
   highlightjs:
     integrity:
       css:

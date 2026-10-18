@@ -1,102 +1,149 @@
-// Personal site styles layered over the al-folio runtime.
+// Personal styles: al-folio's narrow academic layout with a burgundy palette.
 :root {
-  --global-theme-color: #086b64;
-  --global-hover-color: #064f4a;
-  --global-text-color: #272b31;
-  --global-text-color-light: #656b73;
+  --global-theme-color: #8c1515;
+  --global-hover-color: #5e1010;
+  --global-text-color: #182023;
+  --global-text-color-light: #62696f;
   --global-bg-color: #fff;
+  --global-code-bg-color: #f7f3f3;
+  --global-divider-color: #e5e5e5;
 }
 
 html[data-theme="dark"] {
-  --global-theme-color: #7bd5c9;
-  --global-hover-color: #a1e7de;
-  --global-bg-color: #191d22;
-  --global-text-color: #e3e7eb;
-  --global-text-color-light: #a7b0bb;
+  --global-theme-color: #efa6a6;
+  --global-hover-color: #ffd0d0;
+  --global-bg-color: #1c1c1d;
+  --global-text-color: #e8e8e8;
+  --global-text-color-light: #b3b3b8;
+  --global-code-bg-color: #282326;
+  --global-divider-color: #3c3c40;
 }
 
 body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-size: 16px;
-  line-height: 1.75;
+  font-weight: 400;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
+strong,
+b {
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--global-hover-color);
+}
+
+.navbar {
+  font-size: 0.9rem;
+}
+
+.navbar.navbar-light .navbar-brand.social {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.25rem;
+  border: 0;
+  margin: 0;
+}
+
+.navbar.navbar-light .navbar-brand.social a i::before {
+  color: var(--global-theme-color);
+}
+
 .post-header {
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.75rem;
 }
 
 .post-title {
-  letter-spacing: -0.035em;
-  line-height: 1.2;
+  color: var(--global-theme-color);
+  font-size: 2.25rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
 }
 
-.post-header .desc {
-  margin-top: 0.65rem;
+.post-title .font-weight-bold {
+  color: inherit;
+  font-weight: inherit !important;
+}
+
+.post-header .desc,
+.post-header .post-description {
+  margin-top: 0.5rem;
   color: var(--global-text-color-light);
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 h2 {
-  font-size: 1.65rem;
+  color: var(--global-theme-color);
+  font-size: 1.6rem;
+  font-weight: 500;
   letter-spacing: -0.025em;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.9rem;
+}
+
+// The upstream about layout uses lowercase section labels.
+.post > article > h2 {
+  text-transform: capitalize;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 500;
   line-height: 1.5;
 }
 
-.research-eyebrow {
-  color: var(--global-theme-color);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+.profile {
+  width: 26%;
+  max-width: 220px;
+  margin-bottom: 1.5rem;
 }
 
-.profile {
-  width: 25%;
-  margin-left: 3rem;
-  margin-bottom: 2rem;
+.profile.float-right {
+  margin-left: 2rem;
 }
 
 .profile img {
-  border-radius: 6px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 4px;
   box-shadow: none !important;
 }
 
 .profile .more-info {
-  margin-top: 0.8rem;
+  margin-top: 0.65rem;
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   line-height: 1.6;
-  color: var(--global-text-color-light);
 }
 
 .profile .more-info p {
   display: block;
   margin: 0;
+  color: var(--global-text-color-light);
 }
 
 .profile-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem 1.5rem;
-  margin: 1.5rem 0 2rem;
-  font-size: 0.9rem;
-  font-weight: 500;
+  gap: 0.4rem 1.2rem;
+  margin: 1.2rem 0 1.5rem;
+  font-size: 0.85rem;
 }
 
-.profile-links a {
-  border-bottom: 1px solid var(--global-divider-color);
-}
-
-.profile-links span {
-  margin-left: 0.2rem;
-  font-size: 0.8em;
+.profile-links .email {
+  font-family: "Ubuntu Mono", ui-monospace, monospace;
+  font-size: 1rem;
 }
 
 .research-overview {
@@ -104,18 +151,23 @@ h3 {
   padding-top: 0.1rem;
 }
 
-.research-overview ul {
-  padding-left: 1.15rem;
+.research-overview h2 {
+  margin-top: 0.75rem;
+}
+
+.research-overview ul,
+.research-section ul {
+  padding-left: 1.2rem;
 }
 
 .research-overview li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .research-section {
   border-top: 1px solid var(--global-divider-color);
-  padding-top: 1.6rem;
-  margin-top: 2.2rem;
+  padding-top: 1.4rem;
+  margin-top: 1.8rem;
 }
 
 .research-section h2 {
@@ -123,63 +175,97 @@ h3 {
 }
 
 .research-section .topic-label {
-  color: var(--global-theme-color);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-
-.research-section ul {
-  padding-left: 1.2rem;
-}
-
-.publications ol.bibliography li {
-  margin-bottom: 1.8rem;
-}
-
-.publications .title {
-  line-height: 1.5;
-  margin-bottom: 0.3rem;
-}
-
-.publications .author,
-.publications .periodical {
-  line-height: 1.65;
-  font-size: 0.88rem;
-}
-
-.publications .links {
-  margin-top: 0.6rem;
-}
-
-.publications .links a.btn {
-  border-radius: 3px;
-  font-size: 0.7rem;
-  padding: 0.2rem 0.65rem;
-}
-
-.publications .badge {
-  letter-spacing: 0.03em;
-  font-size: 0.75rem;
-}
-
-.social {
-  border-top: 1px solid var(--global-divider-color);
-  margin-top: 2.5rem;
-  padding-top: 1.8rem;
-}
-
-.social .contact-icons {
-  font-size: 2rem;
-}
-
-.contact-note {
   color: var(--global-text-color-light);
+  font-family: "Ubuntu Mono", ui-monospace, monospace;
   font-size: 0.85rem;
 }
 
+.publications {
+  margin-top: 1rem;
+}
+
+.publications ol.bibliography {
+  li {
+    margin-bottom: 1.6rem;
+  }
+
+  // Fit the venue and entry to the full reading width, without an empty column.
+  li > .row {
+    display: grid;
+    grid-template-columns: 4.7rem minmax(0, 1fr);
+    column-gap: 1.1rem;
+    margin: 0;
+  }
+
+  li > .row > div {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    padding: 0;
+  }
+
+  li .title {
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0.25rem;
+  }
+
+  .author,
+  .periodical,
+  .periodical em {
+    color: var(--global-text-color-light);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .author > em {
+    font-weight: 500;
+  }
+
+  .periodical {
+    margin-top: 0.15rem;
+    font-family: "Ubuntu Mono", ui-monospace, monospace;
+    font-size: 0.95rem;
+  }
+
+  .links {
+    margin-top: 0.4rem;
+  }
+
+  li .links a.btn {
+    color: var(--global-theme-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 400;
+    padding: 0.15rem 0.55rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.2rem;
+    text-transform: none;
+  }
+}
+
+.publications .badge,
+.publications .badge div,
+.publications .badge a {
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.publications h2.bibliography {
+  color: var(--global-text-color-light);
+  font-family: "Ubuntu Mono", ui-monospace, monospace;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 0.65rem;
+}
+
 footer {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--global-divider-color);
+  font-size: 0.75rem;
 }
 
 a:focus-visible,
@@ -188,42 +274,51 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
+::highlight(search) {
+  background-color: #8c1515;
+  color: #fff;
+}
+
 @media (max-width: 575px) {
   body {
     font-size: 15px;
   }
 
   .post-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.35rem;
   }
 
   .post-title {
-    font-size: 2.15rem;
+    font-size: 2rem;
   }
 
-  .profile {
-    width: 150px;
+  .post-header .desc,
+  .post-header .post-description {
+    font-size: 0.85rem;
+  }
+
+  .post:has(.profile) .post-header {
+    text-align: center;
+  }
+
+  .profile,
+  .profile.float-right {
+    width: 148px;
     float: none !important;
-    margin: 0 0 1.8rem;
+    margin: 0 auto 1.5rem;
+    text-align: center;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
-}
 
-.publications .badge,
-.publications .badge div,
-.publications .badge a {
-  color: #fff;
-}
+  .publications ol.bibliography li > .row {
+    display: block;
+  }
 
-.publications h2.bibliography {
-  color: var(--global-text-color-light);
-  font-size: 1.1rem;
-}
-
-::highlight(search) {
-  background-color: #086b64;
-  color: #fff;
+  .publications ol.bibliography li > .row > .abbr {
+    width: 4.7rem;
+    margin-bottom: 0.25rem;
+  }
 }
