@@ -18,6 +18,8 @@ Verified on 2026-10-17. This file is excluded from the generated public website.
 
 LinkedIn direct fetching was restricted, but the Experience section was verified through the signed-in browser on 2026-10-17. Company names, roles, and month-level dates follow that profile; Tencent and DJI descriptions are concise summaries of the profile text. Scholar direct fetching remained restricted. No citation counts, h-index, undergraduate institution, master's degree, expected graduation date, unverified employment, or downloadable CV were inferred. “Ph.D. candidate” follows the user’s explicit correction on 2026-10-17 and the LinkedIn profile headline. Research descriptions are editorial summaries of the verified papers, with no new quantitative performance claims.
 
+The hobbies paragraph (snowboarding, fitness, tennis, climbing, and surfing) follows the user's description supplied on 2026-10-17.
+
 ## Publications
 
 | BibTeX key                 | Status                              | Primary evidence                                                                                                                                                                   |

@@ -27,6 +27,9 @@ My research focuses on **LLM systems, operating systems, and emerging memory tec
 including Compute Express Link (CXL). I study how software can make effective use of heterogeneous
 memory, from memory management in the operating system to communication and inference runtimes.
 
+Outside of research, I enjoy snowboarding 🏂, working out 🏋️‍♀️, tennis 🎾, climbing 🧗‍♀️, and surfing 🏄‍♀️.
+When I’m away from campus and the office, you might find me hanging out on snowy slopes, on a tennis court, or at a climbing gym.
+
 <div class="research-overview" markdown="1">
 
 ## Research Interests
