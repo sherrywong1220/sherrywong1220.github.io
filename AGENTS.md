@@ -1,104 +1,78 @@
-# Personal-site scope (takes precedence over upstream notes below)
+# Agent Guidelines · Xi (Sherry) Wang's homepage
 
-This checkout is Xi (Sherry) Wang's personal website created from al-folio, not the upstream starter itself.
+Read this file before making changes. This repository is a personal academic website built from the al-folio v1 starter. These site-specific instructions take precedence over upstream starter documentation.
 
-- Use `README.md` for this site's commands and GitHub Pages deployment. The default local baseurl is empty, not `/al-folio`.
-- `upstream` is read-only for provenance. Never publish or open a PR to the al-folio repository for personal-site changes.
-- The site owns `_pages`, `_data`, `_bibliography`, and its portrait. Verify biographical and publication facts against `docs/CONTENT_SOURCES.md`.
-- `_sass/_site.scss` and the one-line addition to `assets/css/main.scss` are intentional site customization; preserve the override acknowledgement.
-- Upstream demo integration / screenshot tests were removed because they depend on demo content. Validate with the Jekyll build, `scripts/check_site.py`, the upgrade audits, and browser review. Formatting uses `npm run lint:prettier`.
+## Scope and ownership
+
+- See [README.md](README.md) for dependency setup and local preview. The local `baseurl` is empty; do not use the upstream starter's `/al-folio` path.
+- `origin` is `sherrywong1220/sherrywong1220.github.io`. `upstream` is read-only for al-folio provenance. Never push or open a PR to upstream for personal-site changes.
 - Keep generated output, dependencies, and local preview state out of Git. No remote publication is authorized by an ordinary local content edit.
+- Verify biographical and publication facts against [docs/CONTENT_SOURCES.md](docs/CONTENT_SOURCES.md).
+- Runtime layouts, includes, Liquid tags, and feature code live in versioned gems. Check the owning gem before changing runtime behavior.
+- `_sass/_site.scss` and the one-line addition to `assets/css/main.scss` are intentional site customizations. Preserve `.al-folio-overrides.yml` and review the override when upgrading the theme.
+- Plugin dependency and activation changes must stay aligned in both `Gemfile` and `_config.yml`. A feature may also require a site flag and page opt-in.
+- Do not introduce a separate Tailwind or CSS build pipeline.
 
----
+## Content files
 
-# Agent Guidelines for al-folio (v1.x)
+| Content                                 | File                            |
+| --------------------------------------- | ------------------------------- |
+| Homepage biography and sections         | `_pages/about.md`               |
+| Research                                | `_pages/research.md`            |
+| Industry experience                     | `_data/experience.yml`          |
+| Publication metadata, links, and BibTeX | `_bibliography/papers.bib`      |
+| Publications page structure             | `_pages/publications.md`        |
+| Email, Scholar, and LinkedIn            | `_data/socials.yml`             |
+| Site configuration                      | `_config.yml`                   |
+| Portrait                                | `assets/img/xi-sherry-wang.jpg` |
+| Colors and layout                       | `_sass/_site.scss`              |
 
-**This file is the authoritative entry point for coding agents working in this repo.** Read it before making any change. It is intentionally short and tool-neutral; it links to the one place each longer-form fact lives.
+The homepage and Publications page share the same bibliography and display entries in `papers.bib` order. When adding a paper, update the expected publication keys in `scripts/check_site.py`.
 
-`al-folio` v1.x is a **thin Jekyll starter, not a theme**. This repo owns starter wiring, example content, docs, and cross-plugin tests. All runtime — layouts, includes, Sass, Liquid tags, filters, feature JS — lives in versioned gems published under [`al-org-dev`](https://github.com/al-org-dev).
+## 排版原则
 
-## Route your change
+采用居中窄版、桌面左文右图的结构，阅读宽度为 860px。浅色模式使用白底与酒红色 `#8c1515`，正文使用 Inter，辅助信息使用 Ubuntu Mono。保留 al-folio 的导航、论文管理、深浅色切换和响应式布局。
 
-Find your change on the left; edit only what is on the right.
+## Validation
 
-| Your change                                                                                                              | Goes in                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| Dependency pin, plugin activation, feature flag                                                                          | this repo: `Gemfile` **and** `_config.yml` (both — see below)                                                 |
-| Example/demo content, bibliography, data files                                                                           | this repo: `_pages`, `_posts`, `_projects`, `_news`, `_teachings`, `_books`, `_data`                          |
-| Documentation                                                                                                            | this repo: `docs/` (long-form) or this file (agent rules)                                                     |
-| Cross-plugin integration test, visual parity test                                                                        | this repo: `test/integration_*.sh`, `test/visual/`                                                            |
-| Plugin catalog metadata                                                                                                  | this repo: `_data/featured_plugins.yml`                                                                       |
-| A layout, include, or Sass partial                                                                                       | the owning gem — start with `al_folio_core`                                                                   |
-| A Liquid tag or filter, or what a tag renders                                                                            | the gem that registers it — see the [delegation table](docs/ARCHITECTURE.md#wrapper-to-tag-to-gem-delegation) |
-| Feature behavior (search, math, charts, comments, cookies, icons, CV, distill, analytics, images, newsletter, citations) | that feature's gem — see [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md)                                           |
-| Component/unit test for gem-owned behavior                                                                               | the owning gem, not here                                                                                      |
-| A feature with no existing owner                                                                                         | open a plugin proposal issue first, then a standalone plugin repo                                             |
-
-[`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) is the authoritative area-to-gem table. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) explains how the pieces connect.
-
-## Stop sign
-
-**If your change would create any of these paths in this repo, it belongs in a gem instead:**
-
-```
-_layouts/   _includes/   _sass/   _scripts/   assets/tailwind/   tailwind.config.js   assets/webfonts/
-```
-
-`npm run lint:style-contract` fails CI when any of them exists here, and it also rejects `build:css` / `build:tailwind` npm scripts. Do not add a starter-local Tailwind or CSS build pipeline.
-
-This restriction applies to **this repo only**. A user's own site created from this template _may_ legally shadow gem-owned files — see [local overrides: your site vs. this repo](docs/ARCHITECTURE.md#local-overrides-your-site-vs-this-repo).
-
-## Three failures that produce no error message
-
-Read [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#failure-modes-that-produce-no-error-message) for the full explanation. The short version:
-
-1. **Features fail silently.** A feature renders only when its gem is loaded _and_ its flag is on _and_ the page opts in. Otherwise the Liquid tag emits an empty string — no warning, no error.
-2. **`Gemfile` and `_config.yml` are two lists that must agree.** A plugin in only one of them is inert. Adding or removing a plugin means editing both. Repo dirs use hyphens (`al-folio-core`); gem/plugin ids use underscores (`al_folio_core`).
-3. **This repo's effective baseurl is `/al-folio`.** `_config.yml` already sets it, so a plain `bundle exec jekyll build` is correct — that is what `deploy.yml`, `broken-links-site.yml` and `axe.yml` run. Passing `--baseurl /al-folio` is redundant but harmless; blanking the baseurl out is what renders the site unstyled with broken links. Dev server is at `http://localhost:4000/al-folio/`.
-
-## Validated local command set
-
-Run from the repo root, in this order:
+Run from the repository root with the project Ruby environment configured as described in README:
 
 ```bash
-bundle install
-npm ci
 npm run lint:prettier
-npm run lint:style-contract
-bundle exec jekyll build --baseurl /al-folio
-bash test/integration_comments.sh
-bash test/integration_plugin_toggles.sh
-bash test/integration_distill.sh
-bash test/integration_bootstrap_compat.sh
-bash test/integration_upgrade_cli.sh
-bash test/integration_css_minify.sh
-bash test/integration_new_plugins.sh
-npx playwright install chromium webkit
-npm run test:visual
-bundle exec al-folio upgrade audit
+bundle exec al-folio upgrade audit --no-fail
 bundle exec al-folio upgrade overrides audit
-bundle exec al-folio upgrade report
-docker compose up -d
-curl -fsS http://127.0.0.1:8080/al-folio/ >/dev/null
-docker compose logs --tail=80
-docker compose down
+bundle exec jekyll build
+python3 scripts/check_site.py _site
 ```
 
-All seven `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the ones your change touches. Docker note: v1 uses `/srv/jekyll/bin/entry_point.sh` and serves from container-local `/tmp/_site` to avoid host bind-mount write deadlocks.
+Review affected pages in the browser before publishing; for layout changes, check desktop and mobile views. Upstream demo integration and screenshot tests were removed because they depend on demo content. Do not run upstream commands such as `lint:style-contract` or `test:visual`, which are not defined in this site's `package.json`.
 
-## Before you open a PR
+For documentation-only changes, check formatting and referenced local paths. README, AGENTS, and `docs/` are excluded from the website build, so these changes do not require a site rebuild or Pages deployment.
 
-- Keep starter work here; route runtime behavior to the owning plugin repo.
-- Run `npm run lint:prettier` (Prettier with `@shopify/prettier-plugin-liquid`, `printWidth: 150`). `npx prettier . --write` fixes formatting.
-- Keep docs aligned with v1 ownership, and keep each fact in one place — link rather than restate.
-- If you create or keep local overrides of plugin-owned files, run `bundle exec al-folio upgrade overrides audit` and commit `.al-folio-overrides.yml` after review.
+## Publishing and hosting
+
+Source lives on `main`; static output lives on `gh-pages`. Once publication is authorized, commit and push source changes, then publish:
+
+```bash
+git push origin main
+./scripts/publish
+```
+
+The script requires a clean `main` branch whose HEAD matches GitHub. It builds with the production URL, checks pages and local links, and updates `gh-pages` with a normal Git commit. Check the final deployment in [GitHub Actions](https://github.com/sherrywong1220/sherrywong1220.github.io/actions).
+
+- GitHub Pages source: **Deploy from a branch → `gh-pages` → `/ (root)`**.
+- The custom build workflow in `.github/workflows/deploy.yml` is disabled. Pushing `main` alone does not deploy the website.
+- For documentation-only updates, synchronize source when authorized; do not run `scripts/publish`.
+- The production domain is `xisherry.wang`; Porkbun manages DNS. Preserve the root `CNAME` file and GitHub Pages **Enforce HTTPS**.
+- Keep the production URL in `scripts/publish` consistent with the custom domain. The local `_config.yml` uses an empty URL and baseurl.
+- The previous homepage is preserved in the [archive repository](https://github.com/sherrywong1220/sherrywong1220.github.io-archive).
 
 ## Further reading
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — how the starter and gems fit together, silent failure modes, the v1 config contract, local overrides.
-- [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) — authoritative area-to-gem ownership table and PR triage playbook.
-- [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) — contributor workflow and agent tooling.
-- [`docs/README.md`](docs/README.md) — index of all user and maintainer guides.
-- `.agents/skills/al-folio-bootstrap/SKILL.md` — new-site setup workflow.
-- `.agents/skills/al-folio-v1-migration/SKILL.md` — customized-fork migration and override drift auditing.
-- `.codex/skills` and `.claude/skills` are symlinks to `.agents/skills` for agent-specific discovery.
+- [Architecture](docs/ARCHITECTURE.md): runtime ownership, feature activation, and local overrides.
+- [Boundaries](docs/BOUNDARIES.md): which gem owns each feature.
+- [Content sources](docs/CONTENT_SOURCES.md): biographical and publication provenance.
+- `.agents/skills/al-folio-bootstrap/SKILL.md`: new-site setup.
+- `.agents/skills/al-folio-v1-migration/SKILL.md`: migration and override auditing.
+
+Keep maintenance rules here and user-facing setup in README. Link to shared details instead of duplicating them.
