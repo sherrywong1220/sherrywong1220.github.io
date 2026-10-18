@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://sherrywong1220.github.io/sitemap.xml
+Sitemap: https://xisherry.wang/sitemap.xml
