@@ -60,14 +60,8 @@ When I’m away from campus and the office, you might find me hanging out in the
   </ul>
 </section>
 
-## [Publications]({{ '/publications/' | relative_url }})
+## [Preprints]({{ '/publications/' | relative_url }})
 
 <div class="publications">
-{% bibliography --query @inproceedings %}
-</div>
-
-### Preprints
-
-<div class="publications">
-{% bibliography --query @misc %}
+{% bibliography %}
 </div>

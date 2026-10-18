@@ -350,7 +350,7 @@ scholar:
   details_link: Details
 
   query: "@*"
-  # Preserve the curated order in papers.bib: SC 2025, IPDPS 2025, then other work.
+  # Preserve the user-curated order in papers.bib.
   sort_by: none
   group_by: none
 
