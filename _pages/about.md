@@ -15,7 +15,7 @@ latest_posts:
   enabled: false
 ---
 
-Hello! I am a Ph.D. candidate at the [University of California, Merced](https://www.ucmerced.edu/),
+Hello! I am a Ph.D. candidate at the [UC Merced](https://www.ucmerced.edu/),
 where I have been working with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
 [PASA Lab](https://www.pasalabs.org/) since 2023.
 
