@@ -192,7 +192,7 @@ h3 {
   // Fit the venue and entry to the full reading width, without an empty column.
   li > .row {
     display: grid;
-    grid-template-columns: 4.7rem minmax(0, 1fr);
+    grid-template-columns: 6rem minmax(0, 1fr);
     column-gap: 1.1rem;
     margin: 0;
   }
@@ -318,7 +318,7 @@ button:focus-visible {
   }
 
   .publications ol.bibliography li > .row > .abbr {
-    width: 4.7rem;
+    width: 6rem;
     margin-bottom: 0.25rem;
   }
 }
