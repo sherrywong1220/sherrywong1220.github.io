@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Ph.D. student · Computer Science · University of California, Merced
+subtitle: Ph.D. student · University of California, Merced
 profile:
   align: right
   image: xi-sherry-wang.jpg
