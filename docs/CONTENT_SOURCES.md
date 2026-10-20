@@ -20,6 +20,8 @@ LinkedIn direct fetching was restricted, but the Experience section was verified
 
 The hobbies paragraph (snowboarding, fitness, tennis, climbing, and surfing) follows the user's description supplied on 2026-10-17.
 
+The homepage's Person JSON-LD lists “Xi Wang” and “Sherry Wang” as alternate names, as explicitly requested by the user on 2026-10-19.
+
 ## Publications
 
 | BibTeX key                 | Status                              | Primary evidence                                                                                                                                                                   |

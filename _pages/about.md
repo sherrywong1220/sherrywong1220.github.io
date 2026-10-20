@@ -15,6 +15,19 @@ latest_posts:
   enabled: false
 ---
 
+{% if site.serve_schema_org %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": {{ '/' | absolute_url | append: '#person' | jsonify }},
+  "name": "Xi (Sherry) Wang",
+  "alternateName": ["Xi Wang", "Sherry Wang"],
+  "url": {{ '/' | absolute_url | jsonify }}
+}
+</script>
+{% endif %}
+
 Hello! I am a Ph.D. candidate at the [UC Merced](https://www.ucmerced.edu/),
 where I have been working with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
 [PASA Lab](https://www.pasalabs.org/) since 2023.
