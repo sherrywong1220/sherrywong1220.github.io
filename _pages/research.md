@@ -8,8 +8,8 @@ nav_order: 1
 ---
 
 My work connects memory hardware with the software that uses it: operating systems,
-communication libraries, and LLM inference runtimes. I am interested in how these layers
-can work together to improve performance on heterogeneous memory systems.
+communication libraries, and LLM training and inference systems. I am interested in how these layers
+can work together to improve performance with emerging memory technologies.
 
 <section class="research-section" markdown="1">
 
@@ -33,9 +33,12 @@ adaptive tuning, and programmable memory management.
 
 <section class="research-section" markdown="1">
 
-<p class="topic-label">02 / LLM SYSTEMS</p>
+<p class="topic-label">02 / AI/ML LLM INFRASTRUCTURE</p>
 
-## Inference across CPUs, GPUs, and memory tiers
+## Optimizing LLM training and inference
+
+I am interested in optimizing LLM training and inference with emerging memory technologies,
+including CXL memory and heterogeneous memory tiers.
 
 Long-context generation places pressure on both compute and memory. In **HybridGen**,
 we study CPU–GPU collaborative attention for LLM inference with expanded tiered memory.
