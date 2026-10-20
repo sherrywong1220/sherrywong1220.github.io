@@ -33,7 +33,7 @@ adaptive tuning, and programmable memory management.
 
 <section class="research-section" markdown="1">
 
-<p class="topic-label">02 / AI/ML LLM INFRASTRUCTURE</p>
+<p class="topic-label">02 / AI/ML INFRASTRUCTURE</p>
 
 ## Optimizing LLM training and inference
 
