@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Check generated pages, local assets, and links, including project-site base paths."""
+"""Check generated pages, JSON-LD, local assets, and links, including base paths."""
 import argparse
+import json
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
@@ -12,6 +13,8 @@ class Page(HTMLParser):
         self.links = []
         self.ids = set()
         self.canonical = None
+        self.json_ld = []
+        self._json_ld_parts = None
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
@@ -23,6 +26,17 @@ class Page(HTMLParser):
                 self.links.append(attrs[name])
         if tag == "link" and attrs.get("rel") == "canonical":
             self.canonical = attrs.get("href")
+        if tag == "script" and attrs.get("type") == "application/ld+json":
+            self._json_ld_parts = []
+
+    def handle_data(self, data):
+        if self._json_ld_parts is not None:
+            self._json_ld_parts.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self._json_ld_parts is not None:
+            self.json_ld.append("".join(self._json_ld_parts))
+            self._json_ld_parts = None
 
 
 def check(root, baseurl):
@@ -30,6 +44,8 @@ def check(root, baseurl):
     pages = {p: Page(p.read_text()) for p in root.rglob("*.html")}
     home = pages.get(root / "index.html")
     assert home, "Homepage is missing"
+    if not home.json_ld:
+        errors.append("Homepage JSON-LD is missing")
     canonical = urlsplit(home.canonical or "/")
     prefix = (baseurl if baseurl is not None else canonical.path).rstrip("/")
     origin = f"{canonical.scheme}://{canonical.netloc}" if canonical.netloc else "http://local.test"
@@ -38,6 +54,11 @@ def check(root, baseurl):
             errors.append(f"Missing page: {path}")
     for path, page in pages.items():
         relative = path.relative_to(root).as_posix()
+        for index, block in enumerate(page.json_ld, start=1):
+            try:
+                json.loads(block)
+            except json.JSONDecodeError as error:
+                errors.append(f"{relative}: invalid JSON-LD block {index}: {error}")
         page_url = origin + prefix + "/" + relative
         for link in page.links:
             if link == "#" or link.startswith(("mailto:", "tel:", "data:", "javascript:")):
@@ -67,7 +88,7 @@ def check(root, baseurl):
             errors.append(f"Missing publication: {key}")
     if errors:
         raise SystemExit("\n".join(errors))
-    print(f"Verified {len(pages)} HTML pages, 7 publications, and all local links/assets (baseurl={prefix!r}).")
+    print(f"Verified {len(pages)} HTML pages, JSON-LD, 7 publications, and all local links/assets (baseurl={prefix!r}).")
 
 
 if __name__ == "__main__":
