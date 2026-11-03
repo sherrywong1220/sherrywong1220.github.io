@@ -403,10 +403,11 @@ enable_publication_thumbnails: true
 # Jekyll Link Attributes
 # -----------------------------------------------------------------------------
 
-# These are the defaults
+# These are curated editorial links, including my own academic profiles.
+# Mark individual untrusted or sponsored links explicitly when needed.
 external_links:
   enabled: true
-  rel: external nofollow noopener
+  rel: external noopener
   target: _blank
   exclude:
 

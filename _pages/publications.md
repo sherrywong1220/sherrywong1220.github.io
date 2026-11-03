@@ -7,7 +7,7 @@ nav: true
 nav_order: 2
 ---
 
-For citation metrics and my Scholar profile, visit [Google Scholar](https://scholar.google.com/citations?user=JHXk0gcAAAAJ).
+For citation metrics and my Scholar profile, visit [Google Scholar](https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}).
 
 {% include bib_search.liquid %}
 

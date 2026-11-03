@@ -23,12 +23,24 @@ latest_posts:
   "@id": {{ '/' | absolute_url | append: '#person' | jsonify }},
   "name": "Xi (Sherry) Wang",
   "alternateName": ["Xi Wang", "Sherry Wang"],
-  "url": {{ '/' | absolute_url | jsonify }}
+  "url": {{ '/' | absolute_url | jsonify }},
+  "image": {{ '/assets/img/xi-sherry-wang.jpg' | absolute_url | jsonify }},
+  "jobTitle": "Ph.D. candidate",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of California, Merced",
+    "alternateName": "UC Merced",
+    "url": "https://www.ucmerced.edu/"
+  },
+  "sameAs": [
+    {{ 'https://scholar.google.com/citations?user=' | append: site.data.socials.scholar_userid | jsonify }},
+    {{ 'https://www.linkedin.com/in/' | append: site.data.socials.linkedin_username | jsonify }}
+  ]
 }
 </script>
 {% endif %}
 
-Hello! I am a Ph.D. candidate at the [UC Merced](https://www.ucmerced.edu/),
+Hello! I am Xi Wang (Sherry), a Ph.D. candidate at [UC Merced](https://www.ucmerced.edu/),
 where I have been working with [Prof. Dong Li](https://faculty.ucmerced.edu/dong-li/) in the
 [PASA Lab](https://www.pasalabs.org/) since 2023.
 
@@ -36,6 +48,8 @@ My research focuses on optimizing **LLM systems and operating systems** with **e
 
 Outside of research, I enjoy snowboarding 🏂, working out 🏋️‍♀️, tennis 🎾, climbing 🧗‍♀️, and surfing 🏄‍♀️.
 When I’m away from campus and the office, you might find me hanging out in the snowy mountains, on a tennis court, or at a climbing gym.
+
+[Email](mailto:{{ site.data.socials.email }}) \| [LinkedIn](https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}) \| [Google Scholar](https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }})
 
 <div class="research-overview" markdown="1">
 
